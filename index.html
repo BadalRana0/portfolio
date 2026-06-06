@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Badal Rana — Graphic Designer & Creative Storyteller</title>
+<title>Badal Rana — UI/UX Designer & Creative Storyteller</title>
 <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -117,22 +117,50 @@ section{padding:8rem 5rem;}
 .svc-name{font-family:var(--fd);font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:.8rem;}
 .svc-desc{font-size:.85rem;font-weight:300;color:var(--muted2);line-height:1.75;}
 
-/* PROJECTS */
+/* WORK SHOWCASE */
 #projects{background:var(--bg);}
-.proj-intro{max-width:600px;margin-bottom:4rem;}
-.proj-list{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);}
-.proj-item{display:grid;grid-template-columns:80px 1fr auto;gap:3rem;align-items:start;padding:3rem 3rem;background:var(--bg);transition:background .25s;cursor:none;}
-.proj-item:hover{background:var(--bg2);}
-.proj-num{font-family:var(--fd);font-size:2.5rem;font-weight:800;color:var(--border2);line-height:1;}
-.proj-title{font-family:var(--fd);font-size:1.25rem;font-weight:700;color:var(--text);margin-bottom:.8rem;}
-.proj-desc{font-size:.88rem;font-weight:300;color:var(--muted2);line-height:1.7;margin-bottom:1.2rem;max-width:520px;}
-.proj-tags{display:flex;flex-wrap:wrap;gap:.5rem;}
-.ptag{font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);border:1px solid var(--border);padding:.3rem .8rem;border-radius:2rem;transition:border-color .2s,color .2s;}
-.proj-item:hover .ptag{border-color:rgba(249,115,22,.25);color:rgba(249,115,22,.7);}
-.proj-arrow{width:44px;height:44px;border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s,border-color .2s;margin-top:.5rem;}
-.proj-item:hover .proj-arrow{background:var(--accent);border-color:var(--accent);}
-.proj-item:hover .proj-arrow svg{stroke:var(--bg);}
-.proj-arrow svg{width:16px;height:16px;stroke:var(--muted2);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s;}
+.wk-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;flex-wrap:wrap;gap:2rem;}
+.wk-drive-btn{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--fd);font-size:.8rem;font-weight:700;letter-spacing:.06em;color:var(--bg);background:var(--text);padding:.85rem 1.8rem;border-radius:3rem;text-decoration:none;transition:all .3s;white-space:nowrap;}
+.wk-drive-btn:hover{background:var(--accent);transform:translateY(-3px);box-shadow:0 12px 36px rgba(249,115,22,.3);}
+.wk-filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.wf-btn{font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);background:transparent;border:1px solid var(--border);padding:.5rem 1.2rem;border-radius:2rem;cursor:none;transition:all .22s;}
+.wf-btn:hover,.wf-btn.active{color:var(--bg);background:var(--accent);border-color:var(--accent);}
+.work-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:78px;gap:10px;}
+.wk-card{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--border);background:var(--bg2);cursor:none;transition:transform .38s cubic-bezier(.25,.46,.45,.94),box-shadow .38s,border-color .3s,opacity .3s;}
+.wk-card:hover{transform:translateY(-7px) scale(1.015);box-shadow:0 28px 64px rgba(0,0,0,.55);border-color:rgba(249,115,22,.35);}
+.wk-card.hidden{opacity:0;pointer-events:none;transform:scale(.94);}
+.wk-card:nth-child(1){grid-column:span 5;grid-row:span 4;}
+.wk-card:nth-child(2){grid-column:span 7;grid-row:span 3;}
+.wk-card:nth-child(3){grid-column:span 4;grid-row:span 4;}
+.wk-card:nth-child(4){grid-column:span 3;grid-row:span 4;}
+.wk-card:nth-child(5){grid-column:span 5;grid-row:span 3;}
+.wk-card:nth-child(6){grid-column:span 7;grid-row:span 4;}
+.wk-card:nth-child(7){grid-column:span 5;grid-row:span 3;}
+.wk-card:nth-child(8){grid-column:span 7;grid-row:span 4;}
+.wk-canvas{position:absolute;inset:0;width:100%;height:100%;transition:transform .65s cubic-bezier(.25,.46,.45,.94);}
+.wk-card:hover .wk-canvas{transform:scale(1.07);}
+.wk-overlay{position:absolute;inset:0;background:linear-gradient(155deg,rgba(7,7,10,0) 0%,rgba(7,7,10,.6) 50%,rgba(7,7,10,.96) 100%);transition:opacity .3s;}
+.wk-card:hover .wk-overlay{opacity:.9;}
+.wk-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.6rem 1.8rem;z-index:2;}
+.wk-cat-badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.22);padding:.28rem .65rem;border-radius:2rem;margin-bottom:.65rem;width:fit-content;backdrop-filter:blur(8px);}
+.wk-cat-dot{width:4px;height:4px;background:var(--accent);border-radius:50%;flex-shrink:0;}
+.wk-title{font-family:var(--fd);font-size:1.12rem;font-weight:800;color:var(--text);line-height:1.1;margin-bottom:.4rem;letter-spacing:-.025em;}
+.wk-card:nth-child(1) .wk-title,.wk-card:nth-child(6) .wk-title{font-size:1.35rem;}
+.wk-desc{font-size:.76rem;font-weight:300;color:rgba(238,234,227,.55);line-height:1.65;max-width:320px;}
+.wk-arrow{position:absolute;top:1.1rem;right:1.1rem;width:34px;height:34px;background:rgba(249,115,22,0);border:1px solid rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .3s,border-color .3s,transform .3s;z-index:3;text-decoration:none;}
+.wk-arrow svg{width:12px;height:12px;stroke:rgba(255,255,255,.35);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s;}
+.wk-card:hover .wk-arrow{background:var(--accent);border-color:var(--accent);transform:rotate(45deg);}
+.wk-card:hover .wk-arrow svg{stroke:#07070a;}
+.wk-card::before{content:'';position:absolute;inset:0;background:linear-gradient(110deg,transparent 38%,rgba(249,115,22,.05) 50%,transparent 62%);transform:translateX(-100%);transition:transform .7s ease;z-index:1;pointer-events:none;}
+.wk-card:hover::before{transform:translateX(100%);}
+.work-cta-strip{margin-top:3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;padding:2.5rem 3rem;border:1px solid var(--border);border-radius:16px;background:var(--bg2);position:relative;overflow:hidden;}
+.work-cta-strip::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 100% at 50% 110%,rgba(249,115,22,.05),transparent);pointer-events:none;}
+.wk-cta-title{font-family:var(--fd);font-size:1.1rem;font-weight:800;color:var(--text);margin-bottom:.3rem;}
+.wk-cta-sub{font-size:.82rem;font-weight:300;color:var(--muted2);}
+.wcta-primary{display:inline-flex;align-items:center;gap:.6rem;font-size:.82rem;font-weight:600;color:var(--bg);background:var(--accent);padding:.85rem 1.8rem;border-radius:3rem;text-decoration:none;transition:all .25s;}
+.wcta-primary:hover{box-shadow:0 10px 32px rgba(249,115,22,.4);transform:translateY(-2px);}
+.wcta-secondary{display:inline-flex;align-items:center;gap:.6rem;font-size:.82rem;font-weight:400;color:var(--text);border:1px solid var(--border2);padding:.85rem 1.8rem;border-radius:3rem;text-decoration:none;transition:all .25s;}
+.wcta-secondary:hover{border-color:var(--accent);color:var(--accent);}
 
 /* PROCESS */
 #process{background:var(--bg2);}
@@ -253,7 +281,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 5re
 
 <!-- NAV -->
 <nav>
-  <a href="#hero" class="n-logo">Badal<span>.</span></a>
+  <a href="#hero" class="n-logo">Rana<span>.</span></a>
   <ul class="n-links">
     <li><a href="#intro">About</a></li>
     <li><a href="#services">Services</a></li>
@@ -266,6 +294,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 5re
 
 <!-- SECTION 1: HERO -->
 <section id="hero">
+
+  <!-- Hero Background Image -->
+  <div class="hero-bg-image"></div>
+
   <div class="hero-noise"></div>
   <div class="hero-lines"></div>
   <div class="hero-glow"></div>
@@ -282,7 +314,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 5re
   </h1>
 
   <div class="hero-sub">
-    Graphic Designer<span>•</span>Video Editor<span>•</span>Creative Storyteller
+    UI/UX Designer<span>•</span>Motion designer<span>•</span>Strategist<span>•</span>Creative Storyteller
   </div>
 
   <p class="hero-desc">
@@ -301,9 +333,23 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 5re
 
   <div class="hero-scroll">
     <div class="scroll-bar"></div>
-    <span>Scroll to explore</span>
   </div>
 </section>
+
+<style>
+#hero{
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-bg-image{
+  position:absolute;
+  inset:0;
+  background:url(/Users/badalrana/Desktop/Portfolio.jpg) center center/cover no-repeat;
+  opacity:0.15;
+  z-index:0;
+}
+</style>
 
 <!-- MARQUEE -->
 <div class="mq-wrap">
@@ -379,14 +425,14 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 5re
       <div class="stat-sub">Worked with directly</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">3+</div>
+      <div class="stat-num">5+</div>
       <div class="stat-label">Years of Experience</div>
       <div class="stat-sub">Industry-level work</div>
     </div>
     <div class="stat-card">
       <div class="stat-num">∞</div>
       <div class="stat-label">Industries Served</div>
-      <div class="stat-sub">Politics, Education, Health & more</div>
+      <div class="stat-sub">Corporate, Education, Pharma, real estate, political & more</div>
     </div>
     <div class="stat-card">
       <div class="stat-num">100%</div>
@@ -411,30 +457,92 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 5re
       <div class="svc-icon">🎨</div>
       <div class="svc-name">Graphic Design</div>
       <div class="svc-desc">Creating visually engaging designs for brands, campaigns, marketing materials, and digital platforms.</div>
+      <a href="https://drive.google.com/drive/folders/1GaGy0b-zTfHiD65SFbrRbD4e__Kou9nz" target="_blank" class="wk-drive-btn">
+      <svg viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;flex-shrink:0"><path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/><path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/><path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/><path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/><path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/><path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/></svg>
+      <span>Designs</span>
+      <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
     </div>
     <div class="svc-card">
       <div class="svc-n">02</div>
       <div class="svc-icon">🎬</div>
       <div class="svc-name">Video Editing</div>
       <div class="svc-desc">Transforming raw footage into compelling visual stories optimized for engagement and communication.</div>
+      <a href="https://drive.google.com/drive/folders/1j0LUGZe1DxmwQwKPrEOJ5wl5q7IfvRLF" target="_blank" class="wk-drive-btn">
+      <svg viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;flex-shrink:0"><path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/><path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/><path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/><path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/><path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/><path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/></svg>
+      <span>Editing</span>
+      <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
     </div>
     <div class="svc-card">
       <div class="svc-n">03</div>
       <div class="svc-icon">✨</div>
       <div class="svc-name">Motion Graphics</div>
       <div class="svc-desc">Adding movement and energy to content through animation, transitions, and dynamic visual effects.</div>
+      <a href="https://drive.google.com/drive/folders/1WZFco6wLRWRHLXqyIj4zwY5YciWBuZ0O" target="_blank" class="wk-drive-btn">
+      <svg viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;flex-shrink:0"><path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/><path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/><path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/><path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/><path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/><path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/></svg>
+      <span>Animations</span>
+      <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>   
     </div>
     <div class="svc-card">
       <div class="svc-n">04</div>
       <div class="svc-icon">📱</div>
       <div class="svc-name">Social Media Content</div>
       <div class="svc-desc">Designing high-performing content tailored for modern digital audiences and platform-specific requirements.</div>
+      <a href="https://drive.google.com/drive/folders/1WZFco6wLRWRHLXqyIj4zwY5YciWBuZ0O" target="_blank" class="wk-drive-btn">
+      <svg viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;flex-shrink:0"><path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/><path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/><path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/><path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/><path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/><path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/></svg>
+      <span>Campaigns</span>
+      <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>  
     </div>
     <div class="svc-card">
       <div class="svc-n">05</div>
       <div class="svc-icon">📢</div>
       <div class="svc-name">Campaign Creative</div>
       <div class="svc-desc">Developing visual communication systems for marketing, awareness, and political campaigns.</div>
+
+<a href="https://drive.google.com/drive/folders/1EmkLLItVXztppzpKWV5OmNn0170uT6HL"
+   target="_blank"
+   class="wk-drive-btn"
+   style="padding:6px 10px;font-size:13px;gap:5px;border-radius:25px;">
+   
+   <svg viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;flex-shrink:0">
+      <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
+      <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/>
+      <path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/>
+      <path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/>
+      <path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/>
+      <path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/>
+   </svg>
+
+   <span>Glory</span>
+
+   <svg viewBox="0 0 24 24" style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round">
+      <path d="M7 17L17 7M7 7h10v10"/>
+   </svg>
+</a>
+
+<a href="https://drive.google.com/drive/folders/1qiSXd5ujaQCqJ1fsDZQx8wOD38lZnBLy"
+   target="_blank"
+   class="wk-drive-btn"
+   style="padding:6px 10px;font-size:13px;gap:5px;border-radius:25px;">
+   
+   <svg viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;flex-shrink:0">
+      <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
+      <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/>
+      <path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/>
+      <path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/>
+      <path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/>
+      <path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/>
+   </svg>
+
+   <span>Salutary Bites</span>
+
+   <svg viewBox="0 0 24 24" style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round">
+      <path d="M7 17L17 7M7 7h10v10"/>
+   </svg>
+</a>
     </div>
     <div class="svc-card">
       <div class="svc-n">06</div>
@@ -445,101 +553,162 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 5re
   </div>
 </section>
 
-<!-- SECTION 5: PROJECTS -->
+<!-- SECTION 5: WORK SHOWCASE -->
 <section id="projects">
-  <div class="s-label rv">Selected Work</div>
-  <div class="proj-intro rv">
-    <h2 class="s-title" style="margin-bottom:.8rem;">Featured Projects</h2>
-    <p class="s-body">A collection of projects that demonstrate creativity, strategy, execution, and storytelling across different industries.</p>
+
+  <!-- Header row -->
+  <div class="wk-header rv">
+    <div class="wk-header-left">
+      <div class="s-label">Portfolio</div>
+      <h2 class="s-title" style="margin-bottom:.6rem;">What I Create</h2>
+      <p class="s-body" style="font-size:.92rem;max-width:500px;">Hundreds of projects. One drive with everything — from AI-generated motion to editorial magazine design.</p>
+    </div>
+    <a href="https://drive.google.com/drive/folders/1Q9H4NkCkgPufUib74sp18Qv9SD1anwB5?usp=sharing" target="_blank" class="wk-drive-btn">
+      <svg viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px;flex-shrink:0"><path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/><path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/><path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/><path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/><path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/><path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/></svg>
+      <span>View Full Portfolio</span>
+      <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+    </a>
   </div>
-  <div class="proj-list rv">
 
-    <div class="proj-item">
-      <div class="proj-num">01</div>
-      <div>
-        <div class="proj-title">Political Campaign Communication</div>
-        <div class="proj-desc">Developed social media creatives, campaign videos, promotional content, and visual communication assets for election campaigns.</div>
-        <div class="proj-tags">
-          <span class="ptag">Political Branding</span>
-          <span class="ptag">Campaign Design</span>
-          <span class="ptag">Awareness Content</span>
-          <span class="ptag">Social Media</span>
-          <span class="ptag">Video Production</span>
-        </div>
-      </div>
-      <div class="proj-arrow">
+  <!-- Filter tabs -->
+  <div class="wk-filters rv">
+    <button class="wf-btn active" onclick="filterWork('all',this)">All Work</button>
+    <button class="wf-btn" onclick="filterWork('video',this)">Video</button>
+    <button class="wf-btn" onclick="filterWork('design',this)">Design</button>
+    <button class="wf-btn" onclick="filterWork('motion',this)">Motion</button>
+    <button class="wf-btn" onclick="filterWork('print',this)">Print</button>
+  </div>
+
+  <!-- Bento Grid -->
+  <div class="work-grid rv" id="workGrid">
+
+    <!-- 1: AI Generated Video -->
+    <div class="wk-card" data-cat="video motion">
+      <canvas class="wk-canvas" id="c1"></canvas>
+      <div class="wk-overlay"></div>
+      <a href="https://drive.google.com/drive/folders/1VfucmX7Jzfdj94fjq333l_fh7pp7QOCx" target="_blank" class="wk-arrow" onclick="event.stopPropagation()">
         <svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <div class="wk-content">
+        <div class="wk-cat-badge"><span class="wk-cat-dot"></span>AI Generated</div>
+        <div class="wk-title">AI-Powered<br>Video</div>
+        <div class="wk-desc">Next-gen visual content crafted with AI tools — cinematic, surreal, boundary-pushing.</div>
       </div>
     </div>
 
-    <div class="proj-item">
-      <div class="proj-num">02</div>
-      <div>
-        <div class="proj-title">Educational Institution Branding</div>
-        <div class="proj-desc">Created marketing creatives, promotional videos, and digital communication materials for educational organizations including schools and academic institutions.</div>
-        <div class="proj-tags">
-          <span class="ptag">Educational Marketing</span>
-          <span class="ptag">Promotional Design</span>
-          <span class="ptag">Video Content</span>
-          <span class="ptag">Brand Communication</span>
-        </div>
-      </div>
-      <div class="proj-arrow">
+    <!-- 2: Posts -->
+    <div class="wk-card" data-cat="design">
+      <canvas class="wk-canvas" id="c2"></canvas>
+      <div class="wk-overlay"></div>
+      <a href="https://drive.google.com/drive/folders/1GaGy0b-zTfHiD65SFbrRbD4e__Kou9nz" target="_blank" class="wk-arrow" onclick="event.stopPropagation()">
         <svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <div class="wk-content">
+        <div class="wk-cat-badge"><span class="wk-cat-dot"></span>Social Media</div>
+        <div class="wk-title">Posts &amp; Creatives</div>
+        <div class="wk-desc">Scroll-stopping social content designed for maximum engagement across all platforms.</div>
       </div>
     </div>
 
-    <div class="proj-item">
-      <div class="proj-num">03</div>
-      <div>
-        <div class="proj-title">Healthcare Communication</div>
-        <div class="proj-desc">Designed awareness campaigns and promotional content focused on healthcare services and community outreach.</div>
-        <div class="proj-tags">
-          <span class="ptag">Healthcare Branding</span>
-          <span class="ptag">Awareness Campaigns</span>
-          <span class="ptag">Social Media Content</span>
-          <span class="ptag">Video Storytelling</span>
-        </div>
-      </div>
-      <div class="proj-arrow">
+    <!-- 3: Video -->
+    <div class="wk-card" data-cat="video">
+      <canvas class="wk-canvas" id="c3"></canvas>
+      <div class="wk-overlay"></div>
+      <a href="https://drive.google.com/drive/folders/1j0LUGZe1DxmwQwKPrEOJ5wl5q7IfvRLF" target="_blank" class="wk-arrow" onclick="event.stopPropagation()">
         <svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <div class="wk-content">
+        <div class="wk-cat-badge"><span class="wk-cat-dot"></span>Video Edit</div>
+        <div class="wk-title">Video<br>Production</div>
+        <div class="wk-desc">Promotional, corporate and campaign videos — raw footage to final cut.</div>
       </div>
     </div>
 
-    <div class="proj-item">
-      <div class="proj-num">04</div>
-      <div>
-        <div class="proj-title">Corporate &amp; Technology Marketing</div>
-        <div class="proj-desc">Designed professional social media campaigns and brand communication assets for technology and service-based businesses.</div>
-        <div class="proj-tags">
-          <span class="ptag">LinkedIn Marketing</span>
-          <span class="ptag">B2B Communication</span>
-          <span class="ptag">Corporate Branding</span>
-          <span class="ptag">Campaign Design</span>
-        </div>
-      </div>
-      <div class="proj-arrow">
+    <!-- 4: Logo -->
+    <div class="wk-card" data-cat="design">
+      <canvas class="wk-canvas" id="c4"></canvas>
+      <div class="wk-overlay"></div>
+      <a href="https://drive.google.com/drive/folders/18EwI5P_Drri9jfXjaK5fIhW8-349h5lA" target="_blank" class="wk-arrow" onclick="event.stopPropagation()">
         <svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <div class="wk-content">
+        <div class="wk-cat-badge"><span class="wk-cat-dot"></span>Branding</div>
+        <div class="wk-title">Logo<br>Design</div>
+        <div class="wk-desc">Identities that speak before words do.</div>
       </div>
     </div>
 
-    <div class="proj-item">
-      <div class="proj-num">05</div>
-      <div>
-        <div class="proj-title">Creative Advertisement Concepts</div>
-        <div class="proj-desc">Developed advertising concepts focused on storytelling, emotional engagement, and modern consumer behavior. Featured: Big Basket × Target Publications, Creative Brand Storytelling, Emotional Marketing Campaigns.</div>
-        <div class="proj-tags">
-          <span class="ptag">Ad Concepts</span>
-          <span class="ptag">Brand Storytelling</span>
-          <span class="ptag">Emotional Marketing</span>
-          <span class="ptag">Consumer Insight</span>
-        </div>
-      </div>
-      <div class="proj-arrow">
+    <!-- 5: Cover Design -->
+    <div class="wk-card" data-cat="design print">
+      <canvas class="wk-canvas" id="c5"></canvas>
+      <div class="wk-overlay"></div>
+      <a href="https://drive.google.com/drive/folders/1PkVnDH2HR6xTXNwqG4u5fbdqeBcqUIu5" target="_blank" class="wk-arrow" onclick="event.stopPropagation()">
         <svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <div class="wk-content">
+        <div class="wk-cat-badge"><span class="wk-cat-dot"></span>Print</div>
+        <div class="wk-title">Cover<br>Design</div>
+        <div class="wk-desc">Book, album, and publication covers that command attention at first glance.</div>
       </div>
     </div>
 
+    <!-- 6: Magazine Design -->
+    <div class="wk-card" data-cat="print design">
+      <canvas class="wk-canvas" id="c6"></canvas>
+      <div class="wk-overlay"></div>
+      <a href="https://drive.google.com/drive/folders/1EYkjxn2d4A_HaL_tPmRFE3uYFsh1XAFA" target="_blank" class="wk-arrow" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <div class="wk-content">
+        <div class="wk-cat-badge"><span class="wk-cat-dot"></span>Editorial</div>
+        <div class="wk-title">Magazine<br>Design</div>
+        <div class="wk-desc">Full editorial layouts — spreads, typography, and visual hierarchies that elevate print.</div>
+      </div>
+    </div>
+
+    <!-- 7: Banner -->
+    <div class="wk-card" data-cat="design print">
+      <canvas class="wk-canvas" id="c7"></canvas>
+      <div class="wk-overlay"></div>
+      <a href="https://drive.google.com/drive/folders/10suAR7qqmGT7VcIA049otAbJGQ10q12H" target="_blank" class="wk-arrow" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <div class="wk-content">
+        <div class="wk-cat-badge"><span class="wk-cat-dot"></span>Outdoor</div>
+        <div class="wk-title">Banner &amp;<br>Standee</div>
+        <div class="wk-desc">Large-format event and campaign visuals built to dominate physical spaces.</div>
+      </div>
+    </div>
+
+    <!-- 8: Animated Video -->
+    <div class="wk-card" data-cat="motion video">
+      <canvas class="wk-canvas" id="c8"></canvas>
+      <div class="wk-overlay"></div>
+      <a href="https://drive.google.com/drive/folders/1WZFco6wLRWRHLXqyIj4zwY5YciWBuZ0O" target="_blank" class="wk-arrow" onclick="event.stopPropagation()">
+        <svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <div class="wk-content">
+        <div class="wk-cat-badge"><span class="wk-cat-dot"></span>Animation</div>
+        <div class="wk-title">Animated<br>Video</div>
+        <div class="wk-desc">Motion graphics, explainer animations, and kinetic typography that bring ideas to life.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA Strip -->
+  <div class="work-cta-strip rv">
+  <div>
+    <div class="wk-cta-title">Want to see the full work?</div>
+    <div class="wk-cta-sub">Everything lives in one portfolio drive — all 8 categories, hundreds of pieces.</div>
+  </div>
+  <div style="display:flex;gap:.8rem;flex-wrap:wrap;">
+    <a href="https://drive.google.com/drive/folders/1Q9H4NkCkgPufUib74sp18Qv9SD1anwB5?usp=sharing" target="_blank" class="wcta-primary">
+      <svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M15 3h6v6M10 14L21 3M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/></svg>
+      Open Portfolio Drive
+    </a>
+   <a href="mailto:badalrana1502@gmail.com?subject=Project Inquiry&body=Hi Badal,%0A%0AI would like to discuss a project with you." class="wcta-secondary">Let's Work Together</a>
+  </div>
   </div>
 </section>
 
@@ -591,60 +760,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 5re
   <div class="s-label rv">Professional Journey</div>
   <h2 class="s-title rv">Experience</h2>
 
-  <div class="exp-phase-label rv">Internship Journey</div>
-  <p class="exp-phase-desc rv">A strong foundation built through hands-on learning, collaboration, and creative exploration.</p>
-
-  <div class="exp-list rv">
-
-    <div class="exp-item">
-      <div class="exp-header">
-        <div>
-          <div class="exp-company">Prittle Prattle Pvt. Ltd.</div>
-          <div class="exp-role">Graphic Design &amp; Video Editing Intern</div>
-        </div>
-        <div class="exp-period">Dec 2021 – Mar 2022</div>
-      </div>
-      <ul class="exp-bullets">
-        <li>Collaborated with the creative team to develop social media creatives, marketing collateral, and website assets.</li>
-        <li>Edited promotional and corporate videos while maintaining brand consistency.</li>
-        <li>Gained practical experience with Adobe Photoshop, Illustrator, Premiere Pro, and After Effects.</li>
-        <li>Worked with clients across PR, events, interior design, and technology sectors.</li>
-      </ul>
-      <div class="exp-resp-title">Focus Areas</div>
-      <div class="exp-tags">
-        <span class="etag">Social Media Creatives</span>
-        <span class="etag">Video Editing</span>
-        <span class="etag">Brand Consistency</span>
-        <span class="etag">Adobe Suite</span>
-        <span class="etag">Marketing Collateral</span>
-      </div>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-header">
-        <div>
-          <div class="exp-company">Inglu Global</div>
-          <div class="exp-role">Creative Intern</div>
-        </div>
-        <div class="exp-period">Oct 2023 – Nov 2023</div>
-      </div>
-      <ul class="exp-bullets">
-        <li>Supported design and content creation initiatives for digital campaigns.</li>
-        <li>Designed promotional materials including social media posts and marketing creatives.</li>
-        <li>Collaborated with teams to deliver creative solutions under tight deadlines.</li>
-        <li>Strengthened understanding of brand communication and digital marketing workflows.</li>
-      </ul>
-      <div class="exp-resp-title">Focus Areas</div>
-      <div class="exp-tags">
-        <span class="etag">Digital Campaigns</span>
-        <span class="etag">Promotional Design</span>
-        <span class="etag">Brand Communication</span>
-        <span class="etag">Content Creation</span>
-      </div>
-    </div>
-
-  </div>
-
   <div class="exp-phase-label rv" style="margin-top:4rem;">Professional Experience</div>
   <p class="exp-phase-desc rv">Leading creative projects, managing campaigns, and delivering impactful visual communication across industries.</p>
 
@@ -656,7 +771,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 5re
           <div class="exp-company">Prittle Prattle Pvt. Ltd.</div>
           <div class="exp-role">Assistant Graphic Designer</div>
         </div>
-        <div class="exp-period">Mar 2022 – Mar 2023</div>
+        <div class="exp-period">Dec 2021 – Mar 2023</div>
       </div>
       <ul class="exp-bullets">
         <li>Created branding materials, brochures, standees, banners, social media creatives, and business collateral.</li>
@@ -677,7 +792,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 5re
       <div class="exp-header">
         <div>
           <div class="exp-company">Jijau Sanstha</div>
-          <div class="exp-role">Graphic Designer &amp; Video Editor</div>
+          <div class="exp-role">Graphic Designer &amp; Video Editor &amp; Motion designer</div>
         </div>
         <div class="exp-period">Mar 2023 – Sept 2024</div>
       </div>
@@ -700,21 +815,23 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 5re
       <div class="exp-header">
         <div>
           <div class="exp-company">Election Campaign Team – Nilesh Sambare (MP Lok Sabha)</div>
-          <div class="exp-role">Graphic Designer &amp; Video Editor</div>
+          <div class="exp-role">Creative Team Lead (Graphic Designers & Video Editors)</div>
         </div>
         <div class="exp-period">Jan 2024 – Jun 2024</div>
       </div>
       <ul class="exp-bullets">
-        <li>Developed campaign creatives, social media content, and video communication materials.</li>
-        <li>Designed promotional assets supporting political outreach and voter engagement.</li>
-        <li>Delivered content under fast-paced campaign timelines in close coordination with campaign leadership.</li>
+        <li>Led and managed a team of graphic designers and video editors, ensuring timely delivery of campaign creatives and multimedia content.</li>
+        <li>Planned, assigned, and reviewed creative tasks while maintaining quality, consistency, and alignment with campaign objectives.</li>  
+        <li>Collaborated with campaign leadership and stakeholders to translate strategic goals into impactful visual communication.</li>
+        <li>Oversaw the development of social media creatives, promotional assets, and video content supporting political outreach and voter engagement.</li>
+        <li>Mentored team members, provided creative direction, and streamlined workflows to meet fast-paced campaign deadlines.</li>
       </ul>
       <div class="exp-resp-title">Responsibilities</div>
       <div class="exp-tags">
-        <span class="etag">Political Campaign Design</span>
-        <span class="etag">Social Media Strategy</span>
-        <span class="etag">Voter Communication</span>
-        <span class="etag">Rapid Turnaround</span>
+        <span class="etag">Creative Direction</span>
+        <span class="etag">Resource Planning</span>
+        <span class="etag">Quality Assurance</span>
+        <span class="etag">Workflow Optimization</span>
       </div>
     </div>
 
@@ -803,6 +920,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 5re
       <div class="skill-cat-title">Creative Skills</div>
       <div class="skill-pills">
         <div class="skill-pill">Graphic Design</div>
+        <div class="skill-pill">UI/UX Designer</div>
         <div class="skill-pill">Video Editing</div>
         <div class="skill-pill">Motion Graphics</div>
         <div class="skill-pill">Visual Storytelling</div>
@@ -822,6 +940,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 5re
         <div class="skill-pill">Adobe Lightroom</div>
         <div class="skill-pill">Canva</div>
         <div class="skill-pill">Figma</div>
+        <div class="skill-pill">Framer</div>
       </div>
     </div>
     <div class="skill-cat">
@@ -829,10 +948,12 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 5re
       <div class="skill-pills">
         <div class="skill-pill">ChatGPT</div>
         <div class="skill-pill">Midjourney</div>
+        <div class="skill-pill">Runway</div>
+        <div class="skill-pill">Gemini (Nano banana)</div>
         <div class="skill-pill">Adobe Firefly</div>
         <div class="skill-pill">Generative AI Tools</div>
-        <div class="skill-pill">Blender (Learning)</div>
         <div class="skill-pill">AI-Assisted Creation</div>
+        <div class="skill-pill">Blender (Learning)</div>
       </div>
     </div>
   </div>
@@ -895,15 +1016,14 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 5re
   <div class="contact-tagline rv">Let's turn ideas into impactful visual experiences.</div>
 
   <div class="contact-info rv">
-    <a href="mailto:hello@badalrana.com" class="c-link"><span class="c-link-icon">✉️</span>Email</a>
-    <a href="tel:+91XXXXXXXXXX" class="c-link"><span class="c-link-icon">📞</span>Phone</a>
-    <a href="https://linkedin.com" target="_blank" class="c-link"><span class="c-link-icon">💼</span>LinkedIn</a>
-    <a href="https://behance.net" target="_blank" class="c-link"><span class="c-link-icon">🎨</span>Behance</a>
-    <a href="https://instagram.com" target="_blank" class="c-link"><span class="c-link-icon">📸</span>Instagram</a>
-  </div>
+    <a href="mailto:badalrana1502@gmail.com" class="c-link"><span class="c-link-icon">✉️</span>Email</a>
+    <a href="tel:+919324542239" class="c-link"><span class="c-link-icon">📞</span>Phone</a>
+    <a href="https://www.linkedin.com/in/badal-rana-603522235/" target="_blank" class="c-link"><span class="c-link-icon">💼</span>LinkedIn</a>
+    <a href="https://www.behance.net/badalrana2" target="_blank" class="c-link"><span class="c-link-icon">🎨</span>Behance</a>
+    </div>
 
   <div class="contact-btns rv">
-    <a href="mailto:hello@badalrana.com" class="btn-a">
+    <a href="mailto:badalrana1502@gmail.com" class="btn-a">
       Send an Email
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
     </a>
@@ -916,7 +1036,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 5re
   <div class="footer-top">
     <div>
       <a href="#hero" class="f-logo">Badal Rana<span>.</span></a>
-      <div class="f-tagline">Graphic Designer • Video Editor • Creative Storyteller</div>
+      <div class="f-tagline">UI/UX Designer • Motion designer • Strategist • Creative Storyteller</div>
     </div>
     <div class="f-links">
       <a href="#intro">About</a>
@@ -960,10 +1080,264 @@ document.querySelectorAll('.rv,.rv2').forEach((el,i)=>{
   obs.observe(el);
 });
 
-// Stagger grid children
-document.querySelectorAll('.svc-grid .svc-card,.stats-grid .stat-card,.skills-grid .skill-cat,.testi-grid .testi-card').forEach((el,i)=>{
-  el.style.transitionDelay=(i*.07)+'s';
-});
+// Filter work cards
+function filterWork(cat, btn) {
+  document.querySelectorAll('.wf-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.wk-card').forEach(card => {
+    const cats = card.dataset.cat || '';
+    if (cat === 'all' || cats.includes(cat)) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+}
+
+// Canvas art backgrounds — each card gets unique generative art
+(function initCanvases() {
+  const configs = [
+    // 1: AI Video — flowing plasma orbs
+    (c, t) => {
+      const w = c.width, h = c.height;
+      const ctx = c.getContext('2d');
+      ctx.clearRect(0,0,w,h);
+      ctx.fillStyle = '#0a0612';
+      ctx.fillRect(0,0,w,h);
+      for (let i = 0; i < 5; i++) {
+        const x = w/2 + Math.cos(t*0.7 + i*1.26) * w*0.35;
+        const y = h/2 + Math.sin(t*0.5 + i*1.26) * h*0.35;
+        const r = w * 0.28;
+        const g = ctx.createRadialGradient(x,y,0,x,y,r);
+        const hue = (220 + i*30 + t*15) % 360;
+        g.addColorStop(0, `hsla(${hue},90%,65%,0.22)`);
+        g.addColorStop(1, 'transparent');
+        ctx.fillStyle = g;
+        ctx.fillRect(0,0,w,h);
+      }
+      // Scanlines
+      for (let y = 0; y < h; y += 3) {
+        ctx.fillStyle = 'rgba(0,0,0,0.12)';
+        ctx.fillRect(0, y, w, 1);
+      }
+    },
+    // 2: Posts — vibrant grid of colored squares
+    (c, t) => {
+      const ctx = c.getContext('2d');
+      const w = c.width, h = c.height;
+      ctx.fillStyle = '#080810';
+      ctx.fillRect(0,0,w,h);
+      const cols = 8, rows = 6;
+      const cw = w/cols, ch = h/rows;
+      for (let r = 0; r < rows; r++) {
+        for (let col = 0; col < cols; col++) {
+          const on = Math.sin(t*1.2 + r*0.8 + col*0.6) > 0.3;
+          if (on) {
+            const hue = (20 + col*22 + r*15 + t*20) % 360;
+            ctx.fillStyle = `hsla(${hue},80%,60%,0.35)`;
+            const pad = 3;
+            ctx.fillRect(col*cw+pad, r*ch+pad, cw-pad*2, ch-pad*2);
+          }
+        }
+      }
+    },
+    // 3: Video — film strip with play icons
+    (c, t) => {
+      const ctx = c.getContext('2d');
+      const w = c.width, h = c.height;
+      ctx.fillStyle = '#060608';
+      ctx.fillRect(0,0,w,h);
+      // Film strip holes
+      for (let i = 0; i < 12; i++) {
+        const x = (i * w/10 - (t*30 % (w*1.2))) % (w*1.2) - w*0.1;
+        ctx.fillStyle = 'rgba(249,115,22,0.15)';
+        ctx.beginPath();
+        ctx.roundRect(x - 8, h*0.12, 16, 20, 3);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.roundRect(x - 8, h*0.72, 16, 20, 3);
+        ctx.fill();
+      }
+      // Play triangles
+      for (let i = 0; i < 3; i++) {
+        const x = w*0.2 + i*w*0.3;
+        const y = h*0.5 + Math.sin(t + i*2)*h*0.04;
+        const s = 18 + Math.sin(t*1.5+i)*4;
+        ctx.fillStyle = `rgba(249,115,22,${0.2 + Math.sin(t+i)*0.1})`;
+        ctx.beginPath();
+        ctx.moveTo(x+s, y);
+        ctx.lineTo(x-s*0.6, y-s*0.9);
+        ctx.lineTo(x-s*0.6, y+s*0.9);
+        ctx.closePath();
+        ctx.fill();
+      }
+    },
+    // 4: Logo — geometric shapes spinning
+    (c, t) => {
+      const ctx = c.getContext('2d');
+      const w = c.width, h = c.height;
+      ctx.fillStyle = '#07070c';
+      ctx.fillRect(0,0,w,h);
+      const cx = w/2, cy = h/2;
+      for (let ring = 0; ring < 4; ring++) {
+        const sides = 3 + ring;
+        const radius = 20 + ring*18;
+        const angle = t*(ring%2===0?0.8:-0.6) + ring*0.5;
+        ctx.beginPath();
+        for (let s = 0; s <= sides; s++) {
+          const a = (s/sides)*Math.PI*2 + angle;
+          const x = cx + Math.cos(a)*radius;
+          const y = cy + Math.sin(a)*radius;
+          s===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+        }
+        ctx.strokeStyle = `rgba(249,115,22,${0.4 - ring*0.07})`;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      }
+      // Center dot
+      const g = ctx.createRadialGradient(cx,cy,0,cx,cy,30);
+      g.addColorStop(0,'rgba(249,115,22,0.5)');
+      g.addColorStop(1,'transparent');
+      ctx.fillStyle = g;
+      ctx.fillRect(0,0,w,h);
+    },
+    // 5: Cover Design — layered rectangles / book spines
+    (c, t) => {
+      const ctx = c.getContext('2d');
+      const w = c.width, h = c.height;
+      ctx.fillStyle = '#090909';
+      ctx.fillRect(0,0,w,h);
+      const cols = 6;
+      for (let i = 0; i < cols; i++) {
+        const bw = w/(cols+1);
+        const bh = h*0.55 + Math.sin(t*0.8+i)*h*0.06;
+        const x = i*(w/cols) + (w/cols-bw)/2;
+        const y = (h - bh)/2 + Math.cos(t*0.5+i*0.8)*6;
+        const hue = 20 + i*15;
+        ctx.fillStyle = `hsla(${hue},70%,50%,${0.08+i*0.02})`;
+        ctx.fillRect(x, y, bw-4, bh);
+        ctx.strokeStyle = `hsla(${hue},70%,60%,0.15)`;
+        ctx.lineWidth = 1;
+        ctx.strokeRect(x, y, bw-4, bh);
+      }
+    },
+    // 6: Magazine — editorial grid lines & typography hints
+    (c, t) => {
+      const ctx = c.getContext('2d');
+      const w = c.width, h = c.height;
+      ctx.fillStyle = '#080810';
+      ctx.fillRect(0,0,w,h);
+      // Grid lines
+      const cols = 5;
+      for (let i = 1; i < cols; i++) {
+        ctx.strokeStyle = 'rgba(249,115,22,0.08)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(i*(w/cols), 0);
+        ctx.lineTo(i*(w/cols), h);
+        ctx.stroke();
+      }
+      // Text bar hints
+      const bars = [0.22, 0.38, 0.52, 0.65, 0.78];
+      bars.forEach((y, i) => {
+        const alpha = 0.1 + Math.sin(t*0.7+i*1.1)*0.04;
+        ctx.fillStyle = `rgba(249,115,22,${alpha})`;
+        ctx.fillRect(w*0.08, h*y, w*(0.4+i*0.08), 3);
+        ctx.fillStyle = `rgba(255,255,255,${alpha*0.5})`;
+        ctx.fillRect(w*0.08, h*y+8, w*(0.25+i*0.04), 2);
+      });
+      // Big accent block
+      ctx.fillStyle = `rgba(249,115,22,${0.07+Math.sin(t*0.4)*0.02})`;
+      ctx.fillRect(w*0.62, h*0.15, w*0.3, h*0.5);
+    },
+    // 7: Banner — horizontal streaks
+    (c, t) => {
+      const ctx = c.getContext('2d');
+      const w = c.width, h = c.height;
+      ctx.fillStyle = '#070710';
+      ctx.fillRect(0,0,w,h);
+      for (let i = 0; i < 10; i++) {
+        const y = (i/10)*h + Math.sin(t*0.6+i)*6;
+        const len = w*(0.3 + Math.sin(t*0.9+i*0.7)*0.25);
+        const x = (t*40 + i*w*0.15) % (w*1.5) - w*0.3;
+        const alpha = 0.04 + Math.abs(Math.sin(t+i))*0.08;
+        const g = ctx.createLinearGradient(x,y,x+len,y);
+        g.addColorStop(0,'transparent');
+        g.addColorStop(0.5,`rgba(249,115,22,${alpha})`);
+        g.addColorStop(1,'transparent');
+        ctx.strokeStyle = g;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x+len, y);
+        ctx.stroke();
+      }
+    },
+    // 8: Animated Video — particles orbiting
+    (c, t) => {
+      const ctx = c.getContext('2d');
+      const w = c.width, h = c.height;
+      ctx.fillStyle = 'rgba(7,7,10,0.3)';
+      ctx.fillRect(0,0,w,h);
+      const cx = w/2, cy = h/2;
+      for (let i = 0; i < 20; i++) {
+        const orbit = 20 + (i%4)*22;
+        const speed = 0.4 + (i%3)*0.25;
+        const angle = t*speed + i*(Math.PI*2/20)*3;
+        const x = cx + Math.cos(angle)*orbit;
+        const y = cy + Math.sin(angle)*orbit*0.6;
+        const size = 1.5 + (i%3);
+        const hue = (30 + i*12 + t*20) % 60 + 10;
+        ctx.beginPath();
+        ctx.arc(x, y, size, 0, Math.PI*2);
+        ctx.fillStyle = `hsla(${hue},90%,65%,0.7)`;
+        ctx.fill();
+      }
+      // Glow center
+      const g = ctx.createRadialGradient(cx,cy,0,cx,cy,45);
+      g.addColorStop(0,'rgba(249,115,22,0.18)');
+      g.addColorStop(1,'transparent');
+      ctx.fillStyle = g;
+      ctx.fillRect(0,0,w,h);
+    }
+  ];
+
+  const canvases = [];
+  for (let i = 1; i <= 8; i++) {
+    const el = document.getElementById('c'+i);
+    if (!el) continue;
+    canvases.push({ el, draw: configs[i-1] });
+  }
+
+  function resizeCanvas(cv) {
+    const rect = cv.el.parentElement.getBoundingClientRect();
+    cv.el.width = rect.width || 400;
+    cv.el.height = rect.height || 300;
+  }
+
+  // Resize all once grid is visible
+  const gridObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        canvases.forEach(resizeCanvas);
+        gridObs.disconnect();
+      }
+    });
+  });
+  const grid = document.getElementById('workGrid');
+  if (grid) gridObs.observe(grid);
+
+  let t = 0;
+  function tick() {
+    t += 0.016;
+    canvases.forEach(cv => {
+      if (cv.el.width > 0) cv.draw(cv.el, t);
+    });
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+
 </script>
 </body>
 </html>
