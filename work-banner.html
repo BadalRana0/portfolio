@@ -30,18 +30,40 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px
 .g-drive{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fd);font-size:.78rem;font-weight:700;letter-spacing:.06em;color:var(--text);background:transparent;border:1px solid var(--border2);padding:.75rem 1.6rem;border-radius:3rem;text-decoration:none;margin-top:2rem;transition:all .25s;}
 .g-drive:hover{border-color:var(--accent);color:var(--accent);}
 .g-wrap{padding:4rem 5rem 6rem;max-width:1400px;}
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;}
-.g-item{position:relative;aspect-ratio:4/3;border-radius:14px;border:1px solid var(--border);background:var(--bg2);overflow:hidden;}
-.g-item iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
-.g-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+/* IMAGE grid — 1:1 */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem;}
+.g-item{position:relative;aspect-ratio:1/1;border-radius:14px;border:1px solid var(--border);background:var(--bg2);overflow:hidden;cursor:pointer;}
+.g-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
+.g-item:hover img{transform:scale(1.05);}
+/* VIDEO grid — 16:9 */
+.gallery-grid-video{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:1.2rem;}
+.g-item-video{position:relative;aspect-ratio:16/9;border-radius:14px;border:1px solid var(--border);background:var(--bg2);overflow:hidden;}
+.g-item-video iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
 .g-section-title{font-family:var(--fd);font-size:1.1rem;font-weight:700;letter-spacing:.04em;color:var(--text);margin:2.5rem 0 1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
 footer{padding:3rem 5rem;border-top:1px solid var(--border);text-align:center;font-size:.78rem;color:var(--muted);}
 footer a{color:var(--accent);text-decoration:none;}
-@media (max-width:768px){
+@media(max-width:768px){
   .topbar,.g-header,.g-wrap,footer{padding-left:1.5rem;padding-right:1.5rem;}
   .g-header{padding-top:3rem;}
+  .gallery-grid-video{grid-template-columns:1fr;}
 }
 
+/* LIGHTBOX */
+.lb-overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.92);backdrop-filter:blur(12px);align-items:center;justify-content:center;flex-direction:column;gap:1rem;}
+.lb-overlay.active{display:flex;}
+.lb-inner{position:relative;max-width:90vw;max-height:85vh;display:flex;align-items:center;justify-content:center;}
+.lb-inner iframe{width:85vw;height:85vh;border:none;border-radius:12px;}
+.lb-inner img{max-width:88vw;max-height:82vh;object-fit:contain;border-radius:12px;}
+.lb-close{position:fixed;top:1.5rem;right:2rem;font-size:2rem;color:#fff;cursor:pointer;background:none;border:none;line-height:1;opacity:.7;transition:opacity .2s;z-index:1010;}
+.lb-close:hover{opacity:1;}
+.lb-nav{display:flex;gap:1rem;}
+.lb-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;padding:.5rem 1.4rem;border-radius:2rem;cursor:pointer;font-size:.85rem;transition:background .2s;}
+.lb-btn:hover{background:rgba(249,115,22,.25);border-color:var(--accent);}
+/* PDF card overlay */
+.pdf-badge{position:absolute;bottom:.7rem;left:.7rem;background:rgba(249,115,22,.85);color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.2rem .55rem;border-radius:.3rem;}
+.g-item .zoom-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;background:rgba(0,0,0,.45);transition:opacity .25s;}
+.g-item:hover .zoom-hint{opacity:1;}
+.zoom-hint svg{width:32px;height:32px;stroke:#fff;fill:none;stroke-width:1.5;}
 </style>
 </head>
 <body>
@@ -64,70 +86,147 @@ footer a{color:var(--accent);text-decoration:none;}
 </header>
 <div class="g-wrap">
   <div class="gallery-grid">
-    <div class="g-item">
-      <img class="g-media" src="https://drive.google.com/thumbnail?id=10_jpibBt6RetjRCyV5II5rCL8SWpxKv6&sz=w1200" alt="">
+    <div class="g-item" data-lb="img" data-src="https://drive.google.com/thumbnail?id=10_jpibBt6RetjRCyV5II5rCL8SWpxKv6&sz=w1200" data-label="">
+      <img src="https://drive.google.com/thumbnail?id=10_jpibBt6RetjRCyV5II5rCL8SWpxKv6&sz=w1200" alt="" loading="lazy">
+      <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="g-item">
-      <img class="g-media" src="https://drive.google.com/thumbnail?id=11FAz5Je5qcnueCt8GsdiYYNxpLmdSYDT&sz=w1200" alt="">
+    <div class="g-item" data-lb="img" data-src="https://drive.google.com/thumbnail?id=11FAz5Je5qcnueCt8GsdiYYNxpLmdSYDT&sz=w1200" data-label="">
+      <img src="https://drive.google.com/thumbnail?id=11FAz5Je5qcnueCt8GsdiYYNxpLmdSYDT&sz=w1200" alt="" loading="lazy">
+      <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="g-item">
-      <img class="g-media" src="https://drive.google.com/thumbnail?id=1Biow-eACWSo2QDYE7_x3O-QYLajgv9HK&sz=w1200" alt="">
+    <div class="g-item" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1Biow-eACWSo2QDYE7_x3O-QYLajgv9HK&sz=w1200" data-label="">
+      <img src="https://drive.google.com/thumbnail?id=1Biow-eACWSo2QDYE7_x3O-QYLajgv9HK&sz=w1200" alt="" loading="lazy">
+      <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="g-item">
-      <img class="g-media" src="https://drive.google.com/thumbnail?id=1MFDGCsm5FtAKS-cSckS-MxinfsPXpwK6&sz=w1200" alt="">
+    <div class="g-item" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1MFDGCsm5FtAKS-cSckS-MxinfsPXpwK6&sz=w1200" data-label="">
+      <img src="https://drive.google.com/thumbnail?id=1MFDGCsm5FtAKS-cSckS-MxinfsPXpwK6&sz=w1200" alt="" loading="lazy">
+      <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="g-item">
-      <img class="g-media" src="https://drive.google.com/thumbnail?id=1RWB6ETnwQjvKZAdRF9t3rkt9wLl8Muct&sz=w1200" alt="">
+    <div class="g-item" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1RWB6ETnwQjvKZAdRF9t3rkt9wLl8Muct&sz=w1200" data-label="">
+      <img src="https://drive.google.com/thumbnail?id=1RWB6ETnwQjvKZAdRF9t3rkt9wLl8Muct&sz=w1200" alt="" loading="lazy">
+      <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="g-item">
-      <img class="g-media" src="https://drive.google.com/thumbnail?id=1SvQD4ZV1HKa6cm5ZwWKXyKUlpCAeKD_u&sz=w1200" alt="">
+    <div class="g-item" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1SvQD4ZV1HKa6cm5ZwWKXyKUlpCAeKD_u&sz=w1200" data-label="">
+      <img src="https://drive.google.com/thumbnail?id=1SvQD4ZV1HKa6cm5ZwWKXyKUlpCAeKD_u&sz=w1200" alt="" loading="lazy">
+      <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="g-item">
-      <img class="g-media" src="https://drive.google.com/thumbnail?id=1UW8Ap_SLACmpOiQXgHgZeG-TXRRelhTN&sz=w1200" alt="">
+    <div class="g-item" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1UW8Ap_SLACmpOiQXgHgZeG-TXRRelhTN&sz=w1200" data-label="">
+      <img src="https://drive.google.com/thumbnail?id=1UW8Ap_SLACmpOiQXgHgZeG-TXRRelhTN&sz=w1200" alt="" loading="lazy">
+      <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="g-item">
-      <img class="g-media" src="https://drive.google.com/thumbnail?id=1VK-B89XjrXgg7XZG_uhUbBX_pWwFIwUz&sz=w1200" alt="">
+    <div class="g-item" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1VK-B89XjrXgg7XZG_uhUbBX_pWwFIwUz&sz=w1200" data-label="">
+      <img src="https://drive.google.com/thumbnail?id=1VK-B89XjrXgg7XZG_uhUbBX_pWwFIwUz&sz=w1200" alt="" loading="lazy">
+      <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="g-item">
-      <img class="g-media" src="https://drive.google.com/thumbnail?id=1grctj3Ca2oK29KuDmSxXsAheqIh1hv82&sz=w1200" alt="">
+    <div class="g-item" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1grctj3Ca2oK29KuDmSxXsAheqIh1hv82&sz=w1200" data-label="">
+      <img src="https://drive.google.com/thumbnail?id=1grctj3Ca2oK29KuDmSxXsAheqIh1hv82&sz=w1200" alt="" loading="lazy">
+      <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="g-item">
-      <img class="g-media" src="https://drive.google.com/thumbnail?id=1j9_lvfBNRN3rsZ4PZdZV_bl9Vu21RJAz&sz=w1200" alt="">
+    <div class="g-item" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1j9_lvfBNRN3rsZ4PZdZV_bl9Vu21RJAz&sz=w1200" data-label="">
+      <img src="https://drive.google.com/thumbnail?id=1j9_lvfBNRN3rsZ4PZdZV_bl9Vu21RJAz&sz=w1200" alt="" loading="lazy">
+      <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="g-item">
-      <img class="g-media" src="https://drive.google.com/thumbnail?id=1jsYGt4M0vFhQaKiVt9-q4cuhHP0oSigW&sz=w1200" alt="">
+    <div class="g-item" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1jsYGt4M0vFhQaKiVt9-q4cuhHP0oSigW&sz=w1200" data-label="">
+      <img src="https://drive.google.com/thumbnail?id=1jsYGt4M0vFhQaKiVt9-q4cuhHP0oSigW&sz=w1200" alt="" loading="lazy">
+      <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="g-item">
-      <img class="g-media" src="https://drive.google.com/thumbnail?id=1p_jdmVQ1qt99O4ziYQYda7drzcoc_oOp&sz=w1200" alt="">
+    <div class="g-item" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1p_jdmVQ1qt99O4ziYQYda7drzcoc_oOp&sz=w1200" data-label="">
+      <img src="https://drive.google.com/thumbnail?id=1p_jdmVQ1qt99O4ziYQYda7drzcoc_oOp&sz=w1200" alt="" loading="lazy">
+      <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="g-item">
-      <img class="g-media" src="https://drive.google.com/thumbnail?id=1sghzXejMYCatRJ42eEZDII7MES41tzSL&sz=w1200" alt="">
+    <div class="g-item" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1sghzXejMYCatRJ42eEZDII7MES41tzSL&sz=w1200" data-label="">
+      <img src="https://drive.google.com/thumbnail?id=1sghzXejMYCatRJ42eEZDII7MES41tzSL&sz=w1200" alt="" loading="lazy">
+      <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="g-item">
-      <img class="g-media" src="https://drive.google.com/thumbnail?id=1st5kMPCTTXfaHFsON-xL0L6FF1cB-oLL&sz=w1200" alt="">
+    <div class="g-item" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1st5kMPCTTXfaHFsON-xL0L6FF1cB-oLL&sz=w1200" data-label="">
+      <img src="https://drive.google.com/thumbnail?id=1st5kMPCTTXfaHFsON-xL0L6FF1cB-oLL&sz=w1200" alt="" loading="lazy">
+      <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="g-item">
-      <img class="g-media" src="https://drive.google.com/thumbnail?id=14JrfpPaDmNsAvQP6L6qPJF5T8OChB-6D&sz=w1200" alt="">
+    <div class="g-item" data-lb="img" data-src="https://drive.google.com/thumbnail?id=14JrfpPaDmNsAvQP6L6qPJF5T8OChB-6D&sz=w1200" data-label="">
+      <img src="https://drive.google.com/thumbnail?id=14JrfpPaDmNsAvQP6L6qPJF5T8OChB-6D&sz=w1200" alt="" loading="lazy">
+      <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="g-item">
-      <img class="g-media" src="https://drive.google.com/thumbnail?id=19x48Jwn4PIbRYC1SkjSzLHYoSfl-by_5&sz=w1200" alt="">
+    <div class="g-item" data-lb="img" data-src="https://drive.google.com/thumbnail?id=19x48Jwn4PIbRYC1SkjSzLHYoSfl-by_5&sz=w1200" data-label="">
+      <img src="https://drive.google.com/thumbnail?id=19x48Jwn4PIbRYC1SkjSzLHYoSfl-by_5&sz=w1200" alt="" loading="lazy">
+      <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="g-item">
-      <img class="g-media" src="https://drive.google.com/thumbnail?id=1b5Tq32L_-lngLXXS0k8pROtMcvKsgRY6&sz=w1200" alt="">
+    <div class="g-item" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1b5Tq32L_-lngLXXS0k8pROtMcvKsgRY6&sz=w1200" data-label="">
+      <img src="https://drive.google.com/thumbnail?id=1b5Tq32L_-lngLXXS0k8pROtMcvKsgRY6&sz=w1200" alt="" loading="lazy">
+      <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="g-item">
-      <img class="g-media" src="https://drive.google.com/thumbnail?id=1bRZUL73v4Y-_gEiZsJEWAzGu5SscJBWd&sz=w1200" alt="">
+    <div class="g-item" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1bRZUL73v4Y-_gEiZsJEWAzGu5SscJBWd&sz=w1200" data-label="">
+      <img src="https://drive.google.com/thumbnail?id=1bRZUL73v4Y-_gEiZsJEWAzGu5SscJBWd&sz=w1200" alt="" loading="lazy">
+      <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="g-item">
-      <img class="g-media" src="https://drive.google.com/thumbnail?id=1lqACAU98yHRSI0BEG2YytCYeESpT6tXm&sz=w1200" alt="">
+    <div class="g-item" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1lqACAU98yHRSI0BEG2YytCYeESpT6tXm&sz=w1200" data-label="">
+      <img src="https://drive.google.com/thumbnail?id=1lqACAU98yHRSI0BEG2YytCYeESpT6tXm&sz=w1200" alt="" loading="lazy">
+      <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="g-item">
-      <img class="g-media" src="https://drive.google.com/thumbnail?id=1nIIeFouEuzNffvvIxFMkLmxkJj9sPo5b&sz=w1200" alt="">
+    <div class="g-item" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1nIIeFouEuzNffvvIxFMkLmxkJj9sPo5b&sz=w1200" data-label="">
+      <img src="https://drive.google.com/thumbnail?id=1nIIeFouEuzNffvvIxFMkLmxkJj9sPo5b&sz=w1200" alt="" loading="lazy">
+      <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
   </div>
 </div>
+
+<div class="lb-overlay" id="lb">
+  <button class="lb-close" id="lb-close">&times;</button>
+  <div class="lb-inner" id="lb-content"></div>
+  <div class="lb-nav">
+    <button class="lb-btn" onclick="prev()">&#8592; Prev</button>
+    <span id="lb-counter" style="color:rgba(255,255,255,.5);font-size:.8rem;align-self:center;"></span>
+    <button class="lb-btn" onclick="next()">Next &#8594;</button>
+  </div>
+</div>
+
 <footer>
   &copy; 2026 Badal Rana — <a href="index.html">Back to Portfolio Home</a>
 </footer>
+
+<script>
+const lb = document.getElementById('lb');
+const lbContent = document.getElementById('lb-content');
+let items = [];
+let cur = 0;
+
+document.querySelectorAll('[data-lb]').forEach((el,i)=>{
+  el.dataset.lbIdx = i;
+  items.push({type: el.dataset.lb, src: el.dataset.src, label: el.dataset.label||''});
+  el.addEventListener('click', ()=>open(i));
+});
+
+function open(i){
+  cur = i;
+  render();
+  lb.classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function close(){
+  lb.classList.remove('active');
+  lbContent.innerHTML='';
+  document.body.style.overflow='';
+}
+function render(){
+  const d = items[cur];
+  if(d.type==='pdf'){
+    lbContent.innerHTML = `<iframe src="${d.src}" allowfullscreen></iframe>`;
+  } else {
+    lbContent.innerHTML = `<img src="${d.src}" alt="${d.label}">`;
+  }
+  document.getElementById('lb-counter').textContent = (cur+1)+' / '+items.length;
+}
+function prev(){ cur=(cur-1+items.length)%items.length; render(); }
+function next(){ cur=(cur+1)%items.length; render(); }
+
+document.getElementById('lb-close').addEventListener('click', close);
+lb.addEventListener('click', e=>{ if(e.target===lb) close(); });
+document.addEventListener('keydown', e=>{
+  if(!lb.classList.contains('active')) return;
+  if(e.key==='Escape') close();
+  if(e.key==='ArrowRight') next();
+  if(e.key==='ArrowLeft') prev();
+});
+</script>
+
 </body>
 </html>
