@@ -49,6 +49,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px
 .g-note code{font-family:monospace;color:var(--accent2);background:var(--bg3);padding:.1rem .4rem;border-radius:4px;font-size:.78rem;}
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;}
 .g-item{position:relative;aspect-ratio:4/3;border-radius:14px;border:1px solid var(--border);background:var(--bg2);overflow:hidden;}
+.g-item iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
 .g-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 .g-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;color:var(--muted);transition:color .2s,border-color .2s;}
 .g-plus{width:42px;height:42px;border:1.5px dashed var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:300;color:var(--muted2);}
@@ -95,23 +96,20 @@ footer a{color:var(--accent);text-decoration:none;}
     <code>&lt;div class="g-item"&gt;&lt;img class="g-media" src="YOUR_URL_HERE" alt=""&gt;&lt;/div&gt;</code><br><br>
     For a <strong>video</strong>, use:<br>
     <code>&lt;div class="g-item"&gt;&lt;video class="g-media" autoplay muted loop playsinline src="YOUR_URL_HERE"&gt;&lt;/video&gt;&lt;/div&gt;</code><br><br>
-    Add as many <code>g-item</code> blocks as you need — the grid expands automatically.
+  <div class="g-note">
+    <strong style="color:var(--text);">How to add more files from Google Drive:</strong><br>
+    Share the file → "Anyone with the link" → copy the link. Extract the <strong>File ID</strong> from the URL
+    (the long string between <code>/d/</code> and <code>/view</code>), then add this block:<br><br>
+    For a <strong>video</strong>: <code>&lt;div class="g-item"&gt;&lt;iframe src="https://drive.google.com/file/d/FILE_ID/preview" allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;</code><br><br>
+    For an <strong>image</strong>: <code>&lt;div class="g-item"&gt;&lt;img class="g-media" src="https://drive.google.com/thumbnail?id=FILE_ID&sz=w1200" alt=""&gt;&lt;/div&gt;</code>
   </div>
 
   <div class="gallery-grid">
     <div class="g-item">
-      <div class="g-ph-num">01</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <iframe src="https://drive.google.com/file/d/15w88I6bGgl0pq3ypYIm0iSgBaKycl0s8/preview" allowfullscreen></iframe>
     </div>
     <div class="g-item">
-      <div class="g-ph-num">02</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <iframe src="https://drive.google.com/file/d/1K6uyhgaoxX-l8Q1qA4L7NtJ_vQq-S6VB/preview" allowfullscreen></iframe>
     </div>
     <div class="g-item">
       <div class="g-ph-num">03</div>
