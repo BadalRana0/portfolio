@@ -3,37 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Posts &amp; Creatives — Badal Rana</title>
+<title>Posts & Creatives — Badal Rana</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --bg:#07070a;
-  --bg2:#0d0d12;
-  --bg3:#131318;
-  --bg4:#18181f;
-  --border:rgba(255,255,255,0.06);
-  --border2:rgba(255,255,255,0.12);
-  --text:#eeeae3;
-  --muted:#5a5a6a;
-  --muted2:#888899;
-  --accent:#F97316;
-  --accent2:#FF8A3D;
-  --fd:'Syne',sans-serif;
-  --fb:'DM Sans',sans-serif;
+  --bg:#07070a;--bg2:#0d0d12;--bg3:#131318;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.12);
+  --text:#eeeae3;--muted:#5a5a6a;--muted2:#888899;
+  --accent:#F97316;--fd:'Syne',sans-serif;--fb:'DM Sans',sans-serif;
 }
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px;line-height:1.6;}
-
-/* TOP BAR */
 .topbar{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:1.4rem 5rem;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);}
 .back-link{display:inline-flex;align-items:center;gap:.6rem;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);text-decoration:none;transition:color .2s;}
 .back-link:hover{color:var(--accent);}
 .back-link svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 .n-logo{font-family:var(--fd);font-size:1.05rem;font-weight:800;color:var(--text);text-decoration:none;letter-spacing:-.01em;}
 .n-logo span{color:var(--accent);}
-
-/* HEADER */
 .g-header{padding:5rem 5rem 3rem;border-bottom:1px solid var(--border);background:var(--bg2);position:relative;overflow:hidden;}
 .g-glow{position:absolute;top:-200px;right:-150px;width:600px;height:600px;background:radial-gradient(circle,rgba(249,115,22,.06) 0%,transparent 65%);pointer-events:none;}
 .g-cat-badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.22);padding:.32rem .8rem;border-radius:2rem;margin-bottom:1.2rem;}
@@ -42,30 +29,22 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px
 .g-desc{font-size:1rem;font-weight:300;color:rgba(238,234,227,.65);line-height:1.85;max-width:620px;}
 .g-drive{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fd);font-size:.78rem;font-weight:700;letter-spacing:.06em;color:var(--text);background:transparent;border:1px solid var(--border2);padding:.75rem 1.6rem;border-radius:3rem;text-decoration:none;margin-top:2rem;transition:all .25s;}
 .g-drive:hover{border-color:var(--accent);color:var(--accent);}
-
-/* GALLERY GRID */
-.g-wrap{padding:4rem 5rem 6rem;}
-.g-note{font-size:.8rem;font-weight:300;color:var(--muted2);max-width:700px;margin-bottom:2.5rem;line-height:1.8;padding:1.2rem 1.5rem;border:1px dashed var(--border2);border-radius:12px;background:var(--bg2);}
-.g-note code{font-family:monospace;color:var(--accent2);background:var(--bg3);padding:.1rem .4rem;border-radius:4px;font-size:.78rem;}
+.g-wrap{padding:4rem 5rem 6rem;max-width:1400px;}
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;}
 .g-item{position:relative;aspect-ratio:4/3;border-radius:14px;border:1px solid var(--border);background:var(--bg2);overflow:hidden;}
-.g-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-.g-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;color:var(--muted);transition:color .2s,border-color .2s;}
-.g-plus{width:42px;height:42px;border:1.5px dashed var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:300;color:var(--muted2);}
-.g-ph-text{font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
-.g-ph-num{position:absolute;top:.9rem;left:1rem;font-family:var(--fd);font-size:.7rem;font-weight:700;color:rgba(255,255,255,.18);letter-spacing:.1em;}
-
+.g-item iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
+.g-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.g-section-title{font-family:var(--fd);font-size:1.1rem;font-weight:700;letter-spacing:.04em;color:var(--text);margin:2.5rem 0 1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
 footer{padding:3rem 5rem;border-top:1px solid var(--border);text-align:center;font-size:.78rem;color:var(--muted);}
 footer a{color:var(--accent);text-decoration:none;}
-
 @media (max-width:768px){
   .topbar,.g-header,.g-wrap,footer{padding-left:1.5rem;padding-right:1.5rem;}
   .g-header{padding-top:3rem;}
 }
+
 </style>
 </head>
 <body>
-
 <div class="topbar">
   <a href="index.html#projects" class="back-link">
     <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
@@ -73,123 +52,305 @@ footer a{color:var(--accent);text-decoration:none;}
   </a>
   <a href="index.html" class="n-logo">Badal<span>Rana</span></a>
 </div>
-
 <header class="g-header">
   <div class="g-glow"></div>
   <div class="g-cat-badge"><span class="g-cat-dot"></span>Social Media</div>
-  <h1 class="g-title">Posts &amp; Creatives</h1>
-  <p class="g-desc">Scroll-stopping social content designed for maximum engagement across all platforms — posts, carousels, and campaign creatives.</p>
+  <h1 class="g-title">Posts & Creatives</h1>
+  <p class="g-desc">Scroll-stopping social content designed for maximum engagement across all platforms.</p>
   <a href="https://drive.google.com/drive/folders/1GaGy0b-zTfHiD65SFbrRbD4e__Kou9nz" target="_blank" class="g-drive">
     <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M15 3h6v6M10 14L21 3M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/></svg>
     View on Google Drive
   </a>
 </header>
-
 <div class="g-wrap">
-
-  <div class="g-note">
-    <strong style="color:var(--text);">How to add your work:</strong><br>
-    Upload your image/video files to your GitHub repo, then copy each file's <strong>raw URL</strong>
-    (format: <code>https://raw.githubusercontent.com/USERNAME/REPO/main/path/file.jpg</code>).<br><br>
-    For an <strong>image</strong>, replace a placeholder block with:<br>
-    <code>&lt;div class="g-item"&gt;&lt;img class="g-media" src="YOUR_URL_HERE" alt=""&gt;&lt;/div&gt;</code><br><br>
-    For a <strong>video</strong>, use:<br>
-    <code>&lt;div class="g-item"&gt;&lt;video class="g-media" autoplay muted loop playsinline src="YOUR_URL_HERE"&gt;&lt;/video&gt;&lt;/div&gt;</code><br><br>
-    Add as many <code>g-item</code> blocks as you need — the grid expands automatically.
-  </div>
-
+  <div class="g-section-title">Target Publications</div>
   <div class="gallery-grid">
     <div class="g-item">
-      <div class="g-ph-num">01</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1-hzrp3oqOAiKXY2aN_uFCyRWVR-lWzXu&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">02</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=10WSRhdObmpKwmxCPVCeuji9XA5HPD-XK&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">03</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=14rgjllO2xpYekoAydGbAqo8DGoO_KWvK&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">04</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=17Vpu6fhmuJrZ4RQ4afJ4VhaZXnd01mNI&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">05</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=18DygRBjLkDcWf9Emzpculyuk7P5XM3KZ&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">06</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=18q7w9PHWqK6lUtjlYr3A-rrSTOR1zQZO&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">07</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1AMOJU9OVa0M4oPcxN9sjzBc6IdaHPbRg&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">08</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1BXGnkZZ8Ou68wRqd1Xen-Z4cii6oPvOX&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">09</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1Bxg2jzFp51jszDSnfx5SF2SuITqYxAGh&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">10</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1HNIIJQPvUW02ZL4yzKIR-IovWI_MPmPu&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">11</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1QBKGZaLYJXBQueqdrQ2llQY_6C_r6tyO&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">12</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1QVRoG8o9Ke8R8hFCZZFH8nTkqT9lr85S&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1TTsORJ016rODnaPeTrFoJat6uokbqB2u&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1ece5FhVRVnl7x_HGi6aSac_-soBfzhaj&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1fsl5Jr3AuNOtlj5x1w83z1jm52YBIp2H&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1itNZYAEB0B4R0vRJzd7lH1d6vBdEz2Os&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1iuoDzoHIaowLAVw4Jbkgyt3dxMj7qhQo&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1oaEEQIt1yHbfBvjlyakZVI3I2LYAJ057&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1tRGJ9NFaY1kwsw6KMJz7HB-sSZWQ-hrx&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1vglfHtlgqKYQFWr-FCoiae0meFEHZvJZ&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1w375tklunQDlsjVW0rpk5EQ-Bm3IpZ5_&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1xyQ_EAj-ChbvOYnKn1m63DvoDAt7VWrU&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1zk5Orv7_dsnHxtrVV_hG58BKAB0ALF-I&sz=w1200" alt="">
     </div>
   </div>
-
+  <div class="g-section-title">Salutary Bites</div>
+  <div class="gallery-grid">
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=15FPZzBHLfpx4DYxsQ11i8QvEzLz3znJC&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1BWz0nKDLA6X12AHymZ4c6UJ0LbEaYmzO&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1DzUPvBpT5A4j-VmZvhLdslbwlJJ8nPVT&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1Nq6paH6ok5VY9QuvPX8CPEyjJf_8kjbS&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1Ol5vuedhzNKnmtZNngvglLnMy5LKO8jy&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1PNN9_LdYgoQY9SY_D7IcqNCBHmzvx158&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1YqQRzAv8fJJkqgg3GexiwdEKCNieFtf4&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1mp0aWNgr2sP7e6NIwoZWYpmuwyepB3e1&sz=w1200" alt="">
+    </div>
+  </div>
+  <div class="g-section-title">Glory</div>
+  <div class="gallery-grid">
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=131aOe9AOeMsUkFQ3Z0ODIfEU0FI_n-OB&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=19siD1PZCFnQb3TV6V6HJlV1VFKQIJn3E&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1CWLR8ivli9sVIkYXAt9CLjBo4QnitL8z&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1FY82ez9WkxTCSizDVyHzqxZN1uGMeYJv&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1QyCS1EX70qksSlGHRLGVTNTaidvn-Tbd&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1WXYej_fgc67vyraCbZ8msiNs0LG9XPht&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1rVdgSJV9vKft8ifDCYoYBhXSXhHNfQCC&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1sLMfpvnzZC71HGNB-DE-CESXezw3QZVS&sz=w1200" alt="">
+    </div>
+  </div>
+  <div class="g-section-title">Furniture</div>
+  <div class="gallery-grid">
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=178ceqS8RCsP_JruKBwsUVcGSI8lFuMoB&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1E8_kH_8CRGZLMnT5H30wlf2L8YLTpK-L&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1bhtXVWJ02-Ow5k08JtQO3FaXi0NDZHSj&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1gVx72GM4c95hVzRtu9xTRkL2Sgh_SiLM&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1w9QCc464EYC21c6pzy_tI3ynukr1GwHN&sz=w1200" alt="">
+    </div>
+  </div>
+  <div class="g-section-title">Al Ahyaan</div>
+  <div class="gallery-grid">
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=17XNM9AyXLwhQolOeWq_kH8_mB8wB_OwQ&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1CJ4ztLNtj0go6vDUu_AHFpe2FgQ--MM9&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1Yl8FnC6hqS0cibU4PpgxbGwr5FQyhEJr&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1zk4jWzsO5lLEsr-H__M7KZ2_WlKcCJtL&sz=w1200" alt="">
+    </div>
+  </div>
+  <div class="g-section-title">Prittle Prattle</div>
+  <div class="gallery-grid">
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1S-tHrIrfMnVTuBSVNeUFo7OGTm1RUAuP&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=18n7lRl1Ggn3v0M6Cz9tlOxEPVXUYtHx_&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=101m9qselSTwfR_Af5QNTOUaFTZDH0ats&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1S0dicwCJ8oCqDYSLcOgZnp5BAc6jGpNU&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1wq5ESJDloIaRQCo7oWgY6LicXnsK4cqj&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1Qn6Nsr4FADktgdrm2rhOq-ZoA9yjdFlW&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1zIbfNu8arpFlF4BcVBwuz8ljQnhz03_t&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1v9kmDI5qn7zWs2aWlqLuCllYE3p6M3RB&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1kValxWvGAd__TULrBZi4AxilOO6rjcaT&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=16hfM1mmnVXGjHXZPibNBfqjKPi6X9V0F&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1vOR6bKGQEvRcV0BddX_2JTwZWVrLMT0d&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1O2SKRqKQNvKMBefaiPsQiPWxpUyBMrfZ&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1S7zkD6dvpZ9VvCofCSVIUTos2SXBakyM&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1cAZ9XUA6Olbu2kFZHjA3B-V1r16XYJUz&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1AcAH-c7iyhElUzzYawBTEeZcBYlZDgTX&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1VBw0Gr3-XC0HbkRxCbbnQF2AqCYIoUOh&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1Xx2OyI9xtM0RBHhvE2GKX0zhQFIDIqVn&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1ovQIZu0hTSGEe5ypRIVbXSM7PnBZNnZ9&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1mfyrz7WsVlsECZVdA4vwRP_eyYFuhOUF&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1a99YY6abfy9egHd_pZ5LLRfY71sv847I&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1ClfHMNsma7LCtYZ2gbNLldFTZh2QqESt&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=100oGZ--7PxpmzK6PgkFNesDCLk3QP4nX&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1W5RS98chhIz-metrD2AzfAKgiaUJbC-Y&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1Tmg3eqGEXvu4kdpdQUkUK0DEjLAHO3Yc&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1PKolQZU7-DX26_HfsIqdRDbi6cN1kMzH&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1XgNOxpy5PvRDYJwGkYRLdT77samWFXOc&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1nU71XQskIHuo6wRTLL5o37VTvETYqX-h&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1VLsc2XNblL3l_Z3d8nGyjt6J6GIoAo17&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1oNz4CDAzpt2RhTjFnw2nb4fDPmkY_obp&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1sM2_DV04vxG-gwVQSO2KSUFlkr4STK3Y&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1Fkty3gDN2TLkaCy37lbSMGDELlC8fdnh&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=12eTy54F_VLVB-GIJ2dG1JyMqek2ya0dK&sz=w1200" alt="">
+    </div>
+  </div>
+  <div class="g-section-title">Extra</div>
+  <div class="gallery-grid">
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=12T1WSoe8GgmBn9T3a4jlEBduq0LfjuHw&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1OQy7hvpF6dCJMyA099YX5ESYS9rrf5tj&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1WAReAqsmqSz4ea8NX3IIaNIyaZDMIZ_m&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1a_0dw40_sIf1fMxrDXjSC0kdBudE7lW1&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1gRIa8mEfqyY2LEXgLodnKydRaTxTwHcO&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1gbNDJpR1ZlZro1i6F3foA_YW2lpFBPkI&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1gb_cmZtZUtMmcQJLU7MX2VTUY9MRqTRF&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1o2WwngM6IH2bw0ATL_2eg-YWbxd9mpdk&sz=w1200" alt="">
+    </div>
+  </div>
 </div>
-
 <footer>
   &copy; 2026 Badal Rana — <a href="index.html">Back to Portfolio Home</a>
 </footer>
-
 </body>
 </html>
