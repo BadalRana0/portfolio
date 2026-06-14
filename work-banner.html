@@ -3,37 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Banner &amp; Standee — Badal Rana</title>
+<title>Banner & Standee — Badal Rana</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --bg:#07070a;
-  --bg2:#0d0d12;
-  --bg3:#131318;
-  --bg4:#18181f;
-  --border:rgba(255,255,255,0.06);
-  --border2:rgba(255,255,255,0.12);
-  --text:#eeeae3;
-  --muted:#5a5a6a;
-  --muted2:#888899;
-  --accent:#F97316;
-  --accent2:#FF8A3D;
-  --fd:'Syne',sans-serif;
-  --fb:'DM Sans',sans-serif;
+  --bg:#07070a;--bg2:#0d0d12;--bg3:#131318;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.12);
+  --text:#eeeae3;--muted:#5a5a6a;--muted2:#888899;
+  --accent:#F97316;--fd:'Syne',sans-serif;--fb:'DM Sans',sans-serif;
 }
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px;line-height:1.6;}
-
-/* TOP BAR */
 .topbar{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:1.4rem 5rem;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);}
 .back-link{display:inline-flex;align-items:center;gap:.6rem;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);text-decoration:none;transition:color .2s;}
 .back-link:hover{color:var(--accent);}
 .back-link svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 .n-logo{font-family:var(--fd);font-size:1.05rem;font-weight:800;color:var(--text);text-decoration:none;letter-spacing:-.01em;}
 .n-logo span{color:var(--accent);}
-
-/* HEADER */
 .g-header{padding:5rem 5rem 3rem;border-bottom:1px solid var(--border);background:var(--bg2);position:relative;overflow:hidden;}
 .g-glow{position:absolute;top:-200px;right:-150px;width:600px;height:600px;background:radial-gradient(circle,rgba(249,115,22,.06) 0%,transparent 65%);pointer-events:none;}
 .g-cat-badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.22);padding:.32rem .8rem;border-radius:2rem;margin-bottom:1.2rem;}
@@ -42,30 +29,22 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px
 .g-desc{font-size:1rem;font-weight:300;color:rgba(238,234,227,.65);line-height:1.85;max-width:620px;}
 .g-drive{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fd);font-size:.78rem;font-weight:700;letter-spacing:.06em;color:var(--text);background:transparent;border:1px solid var(--border2);padding:.75rem 1.6rem;border-radius:3rem;text-decoration:none;margin-top:2rem;transition:all .25s;}
 .g-drive:hover{border-color:var(--accent);color:var(--accent);}
-
-/* GALLERY GRID */
-.g-wrap{padding:4rem 5rem 6rem;}
-.g-note{font-size:.8rem;font-weight:300;color:var(--muted2);max-width:700px;margin-bottom:2.5rem;line-height:1.8;padding:1.2rem 1.5rem;border:1px dashed var(--border2);border-radius:12px;background:var(--bg2);}
-.g-note code{font-family:monospace;color:var(--accent2);background:var(--bg3);padding:.1rem .4rem;border-radius:4px;font-size:.78rem;}
+.g-wrap{padding:4rem 5rem 6rem;max-width:1400px;}
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;}
 .g-item{position:relative;aspect-ratio:4/3;border-radius:14px;border:1px solid var(--border);background:var(--bg2);overflow:hidden;}
-.g-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-.g-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;color:var(--muted);transition:color .2s,border-color .2s;}
-.g-plus{width:42px;height:42px;border:1.5px dashed var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:300;color:var(--muted2);}
-.g-ph-text{font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
-.g-ph-num{position:absolute;top:.9rem;left:1rem;font-family:var(--fd);font-size:.7rem;font-weight:700;color:rgba(255,255,255,.18);letter-spacing:.1em;}
-
+.g-item iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
+.g-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.g-section-title{font-family:var(--fd);font-size:1.1rem;font-weight:700;letter-spacing:.04em;color:var(--text);margin:2.5rem 0 1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
 footer{padding:3rem 5rem;border-top:1px solid var(--border);text-align:center;font-size:.78rem;color:var(--muted);}
 footer a{color:var(--accent);text-decoration:none;}
-
 @media (max-width:768px){
   .topbar,.g-header,.g-wrap,footer{padding-left:1.5rem;padding-right:1.5rem;}
   .g-header{padding-top:3rem;}
 }
+
 </style>
 </head>
 <body>
-
 <div class="topbar">
   <a href="index.html#projects" class="back-link">
     <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
@@ -73,123 +52,82 @@ footer a{color:var(--accent);text-decoration:none;}
   </a>
   <a href="index.html" class="n-logo">Badal<span>Rana</span></a>
 </div>
-
 <header class="g-header">
   <div class="g-glow"></div>
   <div class="g-cat-badge"><span class="g-cat-dot"></span>Outdoor</div>
-  <h1 class="g-title">Banner &amp; Standee</h1>
-  <p class="g-desc">Large-format event and campaign visuals built to dominate physical spaces — banners, standees, and outdoor media.</p>
+  <h1 class="g-title">Banner & Standee</h1>
+  <p class="g-desc">Large-format event and campaign visuals built to dominate physical spaces.</p>
   <a href="https://drive.google.com/drive/folders/10suAR7qqmGT7VcIA049otAbJGQ10q12H" target="_blank" class="g-drive">
     <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M15 3h6v6M10 14L21 3M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/></svg>
     View on Google Drive
   </a>
 </header>
-
 <div class="g-wrap">
-
-  <div class="g-note">
-    <strong style="color:var(--text);">How to add your work:</strong><br>
-    Upload your image/video files to your GitHub repo, then copy each file's <strong>raw URL</strong>
-    (format: <code>https://raw.githubusercontent.com/USERNAME/REPO/main/path/file.jpg</code>).<br><br>
-    For an <strong>image</strong>, replace a placeholder block with:<br>
-    <code>&lt;div class="g-item"&gt;&lt;img class="g-media" src="YOUR_URL_HERE" alt=""&gt;&lt;/div&gt;</code><br><br>
-    For a <strong>video</strong>, use:<br>
-    <code>&lt;div class="g-item"&gt;&lt;video class="g-media" autoplay muted loop playsinline src="YOUR_URL_HERE"&gt;&lt;/video&gt;&lt;/div&gt;</code><br><br>
-    Add as many <code>g-item</code> blocks as you need — the grid expands automatically.
-  </div>
-
   <div class="gallery-grid">
     <div class="g-item">
-      <div class="g-ph-num">01</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=10_jpibBt6RetjRCyV5II5rCL8SWpxKv6&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">02</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=11FAz5Je5qcnueCt8GsdiYYNxpLmdSYDT&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">03</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1Biow-eACWSo2QDYE7_x3O-QYLajgv9HK&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">04</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1MFDGCsm5FtAKS-cSckS-MxinfsPXpwK6&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">05</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1RWB6ETnwQjvKZAdRF9t3rkt9wLl8Muct&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">06</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1SvQD4ZV1HKa6cm5ZwWKXyKUlpCAeKD_u&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">07</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1UW8Ap_SLACmpOiQXgHgZeG-TXRRelhTN&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">08</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1VK-B89XjrXgg7XZG_uhUbBX_pWwFIwUz&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">09</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1grctj3Ca2oK29KuDmSxXsAheqIh1hv82&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">10</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1j9_lvfBNRN3rsZ4PZdZV_bl9Vu21RJAz&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">11</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1jsYGt4M0vFhQaKiVt9-q4cuhHP0oSigW&sz=w1200" alt="">
     </div>
     <div class="g-item">
-      <div class="g-ph-num">12</div>
-      <div class="g-placeholder">
-        <div class="g-plus">+</div>
-        <div class="g-ph-text">Add Image / Video</div>
-      </div>
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1p_jdmVQ1qt99O4ziYQYda7drzcoc_oOp&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1sghzXejMYCatRJ42eEZDII7MES41tzSL&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1st5kMPCTTXfaHFsON-xL0L6FF1cB-oLL&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=14JrfpPaDmNsAvQP6L6qPJF5T8OChB-6D&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=19x48Jwn4PIbRYC1SkjSzLHYoSfl-by_5&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1b5Tq32L_-lngLXXS0k8pROtMcvKsgRY6&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1bRZUL73v4Y-_gEiZsJEWAzGu5SscJBWd&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1lqACAU98yHRSI0BEG2YytCYeESpT6tXm&sz=w1200" alt="">
+    </div>
+    <div class="g-item">
+      <img class="g-media" src="https://drive.google.com/thumbnail?id=1nIIeFouEuzNffvvIxFMkLmxkJj9sPo5b&sz=w1200" alt="">
     </div>
   </div>
-
 </div>
-
 <footer>
   &copy; 2026 Badal Rana — <a href="index.html">Back to Portfolio Home</a>
 </footer>
-
 </body>
 </html>
