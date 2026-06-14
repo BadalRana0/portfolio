@@ -8,28 +8,19 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --bg:#07070a;
-  --bg2:#0d0d12;
-  --bg3:#131318;
-  --border:rgba(255,255,255,0.06);
-  --border2:rgba(255,255,255,0.12);
-  --text:#eeeae3;
-  --muted:#5a5a6a;
-  --muted2:#888899;
-  --accent:#F97316;
-  --fd:'Syne',sans-serif;
-  --fb:'DM Sans',sans-serif;
+  --bg:#07070a;--bg2:#0d0d12;--bg3:#131318;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.12);
+  --text:#eeeae3;--muted:#5a5a6a;--muted2:#888899;
+  --accent:#F97316;--fd:'Syne',sans-serif;--fb:'DM Sans',sans-serif;
 }
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px;line-height:1.6;}
-
 .topbar{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:1.4rem 5rem;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);}
 .back-link{display:inline-flex;align-items:center;gap:.6rem;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);text-decoration:none;transition:color .2s;}
 .back-link:hover{color:var(--accent);}
 .back-link svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 .n-logo{font-family:var(--fd);font-size:1.05rem;font-weight:800;color:var(--text);text-decoration:none;letter-spacing:-.01em;}
 .n-logo span{color:var(--accent);}
-
 .g-header{padding:5rem 5rem 3rem;border-bottom:1px solid var(--border);background:var(--bg2);position:relative;overflow:hidden;}
 .g-glow{position:absolute;top:-200px;right:-150px;width:600px;height:600px;background:radial-gradient(circle,rgba(249,115,22,.06) 0%,transparent 65%);pointer-events:none;}
 .g-cat-badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.22);padding:.32rem .8rem;border-radius:2rem;margin-bottom:1.2rem;}
@@ -38,19 +29,17 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px
 .g-desc{font-size:1rem;font-weight:300;color:rgba(238,234,227,.65);line-height:1.85;max-width:620px;}
 .g-drive{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fd);font-size:.78rem;font-weight:700;letter-spacing:.06em;color:var(--text);background:transparent;border:1px solid var(--border2);padding:.75rem 1.6rem;border-radius:3rem;text-decoration:none;margin-top:2rem;transition:all .25s;}
 .g-drive:hover{border-color:var(--accent);color:var(--accent);}
-
 .g-wrap{padding:4rem 5rem 6rem;max-width:1400px;}
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;}
-.g-item{position:relative;aspect-ratio:4/3;border-radius:14px;border:1px solid var(--border);background:var(--bg2);overflow:hidden;}
-.g-item iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
-.g-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-
+/* 16:9 video grid */
+.gallery-grid-video{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:1.2rem;}
+.g-item-video{position:relative;aspect-ratio:16/9;border-radius:14px;border:1px solid var(--border);background:var(--bg2);overflow:hidden;}
+.g-item-video iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
 footer{padding:3rem 5rem;border-top:1px solid var(--border);text-align:center;font-size:.78rem;color:var(--muted);}
 footer a{color:var(--accent);text-decoration:none;}
-
-@media (max-width:768px){
+@media(max-width:768px){
   .topbar,.g-header,.g-wrap,footer{padding-left:1.5rem;padding-right:1.5rem;}
   .g-header{padding-top:3rem;}
+  .gallery-grid-video{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -76,12 +65,12 @@ footer a{color:var(--accent);text-decoration:none;}
 </header>
 
 <div class="g-wrap">
-  <div class="gallery-grid">
-    <div class="g-item">
-      <iframe src="https://drive.google.com/file/d/15w88I6bGgl0pq3ypYIm0iSgBaKycl0s8/preview" allowfullscreen></iframe>
+  <div class="gallery-grid-video">
+    <div class="g-item-video">
+      <iframe src="https://drive.google.com/file/d/15w88I6bGgl0pq3ypYIm0iSgBaKycl0s8/preview" allowfullscreen loading="lazy"></iframe>
     </div>
-    <div class="g-item">
-      <iframe src="https://drive.google.com/file/d/1K6uyhgaoxX-l8Q1qA4L7NtJ_vQq-S6VB/preview" allowfullscreen></iframe>
+    <div class="g-item-video">
+      <iframe src="https://drive.google.com/file/d/1K6uyhgaoxX-l8Q1qA4L7NtJ_vQq-S6VB/preview" allowfullscreen loading="lazy"></iframe>
     </div>
   </div>
 </div>
