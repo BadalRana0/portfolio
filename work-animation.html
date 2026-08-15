@@ -4,123 +4,181 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Animated Video — Badal Rana</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Kalam:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --bg:#07070a;--bg2:#0d0d12;--bg3:#131318;
-  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.12);
-  --text:#eeeae3;--muted:#5a5a6a;--muted2:#888899;
-  --accent:#F97316;--fd:'Syne',sans-serif;--fb:'DM Sans',sans-serif;
+  --blue:#2A3FE4; --blue2:#1E2FBE; --ink:#0A0A10;
+  --cream:#F4F0E4; --cream2:#EAE4D4; --text:#F4F0E4; --dark:#14141c;
+  --lime:#D9FF4B; --red:#FF5A4E;
+  --fh:'Caveat',cursive; --fk:'Kalam',cursive; --fb:'Inter',sans-serif;
+  --cur-color: var(--lime);
 }
 html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px;line-height:1.6;}
-.topbar{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:1.4rem 5rem;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);}
-.back-link{display:inline-flex;align-items:center;gap:.6rem;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);text-decoration:none;transition:color .2s;}
-.back-link:hover{color:var(--accent);}
-.back-link svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-.n-logo{font-family:var(--fd);font-size:1.05rem;font-weight:800;color:var(--text);text-decoration:none;letter-spacing:-.01em;}
-.n-logo span{color:var(--accent);}
-.g-header{padding:5rem 5rem 3rem;border-bottom:1px solid var(--border);background:var(--bg2);position:relative;overflow:hidden;}
-.g-glow{position:absolute;top:-200px;right:-150px;width:600px;height:600px;background:radial-gradient(circle,rgba(249,115,22,.06) 0%,transparent 65%);pointer-events:none;}
-.g-cat-badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.22);padding:.32rem .8rem;border-radius:2rem;margin-bottom:1.2rem;}
-.g-cat-dot{width:4px;height:4px;background:var(--accent);border-radius:50%;}
-.g-title{font-family:var(--fd);font-size:clamp(2.2rem,5.5vw,4.2rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.2rem;}
-.g-desc{font-size:1rem;font-weight:300;color:rgba(238,234,227,.65);line-height:1.85;max-width:620px;}
-.g-drive{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fd);font-size:.78rem;font-weight:700;letter-spacing:.06em;color:var(--text);background:transparent;border:1px solid var(--border2);padding:.75rem 1.6rem;border-radius:3rem;text-decoration:none;margin-top:2rem;transition:all .25s;}
-.g-drive:hover{border-color:var(--accent);color:var(--accent);}
-.g-wrap{padding:4rem 5rem 6rem;max-width:1400px;}
-/* IMAGE grid — 1:1 */
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem;}
-.g-item{position:relative;aspect-ratio:1/1;border-radius:14px;border:1px solid var(--border);background:var(--bg2);overflow:hidden;cursor:pointer;}
-.g-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
-.g-item:hover img{transform:scale(1.05);}
-/* VIDEO grid — 16:9 */
-.gallery-grid-video{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:1.2rem;}
-.g-item-video{position:relative;aspect-ratio:16/9;border-radius:14px;border:1px solid var(--border);background:var(--bg2);overflow:hidden;}
-.g-item-video iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
-.g-section-title{font-family:var(--fd);font-size:1.1rem;font-weight:700;letter-spacing:.04em;color:var(--text);margin:2.5rem 0 1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
-footer{padding:3rem 5rem;border-top:1px solid var(--border);text-align:center;font-size:.78rem;color:var(--muted);}
-footer a{color:var(--accent);text-decoration:none;}
+body{background:var(--blue);color:var(--text);font-family:var(--fb);line-height:1.6;overflow-x:hidden;}
+a{color:inherit;}
+img,video,iframe{max-width:100%;display:block;}
+::selection{background:var(--lime);color:#111;}
+
+#cur{
+  width:8px;height:8px;background:var(--cur-color);border-radius:50%;
+  position:fixed;top:0;left:0;pointer-events:none;z-index:9500;
+  transform:translate(-50%,-50%);transition:transform .15s ease,opacity .25s ease,background-color .2s ease;
+}
+#cur-r{
+  width:36px;height:36px;border:1.5px solid var(--cur-color);border-radius:50%;
+  position:fixed;top:0;left:0;pointer-events:none;z-index:9499;
+  transform:translate(-50%,-50%);transition:opacity .25s ease,transform .2s ease,border-color .2s ease;
+}
+body.hide-cursor #cur, body.hide-cursor #cur-r{opacity:0;transform:translate(-50%,-50%) scale(0.4);}
+@media(hover:none){#cur,#cur-r{display:none;}}
+
+.follow-mouse{
+  will-change:transform;
+  transform: translate3d(calc(var(--px, 0px) * var(--pm, 1)), calc(var(--py, 0px) * var(--pm, 1)), 0) rotate(var(--base-rot, 0deg));
+}
+
+.topbar{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(10,10,16,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(244,240,228,.14);}
+.back-link{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fk);font-size:.85rem;font-weight:700;color:rgba(244,240,228,.8);text-decoration:none;transition:color .2s;}
+.back-link:hover{color:var(--lime);}
+.back-link svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.n-logo{font-family:var(--fh);font-size:1.4rem;font-weight:700;color:var(--cream);text-decoration:none;}
+.n-logo span{color:var(--lime);}
+
+.g-header{padding:5rem 3rem 3.5rem;background:var(--blue);border-bottom:1px solid rgba(244,240,228,.15);position:relative;overflow:hidden;}
+.blueprint{background-image:linear-gradient(rgba(244,240,228,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(244,240,228,.06) 1px,transparent 1px);background-size:38px 38px;}
+.g-cat-badge{
+  display:inline-block;background:var(--cream);color:#111;font-family:var(--fk);
+  font-size:.78rem;font-weight:700;padding:.35rem .9rem;border:2px solid #111;
+  border-radius:4px;box-shadow:4px 4px 0 rgba(0,0,0,.25);margin-bottom:1.4rem;
+  --base-rot: -2deg;
+}
+.g-title{font-family:var(--fh);font-size:clamp(2.8rem,7vw,5.5rem);font-weight:700;line-height:.95;color:var(--cream);letter-spacing:-.02em;margin-bottom:1.2rem;}
+.g-desc{font-size:.98rem;color:rgba(244,240,228,.82);line-height:1.75;max-width:680px;}
+.g-drive{
+  display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fh);
+  font-size:1.2rem;font-weight:700;color:var(--ink);background:var(--lime);
+  border:2px solid #111;padding:.6rem 1.5rem;border-radius:3rem;text-decoration:none;
+  margin-top:2rem;box-shadow:5px 5px 0 rgba(0,0,0,.3);
+  --base-rot: -1deg;
+  transition:box-shadow .2s ease;
+}
+.g-drive:hover{box-shadow:8px 8px 0 rgba(0,0,0,.35);}
+
+.g-wrap{padding:4rem 3rem 6rem;background:var(--cream);color:#14141c;min-height:60vh;}
+.gallery-grid-video{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:2.4rem;max-width:1420px;margin:0 auto;}
+.g-item-video{
+  position:relative;background:#fff;padding:10px 10px 38px;border:2px solid #111;
+  border-radius:10px;box-shadow:6px 6px 0 rgba(0,0,0,.15);
+  transition:box-shadow .3s ease;
+}
+.g-item-video:nth-child(odd){--base-rot: -1.2deg;}
+.g-item-video:nth-child(even){--base-rot: 1.2deg;}
+.g-item-video:hover{box-shadow:12px 12px 0 rgba(0,0,0,.22);z-index:2;}
+.video-inner{
+  position:relative;width:100%;height:280px;background:#0d0d14;
+  border:1.5px solid #111;border-radius:6px;overflow:hidden;
+}
+.video-inner iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
+
+footer{padding:3rem;background:var(--ink);color:var(--cream);text-align:center;font-family:var(--fk);font-size:.85rem;border-top:1px solid rgba(244,240,228,.15);}
+footer a{color:var(--lime);text-decoration:underline;text-underline-offset:4px;}
+
 @media(max-width:768px){
   .topbar,.g-header,.g-wrap,footer{padding-left:1.5rem;padding-right:1.5rem;}
-  .g-header{padding-top:3rem;}
   .gallery-grid-video{grid-template-columns:1fr;}
+  .g-item-video:nth-child(odd),.g-item-video:nth-child(even){--base-rot: 0deg;}
+  .video-inner{height:220px;}
 }
 </style>
 </head>
 <body>
+
+<div id="cur"></div>
+<div id="cur-r"></div>
+
 <div class="topbar">
-  <a href="index.html#projects" class="back-link">
+  <a href="index.html#reel" class="back-link follow-mouse" data-mult="0.45">
     <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
     Back to Portfolio
   </a>
-  <a href="index.html" class="n-logo">Badal<span>Rana</span></a>
+  <a href="index.html" class="n-logo follow-mouse" data-mult="0.45">Badal<span>.</span></a>
 </div>
-<header class="g-header">
-  <div class="g-glow"></div>
-  <div class="g-cat-badge"><span class="g-cat-dot"></span>Animation</div>
-  <h1 class="g-title">Animated Video</h1>
-  <p class="g-desc">Motion graphics, explainer animations, and kinetic typography that bring ideas to life.</p>
-  <a href="https://drive.google.com/drive/folders/1WZFco6wLRWRHLXqyIj4zwY5YciWBuZ0O" target="_blank" class="g-drive">
-    <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M15 3h6v6M10 14L21 3M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/></svg>
-    View on Google Drive
+
+<header class="g-header blueprint">
+  <div class="g-cat-badge follow-mouse" data-mult="0.6">ANIMATION</div>
+  <h1 class="g-title follow-mouse" data-mult="0.9">Animated Video</h1>
+  <p class="g-desc follow-mouse" data-mult="0.7">Motion graphics, explainer animations, and kinetic typography that bring ideas to life[cite: 11].</p>
+  <a href="https://drive.google.com/drive/folders/1WZFco6wLRWRHLXqyIj4zwY5YciWBuZ0O" target="_blank" class="g-drive follow-mouse" data-mult="0.8">
+    <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M15 3h6v6M10 14L21 3M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/></svg>
+    View on Google Drive →
   </a>
 </header>
+
 <div class="g-wrap">
   <div class="gallery-grid-video">
-    <div class="g-item-video">
-      <iframe src="https://drive.google.com/file/d/1-74O-RX8EEcBD5E0XUiz1h-SfxNvFJRL/preview" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="g-item-video">
-      <iframe src="https://drive.google.com/file/d/1Cc-fGinMaLCBSQ8X8Z4_Mb86X6VELhHs/preview" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="g-item-video">
-      <iframe src="https://drive.google.com/file/d/1KoBTfAU2Oom6DOO0Zo0vuzEGrlBOKOEG/preview" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="g-item-video">
-      <iframe src="https://drive.google.com/file/d/1P1tcqRQM5DbJk9HGQjXCph3DgWsVBiEZ/preview" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="g-item-video">
-      <iframe src="https://drive.google.com/file/d/1RSc33itvnjzZFrigghjYfnIvUM0Kz8np/preview" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="g-item-video">
-      <iframe src="https://drive.google.com/file/d/1ZpFvWcY7tSHVtMWnA6F7hbxzJ4HlQQyN/preview" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="g-item-video">
-      <iframe src="https://drive.google.com/file/d/1bEgsrbXVzsr2TtprTeZYsl8woK7WBFQ8/preview" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="g-item-video">
-      <iframe src="https://drive.google.com/file/d/1cBcWe-kXqUcDb4J-Tl_Z4r_4cFmSO_wd/preview" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="g-item-video">
-      <iframe src="https://drive.google.com/file/d/1d74uFFVHnh2aWROFFe9rgF2cdzHjEf2h/preview" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="g-item-video">
-      <iframe src="https://drive.google.com/file/d/1i0orgt6Q42pq0DPpRP1pZpsJaV4NlS5W/preview" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="g-item-video">
-      <iframe src="https://drive.google.com/file/d/1nP-ahhpl3ay5n83UNWW2I-9jFSuEgCbw/preview" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="g-item-video">
-      <iframe src="https://drive.google.com/file/d/1tYAes8gf8X0elwkRQZuyCOChcpI6-wbI/preview" allowfullscreen loading="lazy"></iframe>
-    </div>
+    <div class="g-item-video follow-mouse" data-mult="0.75"><div class="video-inner"><iframe src="https://drive.google.com/file/d/1-74O-RX8EEcBD5E0XUiz1h-SfxNvFJRL/preview" allowfullscreen loading="lazy"></iframe></div></div>
+    <div class="g-item-video follow-mouse" data-mult="0.8"><div class="video-inner"><iframe src="https://drive.google.com/file/d/1Cc-fGinMaLCBSQ8X8Z4_Mb86X6VELhHs/preview" allowfullscreen loading="lazy"></iframe></div></div>
+    <div class="g-item-video follow-mouse" data-mult="0.7"><div class="video-inner"><iframe src="https://drive.google.com/file/d/1KoBTfAU2Oom6DOO0Zo0vuzEGrlBOKOEG/preview" allowfullscreen loading="lazy"></iframe></div></div>
+    <div class="g-item-video follow-mouse" data-mult="0.85"><div class="video-inner"><iframe src="https://drive.google.com/file/d/1P1tcqRQM5DbJk9HGQjXCph3DgWsVBiEZ/preview" allowfullscreen loading="lazy"></iframe></div></div>
+    <div class="g-item-video follow-mouse" data-mult="0.75"><div class="video-inner"><iframe src="https://drive.google.com/file/d/1RSc33itvnjzZFrigghjYfnIvUM0Kz8np/preview" allowfullscreen loading="lazy"></iframe></div></div>
+    <div class="g-item-video follow-mouse" data-mult="0.8"><div class="video-inner"><iframe src="https://drive.google.com/file/d/1ZpFvWcY7tSHVtMWnA6F7hbxzJ4HlQQyN/preview" allowfullscreen loading="lazy"></iframe></div></div>
+    <div class="g-item-video follow-mouse" data-mult="0.75"><div class="video-inner"><iframe src="https://drive.google.com/file/d/1bEgsrbXVzsr2TtprTeZYsl8woK7WBFQ8/preview" allowfullscreen loading="lazy"></iframe></div></div>
+    <div class="g-item-video follow-mouse" data-mult="0.85"><div class="video-inner"><iframe src="https://drive.google.com/file/d/1cBcWe-kXqUcDb4J-Tl_Z4r_4cFmSO_wd/preview" allowfullscreen loading="lazy"></iframe></div></div>
+    <div class="g-item-video follow-mouse" data-mult="0.7"><div class="video-inner"><iframe src="https://drive.google.com/file/d/1d74uFFVHnh2aWROFFe9rgF2cdzHjEf2h/preview" allowfullscreen loading="lazy"></iframe></div></div>
+    <div class="g-item-video follow-mouse" data-mult="0.8"><div class="video-inner"><iframe src="https://drive.google.com/file/d/1i0orgt6Q42pq0DPpRP1pZpsJaV4NlS5W/preview" allowfullscreen loading="lazy"></iframe></div></div>
+    <div class="g-item-video follow-mouse" data-mult="0.75"><div class="video-inner"><iframe src="https://drive.google.com/file/d/1nP-ahhpl3ay5n83UNWW2I-9jFSuEgCbw/preview" allowfullscreen loading="lazy"></iframe></div></div>
+    <div class="g-item-video follow-mouse" data-mult="0.85"><div class="video-inner"><iframe src="https://drive.google.com/file/d/1tYAes8gf8X0elwkRQZuyCOChcpI6-wbI/preview" allowfullscreen loading="lazy"></iframe></div></div>
   </div>
 </div>
 
-<div class="lb-overlay" id="lb">
-  <button class="lb-close" id="lb-close">&times;</button>
-  <div class="lb-inner" id="lb-content"></div>
-  <div class="lb-nav">
-    <button class="lb-btn" onclick="prev()">&#8592; Prev</button>
-    <span id="lb-counter" style="color:rgba(255,255,255,.5);font-size:.8rem;align-self:center;"></span>
-    <button class="lb-btn" onclick="next()">Next &#8594;</button>
-  </div>
-</div>
-
-<footer>
-  &copy; 2026 Badal Rana — <a href="index.html">Back to Portfolio Home</a>
+<footer class="follow-mouse" data-mult="0.4">
+  &copy; 2026 Badal Rana — <a href="index.html">Back to Portfolio Home</a>[cite: 11]
 </footer>
 
+<script>
+const cur=document.getElementById('cur'), curR=document.getElementById('cur-r');
+let targetX=window.innerWidth/2, targetY=window.innerHeight/2, curX=targetX, curY=targetY, ringX=targetX, ringY=targetY, ringVx=0, ringVy=0;
+let smoothNormX=0, smoothNormY=0;
+const followNodes=Array.from(document.querySelectorAll('.follow-mouse'));
+
+window.addEventListener('mousemove',e=>{targetX=e.clientX;targetY=e.clientY;},{passive:true});
+
+function animLoop(){
+  curX+=(targetX-curX)*0.35; curY+=(targetY-curY)*0.35;
+  cur.style.left=curX+'px'; cur.style.top=curY+'px';
+  const ax=(targetX-ringX)*0.045, ay=(targetY-ringY)*0.045;
+  ringVx=(ringVx+ax)*0.72; ringVy=(ringVy+ay)*0.72;
+  ringX+=ringVx; ringY+=ringVy;
+  curR.style.left=ringX+'px'; curR.style.top=ringY+'px';
+
+  const normX=(targetX-window.innerWidth/2)/(window.innerWidth/2);
+  const normY=(targetY-window.innerHeight/2)/(window.innerHeight/2);
+  smoothNormX+=(normX-smoothNormX)*0.055;
+  smoothNormY+=(normY-smoothNormY)*0.055;
+
+  const px=(smoothNormX*14).toFixed(2);
+  const py=(smoothNormY*10).toFixed(2);
+
+  for(let i=0;i<followNodes.length;i++){
+    const node=followNodes[i];
+    const mult=node.getAttribute('data-mult')||'1';
+    node.style.setProperty('--px',px+'px');
+    node.style.setProperty('--py',py+'px');
+    node.style.setProperty('--pm',mult);
+  }
+  requestAnimationFrame(animLoop);
+}
+requestAnimationFrame(animLoop);
+
+document.querySelectorAll('a, button, .g-item-video').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2)';curR.style.transform='translate(-50%,-50%) scale(1.4)';});
+  el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';curR.style.transform='translate(-50%,-50%) scale(1)';});
+});
+document.querySelectorAll('iframe').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hide-cursor'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hide-cursor'));
+});
+</script>
 </body>
 </html>
