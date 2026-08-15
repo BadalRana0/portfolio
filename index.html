@@ -465,9 +465,8 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   .about-top,.skills-split,.contact-flex{grid-template-columns:1fr;}
   .case-study,.case-study.reverse{grid-template-columns:1fr;gap:1.5rem;}
   .case-copy,.case-study.reverse .case-copy{order:1;}
-  .case-media-frame,.case-study.reverse .case-media-frame{order:2;min-height:360px;}
-  .case-media,.case-study.reverse .case-media{min-height:360px;transform:none !important;}
-  .case-media iframe{min-height:360px;}
+  .case-media-frame,.case-study.reverse .case-media-frame{order:2;min-height:auto;}
+  .case-media,.case-study.reverse .case-media{transform:none !important;}
 }
 @media(max-width:600px){
   .about-stats-row{grid-template-columns:1fr;}
@@ -547,15 +546,16 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
 
   <div class="case-list">
 
-    <article class="case-study">
-      <div class="case-copy follow-mouse" data-mult="0.7">
+    <!-- 01 CASE STUDY: 16:9 RATIO & UPDATED DRIVE EMBED -->
+    <article class="case-study" style="min-height: auto; height: fit-content; align-items: center;">
+      <div class="case-copy follow-mouse" data-mult="0.7" style="padding-top: 0; padding-bottom: 0;">
         <div class="case-index">01 / AI VIDEO</div>
         <span class="case-type">BIGBASKET × BLINKIT</span>
         <h3>From storyboard to a crazy final frame.</h3>
         <p>
           We developed the idea from scratch — starting with the storyboard and visual
           direction, then using AI-assisted generation, motion and compositing to build
-          a high-energy output for BigBasket and Blinkit[cite: 1].
+          a high-energy output for BigBasket and Blinkit[cite: 19].
         </p>
         <div class="case-process">
           <span>IDEATION</span><span>STORYBOARD</span><span>AI GENERATION</span>
@@ -563,9 +563,9 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
         </div>
         <div class="case-meta"><span>AI-assisted production</span><span>2026</span></div>
       </div>
-      <div class="case-media-frame follow-mouse" data-mult="0.9">
-        <div class="case-media">
-          <iframe src="https://drive.google.com/file/d/15w88I6bGgl0pq3ypYImoS0gBaKycl0s8/preview" allow="autoplay"></iframe>
+      <div class="case-media-frame follow-mouse" data-mult="0.9" style="min-height: auto; height: fit-content;">
+        <div class="case-media" style="min-height: auto; height: auto; aspect-ratio: 16 / 9;">
+          <iframe src="https://drive.google.com/file/d/15w88I6bGgl0pq3ypYIm0iSgBaKycl0s8/preview" allow="autoplay" style="min-height: auto; height: 100%; aspect-ratio: 16 / 9;"></iframe>
         </div>
       </div>
     </article>
@@ -578,7 +578,7 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
         <p>
           For FiatPe, I explored a new logo direction for a fintech brand — translating
           the product's digital-first character into a mark that could work across
-          interfaces, communication and brand touchpoints[cite: 1].
+          interfaces, communication and brand touchpoints[cite: 19].
         </p>
         <div class="case-process">
           <span>RESEARCH</span><span>CONCEPT</span><span>LOGO</span>
@@ -593,14 +593,15 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
       </div>
     </article>
 
-    <article class="case-study">
-      <div class="case-copy follow-mouse" data-mult="0.7">
+    <!-- 03 CASE STUDY: 16:9 RATIO & HEIGHT HUG -->
+    <article class="case-study" style="min-height: auto; height: fit-content; align-items: center;">
+      <div class="case-copy follow-mouse" data-mult="0.7" style="padding-top: 0; padding-bottom: 0;">
         <div class="case-index">03 / LOGO REDESIGN</div>
         <span class="case-type">TAIYARI APP · TARGET PUBLICATIONS</span>
         <h3>Making the before-and-after impossible to miss.</h3>
         <p>
           For Taiyari App, the objective was to rethink the existing logo into a cleaner,
-          more contemporary identity with improved recognition and visual balance[cite: 1].
+          more contemporary identity with improved recognition and visual balance[cite: 19].
         </p>
         <div class="case-process">
           <span>AUDIT</span><span>REDESIGN</span><span>TYPOGRAPHY</span>
@@ -608,9 +609,9 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
         </div>
         <div class="case-meta"><span>Target Publications</span><span>Identity redesign</span></div>
       </div>
-      <div class="case-media-frame follow-mouse" data-mult="0.9">
-        <div class="case-media">
-          <iframe src="https://drive.google.com/file/d/18opyONcv9YenR8F_JatIXGYhhZbGx1az/preview" allow="autoplay"></iframe>
+      <div class="case-media-frame follow-mouse" data-mult="0.9" style="min-height: auto; height: fit-content;">
+        <div class="case-media" style="min-height: auto; height: auto; aspect-ratio: 16 / 9;">
+          <iframe src="https://drive.google.com/file/d/18opyONcv9YenR8F_JatIXGYhhZbGx1az/preview" allow="autoplay" style="min-height: auto; height: 100%; aspect-ratio: 16 / 9;"></iframe>
         </div>
       </div>
     </article>
@@ -622,7 +623,7 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
         <h3>A logo becomes a system when the rules are clear.</h3>
         <p>
           This brand guideline project took a Kabaddi team's identity beyond the logo,
-          structuring typography, colour, layout, and applications across communication[cite: 1].
+          structuring typography, colour, layout, and applications across communication[cite: 19].
         </p>
         <div class="case-process">
           <span>BRAND SYSTEM</span><span>TYPE</span><span>COLOUR</span>
@@ -789,10 +790,10 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
 <section id="about" class="blueprint" data-index="4" data-cur="lime">
   <div class="eyebrow follow-mouse" data-mult="0.4">04 — About &amp; Career</div>
   <div class="about-top">
-    <div class="about-bar follow-mouse" data-mult="0.7" style="margin:1rem 0 0;">Started as a designer in 2021. Now a <span class="hi">Media &amp; Design Analyst</span> who still edits, leads and builds campaigns[cite: 1].</div>
+    <div class="about-bar follow-mouse" data-mult="0.7" style="margin:1rem 0 0;">Started as a designer in 2021. Now a <span class="hi">Media &amp; Design Analyst</span> who still edits, leads and builds campaigns[cite: 19].</div>
     <div class="about-polaroid follow-mouse" data-mult="0.9">
       <canvas id="cAbout" width="220" height="180"></canvas>
-      <figcaption>Badal Rana — designer, editor, mostly running on chai[cite: 1].</figcaption>
+      <figcaption>Badal Rana — designer, editor, mostly running on chai[cite: 19].</figcaption>
     </div>
   </div>
 
@@ -800,7 +801,7 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
     <div class="ms-hero">
       <div>
         <div class="ms-hero-title">The hero product: a multi-disciplinary creative.</div>
-        <p>I started as a designer in 2021. Now I'm a <strong>Media &amp; Design Analyst</strong> who ships brand campaigns on the side[cite: 1].</p>
+        <p>I started as a designer in 2021. Now I'm a <strong>Media &amp; Design Analyst</strong> who ships brand campaigns on the side[cite: 19].</p>
       </div>
       <div class="ms-hero-chips">
         <span>Design</span><span>Motion</span><span>Video</span><span>AI</span>
@@ -815,22 +816,22 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   <div class="career-list follow-mouse" data-mult="0.6">
     <div class="career-card current">
       <div class="career-top"><div><div class="career-role">Media &amp; Design Analyst</div><div class="career-co">Accenture</div></div><span class="career-tenure">Jan 2026 — Present</span></div>
-      <p class="career-desc">Managing design and media projects end-to-end in a full-time analyst role — where the day job lives now[cite: 1].</p>
+      <p class="career-desc">Managing design and media projects end-to-end in a full-time analyst role — where the day job lives now[cite: 19].</p>
       <div class="career-tags"><span>Current</span><span>Project Management</span><span>Campaigns</span></div>
     </div>
     <div class="career-card">
       <div class="career-top"><div><div class="career-role">Graphic Designer &amp; Video Editor</div><div class="career-co">Target Publications Pvt. Ltd.</div></div><span class="career-tenure">Sept 2024 — Nov 2025</span></div>
-      <p class="career-desc">Curriculum-focused print and digital design, plus motion graphics and explainer videos for educational content[cite: 1].</p>
+      <p class="career-desc">Curriculum-focused print and digital design, plus motion graphics and explainer videos for educational content[cite: 19].</p>
       <div class="career-tags"><span>Education</span><span>Explainer Video</span></div>
     </div>
     <div class="career-card">
       <div class="career-top"><div><div class="career-role">Designer, Editor &amp; Motion Designer → Creative Team Lead</div><div class="career-co">Jijau Sanstha</div></div><span class="career-tenure">Mar 2023 — Sept 2024</span></div>
-      <p class="career-desc">Started as a designer, editor and motion designer across healthcare and education communication[cite: 1]. Promoted to <strong>Creative Team Lead</strong> during the election period, leading designers and editors and overseeing campaign creative delivery under tight deadlines[cite: 1].</p>
+      <p class="career-desc">Started as a designer, editor and motion designer across healthcare and education communication[cite: 19]. Promoted to <strong>Creative Team Lead</strong> during the election period, leading designers and editors and overseeing campaign creative delivery under tight deadlines[cite: 19].</p>
       <div class="career-tags"><span>Promotion</span><span>Team Lead</span><span>Healthcare</span><span>Campaigns</span></div>
     </div>
     <div class="career-card">
       <div class="career-top"><div><div class="career-role">Assistant Graphic Designer</div><div class="career-co">Prittle Prattle Pvt. Ltd.</div></div><span class="career-tenure">Dec 2021 — Mar 2023</span></div>
-      <p class="career-desc">Branding, brochures, standees and corporate video across healthcare, tech, PR and real estate clients — where it started[cite: 1].</p>
+      <p class="career-desc">Branding, brochures, standees and corporate video across healthcare, tech, PR and real estate clients — where it started[cite: 19].</p>
       <div class="career-tags"><span>Where It Started</span><span>Multi-Industry</span></div>
     </div>
   </div>
@@ -839,12 +840,12 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   <div class="career-list follow-mouse" data-mult="0.6">
     <div class="career-card current">
       <div class="career-top"><div><div class="career-role">Creative Designer &amp; AI Collaborator</div><div class="career-co">SUKI Media</div></div><span class="career-tenure">Ongoing</span></div>
-      <p class="career-desc">Creative work across branding, digital campaigns, outdoor media and AI-assisted visual production for a media and advertising agency[cite: 1].</p>
+      <p class="career-desc">Creative work across branding, digital campaigns, outdoor media and AI-assisted visual production for a media and advertising agency[cite: 19].</p>
       <div class="career-tags"><span>Ongoing</span><span>Branding</span><span>Digital</span><span>Outdoor</span><span>AI</span></div>
     </div>
     <div class="career-card">
       <div class="career-top"><div><div class="career-role">Freelance Graphic Designer &amp; Video Editor</div><div class="career-co">Red Ant PR &amp; Promotion</div></div><span class="career-tenure">Ongoing</span></div>
-      <p class="career-desc">Event branding and promotional campaigns for large-scale public, government and corporate events alongside full-time work[cite: 1].</p>
+      <p class="career-desc">Event branding and promotional campaigns for large-scale public, government and corporate events alongside full-time work[cite: 19].</p>
       <div class="career-tags"><span>Event Branding</span><span>Graphic Design</span><span>Video</span></div>
     </div>
   </div>
@@ -856,8 +857,8 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
     <div class="follow-mouse" data-mult="0.7">
       <div class="eyebrow">05 — Contact</div>
       <div class="contact-word"><span class="c-a">Contact</span><br><span class="c-b">Me.</span></div>
-      <div class="contact-arrow">→ say hi before overthinking it[cite: 1]</div>
-      <p class="contact-sub">For design, motion, video, creative production or selected freelance collaborations, reach out[cite: 1].</p>
+      <div class="contact-arrow">→ say hi before overthinking it[cite: 19]</div>
+      <p class="contact-sub">For design, motion, video, creative production or selected freelance collaborations, reach out[cite: 19].</p>
     </div>
     <div class="contact-right follow-mouse" data-mult="0.8">
       <a href="mailto:badalrana1502@gmail.com?subject=Project Inquiry&body=Hi Badal,%0A%0AI would like to discuss a project with you." class="c-link-row"><span class="c-link-icon">✉️</span><span><span class="c-link-label">Email</span><br><span class="c-link-val">badalrana1502@gmail.com</span></span></a>
@@ -868,7 +869,7 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
 </section>
 
 <footer>
-  <div class="f-note">Thanks for scrolling this far. Now go build something[cite: 1].</div>
+  <div class="f-note">Thanks for scrolling this far. Now go build something[cite: 19].</div>
   <div class="f-sign">Badal Rana.</div>
 </footer>
 
