@@ -192,17 +192,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
   .bn-item{padding:.38rem .6rem;font-size:.7rem;}
 }
 
-/* HERO SECTION (250% PLACEHOLDER SCALE, ZERO TEXT SHADOW) */
+/* HERO SECTION (LEFT-ALIGNED TEXT + RIGHT IMAGE PLACEHOLDER) */
 #hero{background:var(--blue);padding:5.5rem 2rem 2rem;overflow:hidden;}
 .hero-badges{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;flex-wrap:wrap;gap:1rem;}
 .hero-note{max-width:220px;font-family:var(--fk);font-size:.85rem;color:rgba(244,240,228,.75);text-align:right;}
 
 .hero-main-layout{
   display:grid;
-  grid-template-columns:1fr 1.4fr;
+  grid-template-columns:1.1fr 0.9fr;
   align-items:center;
   gap:2.5rem;
-  min-height:55vh;
+  min-height:58vh;
 }
 .hero-left-content{
   display:flex;
@@ -213,48 +213,49 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 
 .hero-word{
   font-family:var(--fh);
-  font-size:clamp(3.8rem, 8.5vw, 8rem);
+  font-size:clamp(3.2rem, 7.5vw, 6.8rem);
   font-weight:700;
   color:var(--cream);
   text-align:left;
   line-height:.95;
-  text-shadow: none !important;
+  text-shadow: 4px 6px 0px rgba(10,10,16,0.3);
+  transition: text-shadow .15s ease-out;
 }
+.hero-role{display:flex;flex-direction:column;gap:.7rem;margin-top:1.4rem;}
+.hero-role-row{
+  display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap;
+  padding:.3rem .6rem;border-radius:8px;width:max-content;max-width:100%;
+  cursor:default;transition:transform .28s cubic-bezier(0.16, 1, 0.3, 1), background-color .25s ease;
+  transform-origin:left center;
+}
+.hero-role-row:hover{
+  transform:scale(1.035) translateX(8px);
+  background:rgba(244,240,228,0.08);
+}
+.hero-role-label{font-family:var(--fk);font-size:.85rem;color:rgba(244,240,228,.55);transition:color .2s ease;}
+.hero-role-val{font-family:var(--fh);font-size:clamp(1.3rem,2.4vw,1.9rem);font-weight:700;color:var(--cream);transition:color .2s ease;}
+.hero-role-row:hover .hero-role-label{color:var(--lime);}
+.hero-role-val.now{color:var(--lime);}
 
-/* HERO PLACEHOLDER CONTAINER (SCALED 250%) */
+/* HERO IMAGE CONTAINER (UPDATED TO 700PX) */
 .hero-image-container{
   display:flex;
   justify-content:center;
   align-items:center;
   width:100%;
+  max-width:700px;
   position:relative;
+  margin:0 auto;
   opacity: var(--hero-img-opacity);
   transition: opacity 0.3s ease;
 }
-.hero-placeholder-box{
-  width:min(900px, 100%);
-  aspect-ratio: 16 / 10;
-  background:rgba(10, 10, 16, 0.35);
-  border:2px dashed var(--lime);
-  border-radius:16px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:.6rem;
-  padding:1.5rem;
-  text-align:center;
-  box-shadow:8px 8px 0 rgba(0,0,0,0.25);
-  position:relative;
-  overflow:hidden;
-}
 .hero-image-container img{
-  width:min(900px, 100%);
+  width:100%;
+  max-width:700px;
   height:auto;
-  max-height:65vh;
+  max-height:700px;
   object-fit:contain;
   display:block;
-  border-radius:12px;
 }
 
 .hero-foot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:2rem;flex-wrap:wrap;gap:1rem;}
@@ -538,7 +539,8 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   .hero-main-layout{grid-template-columns:1fr;gap:1.5rem;text-align:center;}
   .hero-left-content{align-items:center;text-align:center;}
   .hero-word{text-align:center;}
-  .hero-image-container{order: -1;max-height: 380px;}
+  .hero-role-row{margin:0 auto;}
+  .hero-image-container{order: -1;max-height: 420px;max-width: 100%;}
 
   .about-top,.skills-split,.contact-flex{grid-template-columns:1fr;}
   .case-study,.case-study.reverse{grid-template-columns:1fr;gap:1.5rem;}
@@ -583,7 +585,7 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   <div class="n-cta">Fastest way to know me — <a href="#" class="n-cta-link" data-nav="1" style="color:var(--lime);">Best Work</a> → <a href="#" class="n-cta-link n-cta-blue" data-nav="5">Contact</a></div>
 </nav>
 
-<!-- 0 HOME (BLUE / ZERO SHADOW / SCALED HERO) -->
+<!-- 0 HOME (BLUE / CURSOR: LIME) -->
 <section id="hero" class="blueprint" data-index="0" data-cur="lime">
   <div class="hero-badges follow-mouse" data-mult="0.6">
     <div class="tag-rot" style="transform:rotate(-3deg);">EST. 2021 — INDIA</div>
@@ -593,9 +595,14 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   <div class="hero-main-layout">
     <div class="hero-left-content">
       <div class="hero-word follow-mouse" id="heroWord" data-mult="1.1">Badal Rana.</div>
+      <div class="hero-role follow-mouse" data-mult="0.8">
+        <div class="hero-role-row"><span class="hero-role-label">Started as</span><span class="hero-role-val">Assistant Graphic Designer</span></div>
+        <div class="hero-role-row"><span class="hero-role-label">Promoted to</span><span class="hero-role-val">Creative Team Lead</span></div>
+        <div class="hero-role-row"><span class="hero-role-label">Currently</span><span class="hero-role-val now">Media &amp; Design Analyst</span></div>
+      </div>
     </div>
     
-    <!-- RIGHT HERO IMAGE PLACEHOLDER (250% SIZE) -->
+    <!-- RIGHT HERO IMAGE (700PX) -->
     <div class="hero-image-container follow-mouse" data-mult="0.7">
       <img src="image.png" alt="Badal Rana Profile">
     </div>
@@ -1078,11 +1085,12 @@ cursorSections.forEach(s => cursorObserver.observe(s));
 const floatElements = [];
 const followNodes = Array.from(document.querySelectorAll('.follow-mouse'));
 const trackTxtNodes = Array.from(document.querySelectorAll('.track-txt'));
+const heroWord = document.getElementById('heroWord');
 
-/* ===== Balanced Floating Word Generator ===== */
+/* ===== Floating Word Generator for Preloader ===== */
 function placeFloatingWords(container, words, opts){
+  if(!container) return;
   opts = opts || {};
-  const isHero = container && container.id === 'hero';
   const placed = [];
 
   function overlaps(a,b,pad){
@@ -1094,26 +1102,15 @@ function placeFloatingWords(container, words, opts){
     );
   }
 
-  function inHeroSafeZone(x,y,w,h){
-    if(!isHero) return false;
-    const cx = x + w/2, cy = y + h/2;
-    const vw = container.clientWidth || window.innerWidth;
-    const vh = container.clientHeight || window.innerHeight;
-    
-    // Strict safe zone around top-left title
-    const isOverWord = (cx < vw * 0.45) && (cy > vh * 0.25 && cy < vh * 0.65);
-    return isOverWord;
-  }
-
   words.forEach((w)=>{
     const el = document.createElement('div');
     el.className='pl-float';
     el.textContent = w;
 
-    const size = (opts.minSize||.75) + Math.random()*(opts.sizeRange||1.1);
+    const size = (opts.minSize||.8) + Math.random()*(opts.sizeRange||1.4);
     el.style.fontSize = size+'rem';
-    el.style.opacity = (opts.minOpacity||.04) + Math.random()*(opts.opacityRange||.07);
-    el.style.filter = `blur(${(Math.random()*(opts.blurMax||1.2)).toFixed(1)}px)`;
+    el.style.opacity = (opts.minOpacity||.06) + Math.random()*(opts.opacityRange||.16);
+    el.style.filter = `blur(${(Math.random()*(opts.blurMax||1.8)).toFixed(1)}px)`;
 
     el.style.visibility='hidden';
     el.style.left='0px';
@@ -1132,37 +1129,22 @@ function placeFloatingWords(container, words, opts){
       y = ch*(.06 + Math.random()*.88);
 
       box = {left:x-ew/2,right:x+ew/2,top:y-eh/2,bottom:y+eh/2};
-      if(inHeroSafeZone(x,y,ew,eh)) continue;
-
-      const collision = placed.some(p=>overlaps(box,p,16));
+      const collision = placed.some(p=>overlaps(box,p,14));
       if(!collision){ success=true; break; }
     }
 
     if(!success){
-      x = cw*(.72 + Math.random()*.24);
-      y = ch*(.12 + Math.random()*.76);
+      x = cw*(.78 + Math.random()*.18);
+      y = ch*(.15 + Math.random()*.70);
       box = {left:x-ew/2,right:x+ew/2,top:y-eh/2,bottom:y+eh/2};
     }
 
     placed.push(box);
-
-    const rotation = (Math.random()*12-6).toFixed(1);
     el.style.left = x+'px';
     el.style.top = y+'px';
     el.style.visibility='visible';
-
-    if(isHero){
-      floatElements.push({
-        el,
-        rot: rotation,
-        speed: 0.4 + Math.random() * 0.7
-      });
-    }
   });
 }
-
-const SKILL_WORDS = ['Photoshop','Premiere Pro','After Effects','Motion Graphics','Illustrator','Figma','Video Editing','Brand Design','Midjourney','Runway','Creative Strategy','Campaigns','Storytelling','Firefly','Editorial','UI/UX','Branding','Concept to Delivery','Design Systems','Prototyping','Motion Design','Art Direction','Visual Identity','Team Leadership','Sora','Claude'];
-placeFloatingWords(document.getElementById('hero'), SKILL_WORDS, {minSize:.75,sizeRange:1.1,minOpacity:0.04,opacityRange:0.07,blurMax:1.2});
 
 const LOAD_WORDS = ['SIGNAL','FRAME','NOISE','IDEA','MOTION','FORM','CUT','BUILD','VISUAL','SHIFT','CREATE','RENDER','SYSTEM','PLAY','THINK','MAKE','001','002','003','INPUT','OUTPUT','PROCESS','ARCHIVE','LOADING'];
 placeFloatingWords(document.getElementById('pl-field'), LOAD_WORDS, {minSize:.85, sizeRange:1.75, minOpacity:.03, opacityRange:.08, blurMax:3.2});
@@ -1209,12 +1191,12 @@ function mainLoop(){
     node.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
   }
 
-  // Floating background words
-  for(let i = 0; i < floatElements.length; i++){
-    const item = floatElements[i];
-    const offX = smoothNormX * 26 * item.speed;
-    const offY = smoothNormY * 20 * item.speed;
-    item.el.style.transform = `translate(calc(-50% + ${offX.toFixed(2)}px), calc(-50% + ${offY.toFixed(2)}px)) rotate(${item.rot}deg)`;
+  // Dynamic Eased Shadow for "Badal Rana."
+  if (heroWord) {
+    const shX = (-smoothNormX * 14 + 3).toFixed(1);
+    const shY = (-smoothNormY * 12 + 6).toFixed(1);
+    const shBlur = (Math.abs(smoothNormX) * 4 + 4).toFixed(1);
+    heroWord.style.textShadow = `${shX}px ${shY}px ${shBlur}px rgba(10, 10, 16, 0.45)`;
   }
 
   requestAnimationFrame(mainLoop);
@@ -1222,7 +1204,7 @@ function mainLoop(){
 requestAnimationFrame(mainLoop);
 
 // Interactive Hover
-document.querySelectorAll('a, button, .case-type, .tag-rot, .reel-tile').forEach(el => {
+document.querySelectorAll('a, button, .case-type, .tag-rot, .hero-role-row, .reel-tile').forEach(el => {
   el.addEventListener('mouseenter', () => {
     cur.style.transform = 'translate(-50%,-50%) scale(2)';
     curR.style.transform = 'translate(-50%,-50%) scale(1.4)';
@@ -1275,7 +1257,7 @@ document.querySelectorAll('[data-nav]').forEach(el=>{
   });
 });
 
-/* ===== Generative canvases with 10-Second Animation Mode Switching ===== */
+/* ===== Generative canvases ===== */
 (function(){
   const configs = [
     (ctx,w,h,t)=>{ ctx.fillStyle='#0a0612'; ctx.fillRect(0,0,w,h);
