@@ -237,28 +237,67 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .hero-role-row:hover .hero-role-label{color:var(--lime);}
 .hero-role-val.now{color:var(--lime);}
 
-/* HERO IMAGE CONTAINER (UPDATED TO 700PX) */
+/* Let the hero image position itself against the full hero section, not the grid row. */
+#hero .hero-main-layout{position:static;}
+
+/* HERO IMAGE — LARGE, RIGHT-ALIGNED, TOUCHING THE BOTTOM */
 .hero-image-container{
+  position:absolute;
+  right:1.5rem;
+  bottom:0;
+  width:min(52vw,820px);
+  height:min(94vh,820px);
   display:flex;
-  justify-content:center;
-  align-items:center;
-  width:100%;
-  max-width:700px;
-  position:relative;
-  margin:0 auto;
-  opacity: var(--hero-img-opacity);
-  transition: opacity 0.3s ease;
+  align-items:flex-end;
+  justify-content:flex-end;
+  margin:0;
+  z-index:1;
+  opacity:var(--hero-img-opacity);
+  transition:opacity .3s ease;
+  pointer-events:none;
 }
 .hero-image-container img{
   width:100%;
-  max-width:700px;
-  height:auto;
-  max-height:700px;
+  height:100%;
+  max-width:none;
+  max-height:none;
   object-fit:contain;
+  object-position:right bottom;
   display:block;
 }
 
-.hero-foot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:2rem;flex-wrap:wrap;gap:1rem;}
+/* RESTORE THE LOW-OPACITY HERO NOTE */
+#hero .hero-note{
+  position:absolute;
+  top:0;
+  right:0;
+  z-index:5;
+  max-width:220px;
+  font-family:var(--fk);
+  font-size:.85rem;
+  line-height:1.45;
+  color:rgba(244,240,228,.48);
+  text-align:right;
+  pointer-events:none;
+}
+#hero .hero-note b{
+  color:rgba(217,255,75,.78) !important;
+}
+
+/* KEEP THE CTA IN THE SAME VISUAL ZONE AS THE ORIGINAL HERO */
+.hero-foot{
+  position:absolute;
+  left:2rem;
+  right:2rem;
+  bottom:3.4rem;
+  z-index:4;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  flex-wrap:wrap;
+  gap:1rem;
+  margin:0;
+}
 .hero-cta{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fh);font-size:1.3rem;color:var(--ink);background:var(--lime);padding:.7rem 1.6rem;border-radius:3rem;text-decoration:none;transform:rotate(-1deg);box-shadow:5px 5px 0 rgba(0,0,0,.3);cursor:pointer;border:none;}
 
 /* 1 CASE STUDIES */
@@ -540,7 +579,18 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   .hero-left-content{align-items:center;text-align:center;}
   .hero-word{text-align:center;}
   .hero-role-row{margin:0 auto;}
-  .hero-image-container{order: -1;max-height: 420px;max-width: 100%;}
+  .hero-image-container{
+    position:relative;
+    right:auto;
+    bottom:auto;
+    order:-1;
+    width:min(100%,620px);
+    height:min(58vh,520px);
+    max-width:100%;
+    margin:0 auto;
+  }
+  #hero .hero-note{position:relative;top:auto;right:auto;max-width:220px;margin-left:auto;}
+  .hero-foot{position:relative;left:auto;right:auto;bottom:auto;margin-top:1.5rem;}
 
   .about-top,.skills-split,.contact-flex{grid-template-columns:1fr;}
   .case-study,.case-study.reverse{grid-template-columns:1fr;gap:1.5rem;}
