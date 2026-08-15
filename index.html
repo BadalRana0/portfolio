@@ -14,9 +14,8 @@
   --fh:'Caveat',cursive; --fk:'Kalam',cursive; --fb:'Inter',sans-serif;
   --cur-color: var(--lime);
   
-  /* CONTROLS FOR HERO IMAGE */
+  /* OPACITY CONTROL FOR THE HERO IMAGE/PLACEHOLDER (0.0 to 1.0) */
   --hero-img-opacity: 0.95;
-  --hero-img-scale: 1.05; /* Adjust size/zoom of the silhouette */
 }
 html{scroll-behavior:smooth;}
 body{background:var(--blue);color:var(--text);font-family:var(--fb);line-height:1.6;overflow-x:hidden;overscroll-behavior:none;}
@@ -25,23 +24,9 @@ img,canvas,iframe{max-width:100%;display:block;}
 ::selection{background:var(--lime);color:#111;}
 section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;}
 
-/* FLOATING WORDS LAYERED BEHIND EVERYTHING */
-.pl-float{
-  position:absolute;
-  font-family:var(--fh);
-  color:var(--cream);
-  pointer-events:none;
-  white-space:nowrap;
-  z-index:0;
-  will-change:transform;
-  user-select:none;
-}
-#hero .hero-badges,
-#hero .hero-main-layout,
-#hero .hero-foot{
-  position:relative;
-  z-index:2;
-}
+/* FLOATING WORDS */
+.pl-float{position:absolute;font-family:var(--fh);color:var(--cream);pointer-events:none;white-space:nowrap;z-index:0;will-change:transform;}
+#hero .hero-badges,#hero .hero-main-layout,#hero .hero-foot{position:relative;z-index:2;}
 
 /* PRELOADER */
 #preloader{
@@ -66,8 +51,8 @@ section{min-height:100vh;display:flex;flex-direction:column;justify-content:cent
   transition:opacity .32s ease;
 }
 #preloader.black-hold{background:#000;transition:background .22s ease;}
-#pl-field{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;}
-#preloader .pl-float{color:rgba(244,240,228,.4);z-index:0;}
+#pl-field{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+#preloader .pl-float{color:rgba(244,240,228,.7);z-index:0;}
 .pl-topline,.pl-bottomline{
   position:absolute;left:2.2rem;right:2.2rem;display:flex;justify-content:space-between;
   align-items:center;z-index:3;font:700 .72rem var(--fk);letter-spacing:.08em;
@@ -162,7 +147,7 @@ body.theme-white{--cur-color: #FFFFFF;}
 /* BLUEPRINTS & TICKER */
 .blueprint{background-image:linear-gradient(rgba(244,240,228,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(244,240,228,.06) 1px,transparent 1px);background-size:38px 38px;}
 .tag-rot{display:inline-flex;align-items:center;gap:.4rem;background:var(--cream);color:#111;font-family:var(--fk);padding:.35rem .9rem;border:2px solid #111;border-radius:4px;font-size:.8rem;font-weight:700;box-shadow:4px 4px 0 rgba(0,0,0,.25);}
-.ticker-wrap{border-top:1px solid rgba(244,240,228,.12);border-bottom:1px solid rgba(244,240,228,.12);padding:.8rem 0;overflow:hidden;background:var(--ink);position:relative;z-index:2;}
+.ticker-wrap{border-top:1px solid rgba(244,240,228,.12);border-bottom:1px solid rgba(244,240,228,.12);padding:.8rem 0;overflow:hidden;background:var(--ink);}
 .ticker-track{display:flex;width:max-content;animation:tickmove 22s linear infinite;}
 .ticker-track span{font-family:var(--fk);font-size:.8rem;color:rgba(244,240,228,.55);padding:0 1.4rem;white-space:nowrap;border-right:1px solid rgba(244,240,228,.15);}
 @keyframes tickmove{from{transform:translateX(0);}to{transform:translateX(-50%);}}
@@ -207,17 +192,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
   .bn-item{padding:.38rem .6rem;font-size:.7rem;}
 }
 
-/* HERO SECTION */
-#hero{background:var(--blue);padding:5.5rem 2rem 2rem;overflow:hidden;position:relative;}
+/* HERO SECTION (250% PLACEHOLDER SCALE, ZERO TEXT SHADOW) */
+#hero{background:var(--blue);padding:5.5rem 2rem 2rem;overflow:hidden;}
 .hero-badges{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;flex-wrap:wrap;gap:1rem;}
 .hero-note{max-width:220px;font-family:var(--fk);font-size:.85rem;color:rgba(244,240,228,.75);text-align:right;}
 
 .hero-main-layout{
   display:grid;
-  grid-template-columns:1.2fr 0.8fr;
+  grid-template-columns:1fr 1.4fr;
   align-items:center;
   gap:2.5rem;
-  min-height:52vh;
+  min-height:55vh;
 }
 .hero-left-content{
   display:flex;
@@ -228,49 +213,48 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 
 .hero-word{
   font-family:var(--fh);
-  font-size:clamp(3.2rem, 7.5vw, 6.8rem);
+  font-size:clamp(3.8rem, 8.5vw, 8rem);
   font-weight:700;
   color:var(--cream);
   text-align:left;
   line-height:.95;
-  text-shadow: 4px 6px 0px rgba(10,10,16,0.3);
-  transition: text-shadow .15s ease-out;
+  text-shadow: none !important;
 }
-.hero-role{display:flex;flex-direction:column;gap:.7rem;margin-top:1.4rem;}
-.hero-role-row{
-  display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap;
-  padding:.3rem .6rem;border-radius:8px;width:max-content;max-width:100%;
-  cursor:default;transition:transform .28s cubic-bezier(0.16, 1, 0.3, 1), background-color .25s ease;
-  transform-origin:left center;
-}
-.hero-role-row:hover{
-  transform:scale(1.035) translateX(8px);
-  background:rgba(244,240,228,0.08);
-}
-.hero-role-label{font-family:var(--fk);font-size:.85rem;color:rgba(244,240,228,.55);transition:color .2s ease;}
-.hero-role-val{font-family:var(--fh);font-size:clamp(1.3rem,2.4vw,1.9rem);font-weight:700;color:var(--cream);transition:color .2s ease;}
-.hero-role-row:hover .hero-role-label{color:var(--lime);}
-.hero-role-val.now{color:var(--lime);}
 
-/* HERO IMAGE CONTAINER WITH DYNAMIC SCALING */
+/* HERO PLACEHOLDER CONTAINER (SCALED 250%) */
 .hero-image-container{
   display:flex;
   justify-content:center;
   align-items:center;
-  width:250%;
+  width:100%;
   position:relative;
   opacity: var(--hero-img-opacity);
-  transform: scale(var(--hero-img-scale));
-  transform-origin: center center;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index:2;
+  transition: opacity 0.3s ease;
+}
+.hero-placeholder-box{
+  width:min(900px, 100%);
+  aspect-ratio: 16 / 10;
+  background:rgba(10, 10, 16, 0.35);
+  border:2px dashed var(--lime);
+  border-radius:16px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:.6rem;
+  padding:1.5rem;
+  text-align:center;
+  box-shadow:8px 8px 0 rgba(0,0,0,0.25);
+  position:relative;
+  overflow:hidden;
 }
 .hero-image-container img{
-  width: min(380px, 250%);
-  height: auto;
-  max-height: 55vh;
-  object-fit: contain;
-  filter: drop-shadow(0 0px 0px rgba(0,0,0,0.35));
+  width:min(900px, 100%);
+  height:auto;
+  max-height:65vh;
+  object-fit:contain;
+  display:block;
+  border-radius:12px;
 }
 
 .hero-foot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:2rem;flex-wrap:wrap;gap:1rem;}
@@ -554,8 +538,7 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   .hero-main-layout{grid-template-columns:1fr;gap:1.5rem;text-align:center;}
   .hero-left-content{align-items:center;text-align:center;}
   .hero-word{text-align:center;}
-  .hero-role-row{margin:0 auto;}
-  .hero-image-container{order: -1; max-height: 280px;}
+  .hero-image-container{order: -1;max-height: 380px;}
 
   .about-top,.skills-split,.contact-flex{grid-template-columns:1fr;}
   .case-study,.case-study.reverse{grid-template-columns:1fr;gap:1.5rem;}
@@ -600,7 +583,7 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   <div class="n-cta">Fastest way to know me — <a href="#" class="n-cta-link" data-nav="1" style="color:var(--lime);">Best Work</a> → <a href="#" class="n-cta-link n-cta-blue" data-nav="5">Contact</a></div>
 </nav>
 
-<!-- 0 HOME (BLUE / CURSOR: LIME) -->
+<!-- 0 HOME (BLUE / ZERO SHADOW / SCALED HERO) -->
 <section id="hero" class="blueprint" data-index="0" data-cur="lime">
   <div class="hero-badges follow-mouse" data-mult="0.6">
     <div class="tag-rot" style="transform:rotate(-3deg);">EST. 2021 — INDIA</div>
@@ -610,16 +593,11 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   <div class="hero-main-layout">
     <div class="hero-left-content">
       <div class="hero-word follow-mouse" id="heroWord" data-mult="1.1">Badal Rana.</div>
-      <div class="hero-role follow-mouse" data-mult="0.8">
-        <div class="hero-role-row"><span class="hero-role-label">Started as</span><span class="hero-role-val">Assistant Graphic Designer</span></div>
-        <div class="hero-role-row"><span class="hero-role-label">Promoted to</span><span class="hero-role-val">Creative Team Lead</span></div>
-        <div class="hero-role-row"><span class="hero-role-label">Currently</span><span class="hero-role-val now">Media &amp; Design Analyst</span></div>
-      </div>
     </div>
     
-    <!-- RIGHT HERO SILHOUETTE IMAGE -->
+    <!-- RIGHT HERO IMAGE PLACEHOLDER (250% SIZE) -->
     <div class="hero-image-container follow-mouse" data-mult="0.7">
-      <img src="image.png" alt="Badal Rana Silhouette">
+      <img src="image.png" alt="Badal Rana Profile">
     </div>
   </div>
 
@@ -1100,71 +1078,94 @@ cursorSections.forEach(s => cursorObserver.observe(s));
 const floatElements = [];
 const followNodes = Array.from(document.querySelectorAll('.follow-mouse'));
 const trackTxtNodes = Array.from(document.querySelectorAll('.track-txt'));
-const heroWord = document.getElementById('heroWord');
 
-/* ===== Uniform Floating Word Grid Generator ===== */
+/* ===== Balanced Floating Word Generator ===== */
 function placeFloatingWords(container, words, opts){
   opts = opts || {};
   const isHero = container && container.id === 'hero';
-  const total = words.length;
-  
-  // Calculate grid dimensions for even distribution across entire area
-  const cols = Math.ceil(Math.sqrt(total * 1.6));
-  const rows = Math.ceil(total / cols);
+  const placed = [];
 
-  const shuffled = [...words].sort(() => 0.5 - Math.random());
+  function overlaps(a,b,pad){
+    return !(
+      a.right + pad < b.left ||
+      a.left - pad > b.right ||
+      a.bottom + pad < b.top ||
+      a.top - pad > b.bottom
+    );
+  }
 
-  shuffled.forEach((w, i) => {
+  function inHeroSafeZone(x,y,w,h){
+    if(!isHero) return false;
+    const cx = x + w/2, cy = y + h/2;
+    const vw = container.clientWidth || window.innerWidth;
+    const vh = container.clientHeight || window.innerHeight;
+    
+    // Strict safe zone around top-left title
+    const isOverWord = (cx < vw * 0.45) && (cy > vh * 0.25 && cy < vh * 0.65);
+    return isOverWord;
+  }
+
+  words.forEach((w)=>{
     const el = document.createElement('div');
-    el.className = 'pl-float';
+    el.className='pl-float';
     el.textContent = w;
 
-    const size = (opts.minSize || 0.8) + Math.random() * (opts.sizeRange || 1.3);
-    el.style.fontSize = size + 'rem';
-    el.style.opacity = (opts.minOpacity || 0.08) + Math.random() * (opts.opacityRange || 0.14);
-    el.style.filter = `blur(${(Math.random() * (opts.blurMax || 1.6)).toFixed(1)}px)`;
+    const size = (opts.minSize||.75) + Math.random()*(opts.sizeRange||1.1);
+    el.style.fontSize = size+'rem';
+    el.style.opacity = (opts.minOpacity||.04) + Math.random()*(opts.opacityRange||.07);
+    el.style.filter = `blur(${(Math.random()*(opts.blurMax||1.2)).toFixed(1)}px)`;
 
+    el.style.visibility='hidden';
+    el.style.left='0px';
+    el.style.top='0px';
     container.appendChild(el);
 
-    const c = i % cols;
-    const r = Math.floor(i / cols);
+    const ew = Math.max(34, el.offsetWidth);
+    const eh = Math.max(18, el.offsetHeight);
+    const cw = container.clientWidth || window.innerWidth;
+    const ch = container.clientHeight || window.innerHeight;
 
-    // Uniformly scatter inside respective grid cells
-    const cellW = 100 / cols;
-    const cellH = 100 / rows;
-    
-    const jitterX = (Math.random() - 0.5) * (cellW * 0.7);
-    const jitterY = (Math.random() - 0.5) * (cellH * 0.7);
-    
-    const posX = ((c + 0.5) * cellW) + jitterX;
-    const posY = ((r + 0.5) * cellH) + jitterY;
+    let x=0,y=0,box=null,success=false;
 
-    const rotation = (Math.random() * 16 - 8).toFixed(1);
-    el.style.left = Math.max(3, Math.min(97, posX)) + '%';
-    el.style.top = Math.max(3, Math.min(97, posY)) + '%';
+    for(let attempt=0; attempt<100; attempt++){
+      x = cw*(.04 + Math.random()*.92);
+      y = ch*(.06 + Math.random()*.88);
+
+      box = {left:x-ew/2,right:x+ew/2,top:y-eh/2,bottom:y+eh/2};
+      if(inHeroSafeZone(x,y,ew,eh)) continue;
+
+      const collision = placed.some(p=>overlaps(box,p,16));
+      if(!collision){ success=true; break; }
+    }
+
+    if(!success){
+      x = cw*(.72 + Math.random()*.24);
+      y = ch*(.12 + Math.random()*.76);
+      box = {left:x-ew/2,right:x+ew/2,top:y-eh/2,bottom:y+eh/2};
+    }
+
+    placed.push(box);
+
+    const rotation = (Math.random()*12-6).toFixed(1);
+    el.style.left = x+'px';
+    el.style.top = y+'px';
+    el.style.visibility='visible';
 
     if(isHero){
       floatElements.push({
         el,
         rot: rotation,
-        speed: 0.4 + Math.random() * 0.8
+        speed: 0.4 + Math.random() * 0.7
       });
     }
   });
 }
 
-const SKILL_WORDS = [
-  'Photoshop','Premiere Pro','After Effects','Motion Graphics','Illustrator','Figma',
-  'Video Editing','Brand Design','Midjourney','Runway','Creative Strategy','Campaigns',
-  'Storytelling','Firefly','Editorial','UI/UX','Branding','Concept to Delivery',
-  'Design Systems','Prototyping','Motion Design','Art Direction','Visual Identity',
-  'Team Leadership','Sora','Claude','DaVinci Resolve','Vector Art','Typography',
-  '3D Asset Creation','Color Grading','Audio Mix','Storyboard','Social Ad Design'
-];
-placeFloatingWords(document.getElementById('hero'), SKILL_WORDS, {minSize: 0.8, sizeRange: 1.4, minOpacity: 0.09, opacityRange: 0.14, blurMax: 1.2});
+const SKILL_WORDS = ['Photoshop','Premiere Pro','After Effects','Motion Graphics','Illustrator','Figma','Video Editing','Brand Design','Midjourney','Runway','Creative Strategy','Campaigns','Storytelling','Firefly','Editorial','UI/UX','Branding','Concept to Delivery','Design Systems','Prototyping','Motion Design','Art Direction','Visual Identity','Team Leadership','Sora','Claude'];
+placeFloatingWords(document.getElementById('hero'), SKILL_WORDS, {minSize:.75,sizeRange:1.1,minOpacity:0.04,opacityRange:0.07,blurMax:1.2});
 
 const LOAD_WORDS = ['SIGNAL','FRAME','NOISE','IDEA','MOTION','FORM','CUT','BUILD','VISUAL','SHIFT','CREATE','RENDER','SYSTEM','PLAY','THINK','MAKE','001','002','003','INPUT','OUTPUT','PROCESS','ARCHIVE','LOADING'];
-placeFloatingWords(document.getElementById('pl-field'), LOAD_WORDS, {minSize: 0.85, sizeRange: 1.75, minOpacity: 0.04, opacityRange: 0.09, blurMax: 2.8});
+placeFloatingWords(document.getElementById('pl-field'), LOAD_WORDS, {minSize:.85, sizeRange:1.75, minOpacity:.03, opacityRange:.08, blurMax:3.2});
 
 /* ===== Main Physics & Parallax Render Loop ===== */
 function mainLoop(){
@@ -1208,20 +1209,12 @@ function mainLoop(){
     node.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
   }
 
-  // Dynamic Eased Shadow for "Badal Rana."
-  if (heroWord) {
-    const shX = (-smoothNormX * 14 + 3).toFixed(1);
-    const shY = (-smoothNormY * 12 + 6).toFixed(1);
-    const shBlur = (Math.abs(smoothNormX) * 4 + 4).toFixed(1);
-    heroWord.style.textShadow = `${shX}px ${shY}px ${shBlur}px rgba(10, 10, 16, 0.45)`;
-  }
-
-  // Floating background words subtle drift
+  // Floating background words
   for(let i = 0; i < floatElements.length; i++){
     const item = floatElements[i];
     const offX = smoothNormX * 26 * item.speed;
     const offY = smoothNormY * 20 * item.speed;
-    item.el.style.transform = `translate3d(${offX.toFixed(2)}px, ${offY.toFixed(2)}px, 0) rotate(${item.rot}deg)`;
+    item.el.style.transform = `translate(calc(-50% + ${offX.toFixed(2)}px), calc(-50% + ${offY.toFixed(2)}px)) rotate(${item.rot}deg)`;
   }
 
   requestAnimationFrame(mainLoop);
@@ -1229,7 +1222,7 @@ function mainLoop(){
 requestAnimationFrame(mainLoop);
 
 // Interactive Hover
-document.querySelectorAll('a, button, .case-type, .tag-rot, .hero-role-row, .reel-tile').forEach(el => {
+document.querySelectorAll('a, button, .case-type, .tag-rot, .reel-tile').forEach(el => {
   el.addEventListener('mouseenter', () => {
     cur.style.transform = 'translate(-50%,-50%) scale(2)';
     curR.style.transform = 'translate(-50%,-50%) scale(1.4)';
@@ -1282,7 +1275,7 @@ document.querySelectorAll('[data-nav]').forEach(el=>{
   });
 });
 
-/* ===== Generative canvases ===== */
+/* ===== Generative canvases with 10-Second Animation Mode Switching ===== */
 (function(){
   const configs = [
     (ctx,w,h,t)=>{ ctx.fillStyle='#0a0612'; ctx.fillRect(0,0,w,h);
