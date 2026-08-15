@@ -1139,8 +1139,8 @@ const heroWord = document.getElementById('heroWord');
 
 /* ===== Floating Word Generator for Preloader ===== */
 function placeFloatingWords(container, words, opts){
-  if(!container) return;
   opts = opts || {};
+  const isHero = container && container.id === 'hero';
   const placed = [];
 
   function overlaps(a,b,pad){
@@ -1152,7 +1152,17 @@ function placeFloatingWords(container, words, opts){
     );
   }
 
-  words.forEach((w)=>{
+  function inHeroSafeZone(x,y,w,h){
+    if(!isHero) return false;
+    // Keep the central hero typography and role stack visually clean.
+    const cx = x + w/2, cy = y + h/2;
+    const vw = container.clientWidth || window.innerWidth;
+    const vh = container.clientHeight || window.innerHeight;
+    const centerX = vw * .50, centerY = vh * .48;
+    return Math.abs(cx-centerX) < vw*.25 && Math.abs(cy-centerY) < vh*.31;
+  }
+
+  words.forEach((w,i)=>{
     const el = document.createElement('div');
     el.className='pl-float';
     el.textContent = w;
@@ -1162,9 +1172,11 @@ function placeFloatingWords(container, words, opts){
     el.style.opacity = (opts.minOpacity||.06) + Math.random()*(opts.opacityRange||.16);
     el.style.filter = `blur(${(Math.random()*(opts.blurMax||1.8)).toFixed(1)}px)`;
 
+    // Render invisibly first so we can measure the actual word dimensions.
     el.style.visibility='hidden';
     el.style.left='0px';
     el.style.top='0px';
+    el.style.transform='translate(-50%,-50%)';
     container.appendChild(el);
 
     const ew = Math.max(34, el.offsetWidth);
@@ -1174,27 +1186,75 @@ function placeFloatingWords(container, words, opts){
 
     let x=0,y=0,box=null,success=false;
 
-    for(let attempt=0; attempt<100; attempt++){
-      x = cw*(.04 + Math.random()*.92);
-      y = ch*(.06 + Math.random()*.88);
+    // Prefer the outer zones; the center remains reserved for the hero.
+    for(let attempt=0; attempt<90; attempt++){
+      const edgeBias = Math.random();
+      if(isHero && edgeBias < .78){
+        // Randomly choose left, right, upper or lower perimeter bands.
+        const side = Math.floor(Math.random()*4);
+        if(side===0){ x = cw*(.03 + Math.random()*.25); y = ch*(.08 + Math.random()*.78); }
+        if(side===1){ x = cw*(.72 + Math.random()*.25); y = ch*(.08 + Math.random()*.78); }
+        if(side===2){ x = cw*(.05 + Math.random()*.90); y = ch*(.07 + Math.random()*.25); }
+        if(side===3){ x = cw*(.05 + Math.random()*.90); y = ch*(.72 + Math.random()*.22); }
+      }else{
+        x = cw*(.04 + Math.random()*.92);
+        y = ch*(.06 + Math.random()*.88);
+      }
 
       box = {left:x-ew/2,right:x+ew/2,top:y-eh/2,bottom:y+eh/2};
-      const collision = placed.some(p=>overlaps(box,p,14));
+      if(inHeroSafeZone(x,y,ew,eh)) continue;
+
+      const collision = placed.some(p=>overlaps(box,p,12));
       if(!collision){ success=true; break; }
     }
 
+    // If the page is too crowded, accept a position rather than dropping the word.
     if(!success){
-      x = cw*(.78 + Math.random()*.18);
-      y = ch*(.15 + Math.random()*.70);
+      x = cw*(.06 + Math.random()*.88);
+      y = ch*(.08 + Math.random()*.84);
       box = {left:x-ew/2,right:x+ew/2,top:y-eh/2,bottom:y+eh/2};
     }
 
     placed.push(box);
+
+    const rotation = (Math.random()*14-7).toFixed(1);
+    const baseTransform = `translate(-50%,-50%) rotate(${rotation}deg)`;
     el.style.left = x+'px';
     el.style.top = y+'px';
+    el.style.transform = baseTransform;
     el.style.visibility='visible';
+
+    // Each word drifts independently: tiny, slow, editorial movement.
+    const dur = 5200 + Math.random()*5000;
+    const delay = Math.random()*-5000;
+    const dx = Math.random()*8-4;
+    const dy = Math.random()*10-5;
+    el.animate(
+      [
+        {transform:baseTransform},
+        {transform:`translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px)) rotate(${rotation}deg)`},
+        {transform:baseTransform}
+      ],
+      {duration:dur,delay,iterations:Infinity,easing:'ease-in-out'}
+    );
   });
 }
+
+const SKILL_WORDS = [
+  'Photoshop','Premiere Pro','After Effects','Motion Graphics','Illustrator','Figma',
+  'Video Editing','Brand Design','Midjourney','Runway','Creative Strategy','Campaigns',
+  'Storytelling','Firefly','Editorial','UI/UX','Branding','Concept to Delivery',
+  'Design Systems','Prototyping','Motion Design','Art Direction','Visual Identity',
+  'Team Leadership','Sora','Claude'
+];
+
+placeFloatingWords(document.getElementById('hero'), SKILL_WORDS, {
+  minSize:.75,
+  sizeRange:1.25,
+  minOpacity:0.07,
+  opacityRange:0.13,
+  blurMax:1.4
+});
 
 const LOAD_WORDS = ['SIGNAL','FRAME','NOISE','IDEA','MOTION','FORM','CUT','BUILD','VISUAL','SHIFT','CREATE','RENDER','SYSTEM','PLAY','THINK','MAKE','001','002','003','INPUT','OUTPUT','PROCESS','ARCHIVE','LOADING'];
 placeFloatingWords(document.getElementById('pl-field'), LOAD_WORDS, {minSize:.85, sizeRange:1.75, minOpacity:.03, opacityRange:.08, blurMax:3.2});
