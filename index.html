@@ -1323,7 +1323,45 @@ function mainLoop(){
     node.style.setProperty('--pm', mult);
   }
 
-  // Portfolio titles tracking
+  // Skill cloud proximity highlight
+  // The .near style already defines the visual highlight; this interaction
+  // adds/removes the class based on the cursor position over the skill cloud.
+  const skillCloud = document.querySelector("#skills .cloud");
+  if (skillCloud) {
+    const skillWords = Array.from(skillCloud.querySelectorAll("span"));
+    let lastSkill = null;
+    skillCloud.addEventListener("mousemove", (e) => {
+      let closest = null;
+      let closestDistance = Infinity;
+      skillWords.forEach((word) => {
+        const r = word.getBoundingClientRect();
+        const cx = r.left + r.width / 2;
+        const cy = r.top + r.height / 2;
+        const d = Math.hypot(e.clientX - cx, e.clientY - cy);
+        if (d < closestDistance) {
+          closestDistance = d;
+          closest = word;
+        }
+      });
+
+      // Highlight only when the pointer is reasonably close to a skill.
+      if (closestDistance <= 90) {
+        if (lastSkill && lastSkill !== closest) lastSkill.classList.remove("near");
+        if (closest) closest.classList.add("near");
+        lastSkill = closest;
+      } else if (lastSkill) {
+        lastSkill.classList.remove("near");
+        lastSkill = null;
+      }
+    });
+
+    skillCloud.addEventListener("mouseleave", () => {
+      if (lastSkill) lastSkill.classList.remove("near");
+      lastSkill = null;
+    });
+  }
+
+// Portfolio titles tracking
   for(let i = 0; i < trackTxtNodes.length; i++){
     const node = trackTxtNodes[i];
     const mult = parseFloat(node.getAttribute('data-tm') || '0.7');
