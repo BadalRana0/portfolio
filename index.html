@@ -14,7 +14,7 @@
   --fh:'Caveat',cursive; --fk:'Kalam',cursive; --fb:'Inter',sans-serif;
   --cur-color: var(--lime);
   
-  /* OPACITY CONTROL FOR THE HERO IMAGE/PLACEHOLDER (0.0 to 1.0) */
+  /* OPACITY CONTROL FOR THE HERO SILHOUETTE (0.0 to 1.0) */
   --hero-img-opacity: 0.95;
 }
 html{scroll-behavior:smooth;}
@@ -192,23 +192,32 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
   .bn-item{padding:.38rem .6rem;font-size:.7rem;}
 }
 
-/* HERO SECTION (LEFT-ALIGNED TEXT + RIGHT IMAGE PLACEHOLDER) */
-#hero{background:var(--blue);padding:5.5rem 2rem 2rem;overflow:hidden;}
-.hero-badges{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;flex-wrap:wrap;gap:1rem;}
+/* HERO SECTION (LEFT-ALIGNED TEXT + BOTTOM-ALIGNED RIGHT SILHOUETTE) */
+#hero{
+  background:var(--blue);
+  padding:5.5rem 2rem 0;
+  overflow:hidden;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.hero-badges{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;flex-wrap:wrap;gap:1rem;}
 .hero-note{max-width:220px;font-family:var(--fk);font-size:.85rem;color:rgba(244,240,228,.75);text-align:right;}
 
 .hero-main-layout{
   display:grid;
-  grid-template-columns:1.2fr 0.8fr;
-  align-items:center;
+  grid-template-columns:1.15fr 0.85fr;
+  align-items:end;
   gap:2.5rem;
-  min-height:52vh;
+  flex:1;
 }
 .hero-left-content{
   display:flex;
   flex-direction:column;
   align-items:flex-start;
   text-align:left;
+  padding-bottom:3.5rem;
 }
 
 .hero-word{
@@ -237,53 +246,38 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .hero-role-row:hover .hero-role-label{color:var(--lime);}
 .hero-role-val.now{color:var(--lime);}
 
-/* HERO PLACEHOLDER CONTAINER */
+/* BOTTOM-PINNED SILHOUETTE */
 .hero-image-container{
   display:flex;
   justify-content:center;
-  align-items:center;
+  align-items:flex-end;
   width:100%;
+  height:100%;
   position:relative;
   opacity: var(--hero-img-opacity);
   transition: opacity 0.3s ease;
-}
-.hero-placeholder-box{
-  width:min(360px, 100%);
-  aspect-ratio: 1 / 1;
-  background:rgba(10, 10, 16, 0.35);
-  border:2px dashed var(--lime);
-  border-radius:16px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:.6rem;
-  padding:1.5rem;
-  text-align:center;
-  box-shadow:8px 8px 0 rgba(0,0,0,0.25);
-  position:relative;
   overflow:hidden;
 }
-.hero-placeholder-box img{
+.hero-image-container img{
   width:100%;
-  height:100%;
+  max-width:540px;
+  height:auto;
+  max-height:76vh;
   object-fit:contain;
+  object-position:bottom center;
+  transform-origin:bottom center;
   display:block;
-}
-.hero-placeholder-box span.ph-title{
-  font-family:var(--fk);
-  font-size:.82rem;
-  font-weight:700;
-  color:var(--lime);
-  letter-spacing:.08em;
-}
-.hero-placeholder-box span.ph-desc{
-  font-family:var(--fb);
-  font-size:.75rem;
-  color:rgba(244,240,228,0.65);
+  margin:0 auto;
 }
 
-.hero-foot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:2rem;flex-wrap:wrap;gap:1rem;}
+.hero-foot{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  padding:1rem 0 2rem;
+  flex-wrap:wrap;
+  gap:1rem;
+}
 .hero-cta{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fh);font-size:1.3rem;color:var(--ink);background:var(--lime);padding:.7rem 1.6rem;border-radius:3rem;text-decoration:none;transform:rotate(-1deg);box-shadow:5px 5px 0 rgba(0,0,0,.3);cursor:pointer;border:none;}
 
 /* 1 CASE STUDIES */
@@ -449,7 +443,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .about-bar .hi{color:var(--blue2);}
 .about-top{display:grid;grid-template-columns:1.4fr auto;gap:2.2rem;align-items:start;margin-bottom:1.5rem;}
 .about-polaroid{background:#fff;padding:8px 8px 26px;box-shadow:0 14px 26px rgba(0,0,0,.3);transform:rotate(-1.5deg);justify-self:center;width:220px;margin-top:.3rem;border-radius:4px;}
-.about-polaroid canvas{width:100%;height:auto;aspect-ratio:220/180;display:block;}
 .about-polaroid figcaption{font-family:var(--fk);font-size:.78rem;color:#222;text-align:center;margin-top:.5rem;}
 .about-image-placeholder{
   width: 100%;
@@ -562,11 +555,11 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
 }
 @media(max-width:860px){
   .hero-main-layout{grid-template-columns:1fr;gap:1.5rem;text-align:center;}
-  .hero-left-content{align-items:center;text-align:center;}
+  .hero-left-content{align-items:center;text-align:center;padding-bottom:1rem;}
   .hero-word{text-align:center;}
   .hero-role-row{margin:0 auto;}
-  .hero-image-container{order: -1;max-height: 280px;}
-  .hero-placeholder-box{width:min(260px, 70%);}
+  .hero-image-container{order: -1;max-height: 380px;}
+  .hero-image-container img{max-height: 48vh;}
 
   .about-top,.skills-split,.contact-flex{grid-template-columns:1fr;}
   .case-study,.case-study.reverse{grid-template-columns:1fr;gap:1.5rem;}
@@ -628,11 +621,9 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
       </div>
     </div>
     
-    <!-- RIGHT HERO IMAGE PLACEHOLDER (Paste your <img> or Github URL inside) -->
+    <!-- RIGHT HERO SILHOUETTE (Scaled to touch baseline) -->
     <div class="hero-image-container follow-mouse" data-mult="0.7">
-      <div class="hero-image-container follow-mouse" data-mult="0.7">
-  <img src="image.png" alt="Badal Rana Profile">
-</div>
+      <img src="image.png" alt="Badal Rana Profile">
     </div>
   </div>
 
@@ -1115,7 +1106,7 @@ const followNodes = Array.from(document.querySelectorAll('.follow-mouse'));
 const trackTxtNodes = Array.from(document.querySelectorAll('.track-txt'));
 const heroWord = document.getElementById('heroWord');
 
-/* ===== Floating Word Generator with Safe Exclusion Zone ===== */
+/* ===== Floating Word Generator (Quadrant Balanced + Safe Zones) ===== */
 function placeFloatingWords(container, words, opts){
   opts = opts || {};
   const isHero = container && container.id === 'hero';
@@ -1130,69 +1121,83 @@ function placeFloatingWords(container, words, opts){
     );
   }
 
-  function inHeroSafeZone(x,y,w,h){
+  function inHeroSafeZone(x,y,w,h,cw,ch){
     if(!isHero) return false;
-    const cx = x + w/2, cy = y + h/2;
-    const vw = container.clientWidth || window.innerWidth;
-    const vh = container.clientHeight || window.innerHeight;
+    const cx = x + w/2;
+    const cy = y + h/2;
     
-    const centerSafeX = vw * 0.35, centerSafeY = vh * 0.45;
-    const isOverWord = Math.abs(cx - centerSafeX) < vw * 0.35 && Math.abs(cy - centerSafeY) < vh * 0.35;
+    // Left Content Safe Zone (Title & Role rows)
+    const isOverLeftContent = (cx < cw * 0.52) && (cy > ch * 0.20 && cy < ch * 0.80);
+    // Right Silhouette Safe Zone
+    const isOverSilhouette = (cx > cw * 0.56) && (cy > ch * 0.16);
+    // Bottom Action buttons / Badges
+    const isOverTopBadges = (cy < ch * 0.14);
+    const isOverBottomCTA = (cx < cw * 0.30) && (cy > ch * 0.84);
 
-    return isOverWord;
+    return isOverLeftContent || isOverSilhouette || isOverTopBadges || isOverBottomCTA;
   }
 
-  words.forEach((w)=>{
+  const cw = container.clientWidth || window.innerWidth;
+  const ch = container.clientHeight || window.innerHeight;
+
+  words.forEach((w, idx)=>{
     const el = document.createElement('div');
     el.className='pl-float';
     el.textContent = w;
 
-    const size = (opts.minSize||.8) + Math.random()*(opts.sizeRange||1.4);
+    const size = (opts.minSize||.75) + Math.random()*(opts.sizeRange||0.9);
     el.style.fontSize = size+'rem';
-    el.style.opacity = (opts.minOpacity||.06) + Math.random()*(opts.opacityRange||.16);
-    el.style.filter = `blur(${(Math.random()*(opts.blurMax||1.8)).toFixed(1)}px)`;
+    el.style.opacity = (opts.minOpacity||.05) + Math.random()*(opts.opacityRange||0.12);
+    el.style.filter = `blur(${(Math.random()*(opts.blurMax||1.4)).toFixed(1)}px)`;
 
     el.style.visibility='hidden';
     el.style.left='0px';
     el.style.top='0px';
     container.appendChild(el);
 
-    const ew = Math.max(34, el.offsetWidth);
+    const ew = Math.max(36, el.offsetWidth);
     const eh = Math.max(18, el.offsetHeight);
-    const cw = container.clientWidth || window.innerWidth;
-    const ch = container.clientHeight || window.innerHeight;
 
     let x=0,y=0,box=null,success=false;
 
-    for(let attempt=0; attempt<100; attempt++){
-      const edgeBias = Math.random();
-      if(isHero && edgeBias < .85){
-        const side = Math.floor(Math.random()*4);
-        if(side===0){ x = cw*(.02 + Math.random()*.20); y = ch*(.08 + Math.random()*.40); }
-        if(side===1){ x = cw*(.72 + Math.random()*.26); y = ch*(.08 + Math.random()*.82); }
-        if(side===2){ x = cw*(.05 + Math.random()*.90); y = ch*(.06 + Math.random()*.18); }
-        if(side===3){ x = cw*(.55 + Math.random()*.40); y = ch*(.75 + Math.random()*.20); }
-      }else{
-        x = cw*(.04 + Math.random()*.92);
-        y = ch*(.06 + Math.random()*.88);
+    // Distribute words evenly across the perimeter slots: Top, Left margin, Center seam, Top right
+    for(let attempt=0; attempt<140; attempt++){
+      if(isHero){
+        const slot = (idx + attempt) % 4;
+        if(slot === 0){ // Top Bar Area (Across full width)
+          x = cw * (0.04 + Math.random() * 0.90);
+          y = ch * (0.04 + Math.random() * 0.14);
+        } else if(slot === 1){ // Far Left Margin
+          x = cw * (0.02 + Math.random() * 0.14);
+          y = ch * (0.18 + Math.random() * 0.62);
+        } else if(slot === 2){ // Middle Vertical Seam
+          x = cw * (0.42 + Math.random() * 0.16);
+          y = ch * (0.08 + Math.random() * 0.82);
+        } else { // Far Right Upper Margin (Above silhouette shoulders)
+          x = cw * (0.80 + Math.random() * 0.16);
+          y = ch * (0.05 + Math.random() * 0.28);
+        }
+      } else {
+        x = cw * (0.04 + Math.random() * 0.92);
+        y = ch * (0.06 + Math.random() * 0.88);
       }
 
       box = {left:x-ew/2,right:x+ew/2,top:y-eh/2,bottom:y+eh/2};
-      if(inHeroSafeZone(x,y,ew,eh)) continue;
+      if(inHeroSafeZone(x,y,ew,eh,cw,ch)) continue;
 
-      const collision = placed.some(p=>overlaps(box,p,14));
+      const collision = placed.some(p=>overlaps(box,p,16));
       if(!collision){ success=true; break; }
     }
 
     if(!success){
-      x = cw*(.78 + Math.random()*.18);
-      y = ch*(.15 + Math.random()*.70);
+      x = cw * (0.06 + Math.random() * 0.35);
+      y = ch * (0.06 + Math.random() * 0.14);
       box = {left:x-ew/2,right:x+ew/2,top:y-eh/2,bottom:y+eh/2};
     }
 
     placed.push(box);
 
-    const rotation = (Math.random()*14-7).toFixed(1);
+    const rotation = (Math.random()*12-6).toFixed(1);
     el.style.left = x+'px';
     el.style.top = y+'px';
     el.style.visibility='visible';
@@ -1201,14 +1206,14 @@ function placeFloatingWords(container, words, opts){
       floatElements.push({
         el,
         rot: rotation,
-        speed: 0.5 + Math.random() * 0.9
+        speed: 0.4 + Math.random() * 0.6
       });
     }
   });
 }
 
 const SKILL_WORDS = ['Photoshop','Premiere Pro','After Effects','Motion Graphics','Illustrator','Figma','Video Editing','Brand Design','Midjourney','Runway','Creative Strategy','Campaigns','Storytelling','Firefly','Editorial','UI/UX','Branding','Concept to Delivery','Design Systems','Prototyping','Motion Design','Art Direction','Visual Identity','Team Leadership','Sora','Claude'];
-placeFloatingWords(document.getElementById('hero'), SKILL_WORDS, {minSize:.75,sizeRange:1.25,minOpacity:0.07,opacityRange:0.13,blurMax:1.4});
+placeFloatingWords(document.getElementById('hero'), SKILL_WORDS, {minSize:.75,sizeRange:0.9,minOpacity:0.05,opacityRange:0.12,blurMax:1.4});
 
 const LOAD_WORDS = ['SIGNAL','FRAME','NOISE','IDEA','MOTION','FORM','CUT','BUILD','VISUAL','SHIFT','CREATE','RENDER','SYSTEM','PLAY','THINK','MAKE','001','002','003','INPUT','OUTPUT','PROCESS','ARCHIVE','LOADING'];
 placeFloatingWords(document.getElementById('pl-field'), LOAD_WORDS, {minSize:.85, sizeRange:1.75, minOpacity:.03, opacityRange:.08, blurMax:3.2});
