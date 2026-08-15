@@ -217,7 +217,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .hero-foot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:2.5rem;flex-wrap:wrap;gap:1rem;}
 .hero-cta{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fh);font-size:1.3rem;color:var(--ink);background:var(--lime);padding:.7rem 1.6rem;border-radius:3rem;text-decoration:none;transform:rotate(-1deg);box-shadow:5px 5px 0 rgba(0,0,0,.3);cursor:pointer;border:none;}
 
-/* 1 CASE STUDIES */
+/* 1 CASE STUDIES (SINGLE-LINE TITLE & LEFT-ALIGNED INTRO) */
 #case-studies{
   background:var(--cream);
   color:#14141c;
@@ -240,17 +240,34 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
   will-change:transform;
 }
 #case-studies > *:not(.case-modern-grid){position:relative;z-index:1;}
+
 .case-head{
-  display:grid;grid-template-columns:1.2fr 1fr;align-items:end;gap:2rem;
-  margin-bottom:4rem;width:min(1220px,100%);margin-left:auto;margin-right:auto;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:0.8rem;
+  margin-bottom:4rem;
+  width:min(1220px,100%);
+  margin-left:auto;
+  margin-right:auto;
 }
 .case-title{
-  font-family:var(--fh);font-size:clamp(3rem,7.5vw,6rem);line-height:.88;
-  font-weight:700;letter-spacing:-.03em;color:#14141c;margin-top:.4rem;
+  font-family:var(--fh);
+  font-size:clamp(2.4rem, 5.2vw, 4.5rem);
+  line-height:1.1;
+  font-weight:700;
+  letter-spacing:-.02em;
+  color:#14141c;
+  margin-top:.3rem;
+  white-space:nowrap;
 }
 .case-intro{
-  max-width:440px;font-size:.92rem;line-height:1.75;color:rgba(20,20,28,.75);justify-self:end;
+  max-width:620px;
+  font-size:.95rem;
+  line-height:1.75;
+  color:rgba(20,20,28,.75);
 }
+
 .case-list{display:flex;flex-direction:column;gap:5.5rem;width:min(1220px,100%);margin:0 auto;}
 .case-study{
   display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1.15fr);
@@ -281,7 +298,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
   display:flex;align-items:center;justify-content:center;
 }
 .case-media{
-  width:100%;min-height:360px;background:#090910;border:3px solid #111;
+  width:100%;min-height:480px;background:#090910;border:3px solid #111;
   border-radius:20px;box-shadow:9px 9px 0 rgba(0,0,0,.18);
   position:relative;overflow:hidden;
   display:flex;align-items:center;justify-content:center;
@@ -457,8 +474,7 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
 
 @media(max-width:1050px){
   .about-stats-row{grid-template-columns:repeat(2,1fr);}
-  .case-head{grid-template-columns:1fr;}
-  .case-intro{justify-self:start;}
+  .case-title{white-space:normal;}
   .reel-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;}
 }
 @media(max-width:860px){
@@ -467,6 +483,7 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   .case-copy,.case-study.reverse .case-copy{order:1;}
   .case-media-frame,.case-study.reverse .case-media-frame{order:2;min-height:auto;}
   .case-media,.case-study.reverse .case-media{transform:none !important;}
+  .case-title{white-space:normal;}
 }
 @media(max-width:600px){
   .about-stats-row{grid-template-columns:1fr;}
@@ -529,19 +546,19 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   </div>
 </div>
 
-<!-- 1 CASE STUDIES (CREAM / CURSOR: BLACK) -->
+<!-- 1 CASE STUDIES (SINGLE-LINE TITLE & LEFT-ALIGNED INTRO) -->
 <section id="case-studies" data-index="1" data-cur="black">
   <div class="case-modern-grid follow-mouse" data-mult="0.4" id="caseGrid"></div>
   
   <div class="case-head follow-mouse" data-mult="0.5">
-    <div>
-      <div class="eyebrow-dark">01 — Case Studies</div>
-      <h2 class="case-title">Work with the thinking<br>left in.</h2>
-    </div>
-    <div>
-      <h3 class="case-title"> Four projects that show how I move from a loose brief to a finished visual system —
-      concept, story, design, motion and production.<br>left in.</h3>
-    
+    <div class="eyebrow-dark">01 — Case Studies</div>
+    <h2 class="case-title">Work with the thinking left in.</h2>
+    <p class="case-intro">
+      Four projects that show how I move from a loose brief to a finished visual system —
+      concept, story, design, motion and production.
+    </p>
+  </div>
+
   <div class="case-list">
 
     <!-- 01 CASE STUDY: 16:9 RATIO & UPDATED DRIVE EMBED -->
@@ -609,7 +626,7 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
       </div>
       <div class="case-media-frame follow-mouse" data-mult="0.9" style="min-height: auto; height: fit-content;">
         <div class="case-media" style="min-height: auto; height: auto; aspect-ratio: 16 / 9;">
-          <iframe src="https://drive.google.com/file/d/18opyONcv9YenR8F_JatIXGYhhZbGx1az/preview" allow="autoplay" style="min-height: auto; height: 360Px; aspect-ratio: 16 / 9;"></iframe>
+          <iframe src="https://drive.google.com/file/d/18opyONcv9YenR8F_JatIXGYhhZbGx1az/preview" allow="autoplay" style="min-height: auto; height: 100%; aspect-ratio: 16 / 9;"></iframe>
         </div>
       </div>
     </article>
