@@ -838,14 +838,28 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   <div class="about-top">
     <div class="about-bar follow-mouse" data-mult="0.7" style="margin:1rem 0 0;">Started as a designer in 2021. Now a <span class="hi">Media Design Analyst</span> who still edits, leads and builds campaigns.</div>
     <div class="about-polaroid follow-mouse" data-mult="0.9">
-      <div class="about-image-placeholder" role="img" aria-label="Profile image placeholder">
-        <div class="placeholder-icon">＋</div>
-        <div class="placeholder-label">Badal.jpeg</div>
-        <div class="placeholder-hint">Badal.jpeg</div>
+      <div class="about-image-placeholder">
+        <img src="Badal.jpeg" alt="Badal Rana">
       </div>
       <figcaption>Badal Rana — designer, editor, mostly running on chai.</figcaption>
     </div>
   </div>
+  .about-image-placeholder {
+  width: 100%;
+  height: 180px;
+  background: #0d0d14;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
   <div class="about-stats-row follow-mouse" data-mult="0.8">
     <div class="ms-hero">
