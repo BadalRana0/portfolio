@@ -13,6 +13,9 @@
   --lime:#D9FF4B; --red:#FF5A4E;
   --fh:'Caveat',cursive; --fk:'Kalam',cursive; --fb:'Inter',sans-serif;
   --cur-color: var(--lime);
+  
+  /* OPACITY CONTROL FOR THE HERO IMAGE/PLACEHOLDER (0.0 to 1.0) */
+  --hero-img-opacity: 0.95;
 }
 html{scroll-behavior:smooth;}
 body{background:var(--blue);color:var(--text);font-family:var(--fb);line-height:1.6;overflow-x:hidden;overscroll-behavior:none;}
@@ -23,7 +26,7 @@ section{min-height:100vh;display:flex;flex-direction:column;justify-content:cent
 
 /* FLOATING WORDS */
 .pl-float{position:absolute;font-family:var(--fh);color:var(--cream);pointer-events:none;white-space:nowrap;z-index:0;will-change:transform;}
-#hero .hero-badges,#hero .hero-word,#hero .hero-role,#hero .hero-foot{position:relative;z-index:2;}
+#hero .hero-badges,#hero .hero-main-layout,#hero .hero-foot{position:relative;z-index:2;}
 
 /* PRELOADER */
 #preloader{
@@ -189,20 +192,39 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
   .bn-item{padding:.38rem .6rem;font-size:.7rem;}
 }
 
-/* HERO */
-#hero{background:var(--blue);padding:5rem 2rem 2rem;overflow:hidden;}
-.hero-badges{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;}
+/* HERO SECTION (LEFT-ALIGNED TEXT + RIGHT IMAGE PLACEHOLDER) */
+#hero{background:var(--blue);padding:5.5rem 2rem 2rem;overflow:hidden;}
+.hero-badges{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;flex-wrap:wrap;gap:1rem;}
 .hero-note{max-width:220px;font-family:var(--fk);font-size:.85rem;color:rgba(244,240,228,.75);text-align:right;}
+
+.hero-main-layout{
+  display:grid;
+  grid-template-columns:1.2fr 0.8fr;
+  align-items:center;
+  gap:2.5rem;
+  min-height:52vh;
+}
+.hero-left-content{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  text-align:left;
+}
+
 .hero-word{
-  font-family:var(--fh);font-size:clamp(4rem,15vw,11rem);font-weight:700;
-  color:var(--cream);text-align:center;line-height:.9;
+  font-family:var(--fh);
+  font-size:clamp(3.2rem, 7.5vw, 6.8rem);
+  font-weight:700;
+  color:var(--cream);
+  text-align:left;
+  line-height:.95;
   text-shadow: 4px 6px 0px rgba(10,10,16,0.3);
   transition: text-shadow .15s ease-out;
 }
-.hero-role{display:flex;flex-direction:column;gap:1rem;margin-top:2rem;}
+.hero-role{display:flex;flex-direction:column;gap:.7rem;margin-top:1.4rem;}
 .hero-role-row{
   display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap;
-  padding:.35rem .8rem;border-radius:8px;width:max-content;max-width:100%;
+  padding:.3rem .6rem;border-radius:8px;width:max-content;max-width:100%;
   cursor:default;transition:transform .28s cubic-bezier(0.16, 1, 0.3, 1), background-color .25s ease;
   transform-origin:left center;
 }
@@ -211,13 +233,60 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
   background:rgba(244,240,228,0.08);
 }
 .hero-role-label{font-family:var(--fk);font-size:.85rem;color:rgba(244,240,228,.55);transition:color .2s ease;}
-.hero-role-val{font-family:var(--fh);font-size:clamp(1.5rem,3vw,2.3rem);font-weight:700;color:var(--cream);transition:color .2s ease;}
+.hero-role-val{font-family:var(--fh);font-size:clamp(1.3rem,2.4vw,1.9rem);font-weight:700;color:var(--cream);transition:color .2s ease;}
 .hero-role-row:hover .hero-role-label{color:var(--lime);}
 .hero-role-val.now{color:var(--lime);}
-.hero-foot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:2.5rem;flex-wrap:wrap;gap:1rem;}
+
+/* HERO PLACEHOLDER CONTAINER */
+.hero-image-container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:100%;
+  position:relative;
+  opacity: var(--hero-img-opacity);
+  transition: opacity 0.3s ease;
+}
+.hero-placeholder-box{
+  width:min(360px, 100%);
+  aspect-ratio: 1 / 1;
+  background:rgba(10, 10, 16, 0.35);
+  border:2px dashed var(--lime);
+  border-radius:16px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:.6rem;
+  padding:1.5rem;
+  text-align:center;
+  box-shadow:8px 8px 0 rgba(0,0,0,0.25);
+  position:relative;
+  overflow:hidden;
+}
+.hero-placeholder-box img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+.hero-placeholder-box span.ph-title{
+  font-family:var(--fk);
+  font-size:.82rem;
+  font-weight:700;
+  color:var(--lime);
+  letter-spacing:.08em;
+}
+.hero-placeholder-box span.ph-desc{
+  font-family:var(--fb);
+  font-size:.75rem;
+  color:rgba(244,240,228,0.65);
+}
+
+.hero-foot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:2rem;flex-wrap:wrap;gap:1rem;}
 .hero-cta{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fh);font-size:1.3rem;color:var(--ink);background:var(--lime);padding:.7rem 1.6rem;border-radius:3rem;text-decoration:none;transform:rotate(-1deg);box-shadow:5px 5px 0 rgba(0,0,0,.3);cursor:pointer;border:none;}
 
-/* 1 CASE STUDIES (SINGLE-LINE TITLE & LEFT-ALIGNED INTRO) */
+/* 1 CASE STUDIES */
 #case-studies{
   background:var(--cream);
   color:#14141c;
@@ -319,7 +388,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
   margin-top:1.2rem;font:700 .7rem var(--fk);color:rgba(20,20,28,.55);
 }
 
-/* 2 PORTFOLIO WITH DYNAMIC TRACKING & PROPORTIONAL FIT */
+/* 2 PORTFOLIO */
 #reel{background:var(--blue);color:var(--cream);padding:5rem 2rem;justify-content:flex-start;padding-top:6.5rem;}
 .reel-grid{
   display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.6rem;
@@ -341,7 +410,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .reel-canvas{width:100%;height:100%;object-fit:contain;display:block;}
 .reel-tape{position:absolute;top:-10px;left:50%;transform:translateX(-50%) rotate(-4deg);width:56px;height:18px;background:rgba(255,255,255,.55);border:1px solid rgba(0,0,0,.06);}
 
-/* ENLARGED TITLES WITH ACTIVE PARALLAX */
 .reel-info{margin-top:.85rem;text-align:center;pointer-events:none;}
 .reel-cat{
   font-family:var(--fk);font-size:.78rem;font-weight:700;text-transform:uppercase;
@@ -384,36 +452,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .about-polaroid canvas{width:100%;height:auto;aspect-ratio:220/180;display:block;}
 .about-polaroid figcaption{font-family:var(--fk);font-size:.78rem;color:#222;text-align:center;margin-top:.5rem;}
 .about-image-placeholder{
-  width:100%;
-  aspect-ratio:220/180;
-  background:#0A0A10;
-  border:2px dashed rgba(217,255,75,.7);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:.35rem;
-  color:var(--cream);
-  text-align:center;
-  position:relative;
-  overflow:hidden;
+  width: 100%;
+  height: 180px;
+  background: #0d0d14;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.about-image-placeholder::before{
-  content:"";
-  position:absolute;inset:0;
-  background-image:linear-gradient(rgba(244,240,228,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(244,240,228,.055) 1px,transparent 1px);
-  background-size:22px 22px;
-  pointer-events:none;
+.about-image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
-.placeholder-icon,.placeholder-label,.placeholder-hint{position:relative;z-index:1;}
-.placeholder-icon{
-  width:38px;height:38px;border:1.5px solid var(--lime);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  color:var(--lime);font:400 1.4rem/1 var(--fb);
-}
-.placeholder-label{font:700 .62rem var(--fk);letter-spacing:.12em;color:var(--lime);}
-.placeholder-hint{font:400 .58rem var(--fk);color:rgba(244,240,228,.5);}
-
 
 .about-stats-row{
   display:grid;
@@ -509,6 +561,13 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   .reel-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;}
 }
 @media(max-width:860px){
+  .hero-main-layout{grid-template-columns:1fr;gap:1.5rem;text-align:center;}
+  .hero-left-content{align-items:center;text-align:center;}
+  .hero-word{text-align:center;}
+  .hero-role-row{margin:0 auto;}
+  .hero-image-container{order: -1;max-height: 280px;}
+  .hero-placeholder-box{width:min(260px, 70%);}
+
   .about-top,.skills-split,.contact-flex{grid-template-columns:1fr;}
   .case-study,.case-study.reverse{grid-template-columns:1fr;gap:1.5rem;}
   .case-copy,.case-study.reverse .case-copy{order:1;}
@@ -558,12 +617,25 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
     <div class="tag-rot" style="transform:rotate(-3deg);">EST. 2021 — INDIA</div>
     <div class="hero-note"><b style="font-family:var(--fh);font-size:1.05rem;color:var(--lime);display:block;margin-bottom:.3rem;">Calm on set,</b>sharper on the timeline.</div>
   </div>
-  <div class="hero-word follow-mouse" id="heroWord" data-mult="1.2">Badal Rana.</div>
-  <div class="hero-role follow-mouse" data-mult="0.8">
-    <div class="hero-role-row"><span class="hero-role-label">Started as</span><span class="hero-role-val">Assistant Graphic Designer</span></div>
-    <div class="hero-role-row"><span class="hero-role-label">Promoted to</span><span class="hero-role-val">Creative Team Lead — Jijau Sanstha</span></div>
-    <div class="hero-role-row"><span class="hero-role-label">Currently</span><span class="hero-role-val now">Media &amp; Design Analyst</span></div>
+
+  <div class="hero-main-layout">
+    <div class="hero-left-content">
+      <div class="hero-word follow-mouse" id="heroWord" data-mult="1.1">Badal Rana.</div>
+      <div class="hero-role follow-mouse" data-mult="0.8">
+        <div class="hero-role-row"><span class="hero-role-label">Started as</span><span class="hero-role-val">Assistant Graphic Designer</span></div>
+        <div class="hero-role-row"><span class="hero-role-label">Promoted to</span><span class="hero-role-val">Creative Team Lead — Jijau Sanstha</span></div>
+        <div class="hero-role-row"><span class="hero-role-label">Currently</span><span class="hero-role-val now">Media &amp; Design Analyst</span></div>
+      </div>
+    </div>
+    
+    <!-- RIGHT HERO IMAGE PLACEHOLDER (Paste your <img> or Github URL inside) -->
+    <div class="hero-image-container follow-mouse" data-mult="0.7">
+      <div class="hero-image-container follow-mouse" data-mult="0.7">
+  <img src="image.png" alt="Badal Rana Profile">
+</div>
+    </div>
   </div>
+
   <div class="hero-foot follow-mouse" data-mult="0.6">
     <button class="hero-cta" data-nav="1">See the work ↓</button>
     <div class="tag-rot" style="transform:rotate(2deg);">Portfolio // Badal Rana</div>
@@ -577,7 +649,7 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   </div>
 </div>
 
-<!-- 1 CASE STUDIES (SINGLE-LINE TITLE & LEFT-ALIGNED INTRO) -->
+<!-- 1 CASE STUDIES -->
 <section id="case-studies" data-index="1" data-cur="black">
   <div class="case-modern-grid follow-mouse" data-mult="0.4" id="caseGrid"></div>
   
@@ -592,7 +664,6 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
 
   <div class="case-list">
 
-    <!-- 01 CASE STUDY: 16:9 RATIO & UPDATED DRIVE EMBED -->
     <article class="case-study" style="min-height: auto; height: fit-content; align-items: center;">
       <div class="case-copy follow-mouse" data-mult="0.7" style="padding-top: 0; padding-bottom: 0;">
         <div class="case-index">01 / AI VIDEO</div>
@@ -601,7 +672,7 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
         <p>
           We developed the idea from scratch — starting with the storyboard and visual
           direction, then using AI-assisted generation, motion and compositing to build
-          a high-energy output for BigBasket and Blinkit.
+          a high-energy output for BigBasket and Blinkit[cite: 8].
         </p>
         <div class="case-process">
           <span>IDEATION</span><span>STORYBOARD</span><span>AI GENERATION</span>
@@ -624,7 +695,7 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
         <p>
           For FiatPe, I explored a new logo direction for a fintech brand — translating
           the product's digital-first character into a mark that could work across
-          interfaces, communication and brand touchpoints.
+          interfaces, communication and brand touchpoints[cite: 8].
         </p>
         <div class="case-process">
           <span>RESEARCH</span><span>CONCEPT</span><span>LOGO</span>
@@ -639,7 +710,6 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
       </div>
     </article>
 
-    <!-- 03 CASE STUDY: 16:9 RATIO & HEIGHT HUG -->
     <article class="case-study" style="min-height: auto; height: fit-content; align-items: center;">
       <div class="case-copy follow-mouse" data-mult="0.7" style="padding-top: 0; padding-bottom: 0;">
         <div class="case-index">03 / LOGO REDESIGN</div>
@@ -647,7 +717,7 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
         <h3>Making the before-and-after impossible to miss.</h3>
         <p>
           For Taiyari App, the objective was to rethink the existing logo into a cleaner,
-          more contemporary identity with improved recognition and visual balance.
+          more contemporary identity with improved recognition and visual balance[cite: 8].
         </p>
         <div class="case-process">
           <span>AUDIT</span><span>REDESIGN</span><span>TYPOGRAPHY</span>
@@ -669,7 +739,7 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
         <h3>A logo becomes a system when the rules are clear.</h3>
         <p>
           This brand guideline project took a Kabaddi team's identity beyond the logo,
-          structuring typography, colour, layout, and applications across communication.
+          structuring typography, colour, layout, and applications across communication[cite: 8].
         </p>
         <div class="case-process">
           <span>BRAND SYSTEM</span><span>TYPE</span><span>COLOUR</span>
@@ -687,7 +757,7 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   </div>
 </section>
 
-<!-- 2 PORTFOLIO (BLUE / CURSOR: LIME) -->
+<!-- 2 PORTFOLIO -->
 <section id="reel" class="blueprint" data-index="2" data-cur="lime">
   <div class="eyebrow follow-mouse" data-mult="0.4">02 — The Portfolio</div>
   <h2 style="font-family:var(--fh);font-size:clamp(1.9rem,4.5vw,3rem);font-weight:700;color:var(--cream);text-align:center;" class="follow-mouse" data-mult="0.6">Selected work.</h2>
@@ -803,7 +873,7 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   <a href="https://drive.google.com/drive/folders/1Q9H4NkCkgPufUib74sp18Qv9SD1anwB5?usp=sharing" target="_blank" class="reel-drive follow-mouse" data-mult="0.5">Or see everything on the full Drive →</a>
 </section>
 
-<!-- 3 SKILLS (SOLID CREAM / CURSOR: BLACK) -->
+<!-- 3 SKILLS -->
 <section id="skills" data-index="3" data-cur="black">
   <div class="eyebrow-dark follow-mouse" data-mult="0.4">03 — Skills &amp; Tools</div>
   <div class="skills-title follow-mouse" data-mult="0.6">Design · Motion · Video · AI</div>
@@ -832,11 +902,11 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   </div>
 </section>
 
-<!-- 4 ABOUT (BLUE / CURSOR: LIME) -->
+<!-- 4 ABOUT -->
 <section id="about" class="blueprint" data-index="4" data-cur="lime">
   <div class="eyebrow follow-mouse" data-mult="0.4">04 — About &amp; Career</div>
   <div class="about-top">
-    <div class="about-bar follow-mouse" data-mult="0.7" style="margin:1rem 0 0;">Started as a designer in 2021. Now a <span class="hi">Media Design Analyst</span> who still edits, leads and builds campaigns.</div>
+    <div class="about-bar follow-mouse" data-mult="0.7" style="margin:1rem 0 0;">Started as a designer in 2021. Now a <span class="hi">Media &amp; Design Analyst</span> who still edits, leads and builds campaigns.</div>
     <div class="about-polaroid follow-mouse" data-mult="0.9">
       <div class="about-image-placeholder">
         <img src="Badal.jpeg" alt="Badal Rana">
@@ -844,22 +914,6 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
       <figcaption>Badal Rana — designer, editor, mostly running on chai.</figcaption>
     </div>
   </div>
-  .about-image-placeholder {
-  width: 100%;
-  height: 180px;
-  background: #0d0d14;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.about-image-placeholder img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
 
   <div class="about-stats-row follow-mouse" data-mult="0.8">
     <div class="ms-hero">
@@ -915,7 +969,7 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   </div>
 </section>
 
-<!-- 5 CONTACT (BLACK / CURSOR: WHITE) -->
+<!-- 5 CONTACT -->
 <section id="contact" data-index="5" data-cur="white">
   <div class="contact-flex">
     <div class="follow-mouse" data-mult="0.7">
@@ -1082,13 +1136,10 @@ function placeFloatingWords(container, words, opts){
     const vw = container.clientWidth || window.innerWidth;
     const vh = container.clientHeight || window.innerHeight;
     
-    const centerSafeX = vw * 0.50, centerSafeY = vh * 0.35;
-    const isOverWord = Math.abs(cx - centerSafeX) < vw * 0.35 && Math.abs(cy - centerSafeY) < vh * 0.22;
-    
-    const roleSafeX = vw * 0.35, roleSafeY = vh * 0.65;
-    const isOverRole = Math.abs(cx - roleSafeX) < vw * 0.35 && Math.abs(cy - roleSafeY) < vh * 0.25;
+    const centerSafeX = vw * 0.35, centerSafeY = vh * 0.45;
+    const isOverWord = Math.abs(cx - centerSafeX) < vw * 0.35 && Math.abs(cy - centerSafeY) < vh * 0.35;
 
-    return isOverWord || isOverRole;
+    return isOverWord;
   }
 
   words.forEach((w)=>{
@@ -1277,46 +1328,6 @@ document.querySelectorAll('[data-nav]').forEach(el=>{
     goTo(parseInt(el.dataset.nav,10));
   });
 });
-
-/* ===== About polaroid sketch ===== */
-(function(){
-  const c = document.getElementById('cAbout'); if(!c) return;
-  const ctx = c.getContext('2d');
-  ctx.fillStyle = '#2A3FE4'; ctx.fillRect(0,0,c.width,c.height);
-  for(let i=0;i<26;i++){
-    ctx.strokeStyle = `rgba(217,255,75,${0.08+Math.random()*0.2})`;
-    ctx.lineWidth = 1+Math.random()*2;
-    ctx.beginPath(); ctx.moveTo(Math.random()*c.width, Math.random()*c.height); ctx.lineTo(Math.random()*c.width, Math.random()*c.height); ctx.stroke();
-  }
-  ctx.fillStyle='#F4F0E4'; ctx.font="bold 24px 'Caveat', cursive"; ctx.textAlign='center';
-  ctx.fillText('badal.', c.width/2, c.height/2+8);
-})();
-
-/* ===== Skills proximity cloud ===== */
-(function(){
-  const words = Array.from(document.querySelectorAll('.cloud span'));
-  if(!words.length) return;
-  const RADIUS = 75;
-  let mouseX = -9999, mouseY = -9999;
-  let ticking = false;
-  window.addEventListener('mousemove', e=>{
-    mouseX = e.clientX; mouseY = e.clientY;
-    if(!ticking){
-      ticking = true;
-      requestAnimationFrame(()=>{
-        words.forEach(w=>{
-          const r = w.getBoundingClientRect();
-          const cx = Math.max(r.left, Math.min(mouseX, r.right));
-          const cy = Math.max(r.top, Math.min(mouseY, r.bottom));
-          const dx = mouseX - cx, dy = mouseY - cy;
-          const dist = Math.sqrt(dx*dx + dy*dy);
-          w.classList.toggle('near', dist < RADIUS);
-        });
-        ticking = false;
-      });
-    }
-  },{passive:true});
-})();
 
 /* ===== Generative canvases with 10-Second Animation Mode Switching ===== */
 (function(){
