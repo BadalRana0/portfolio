@@ -604,6 +604,225 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   .about-stats-row{grid-template-columns:1fr;}
   .reel-grid{grid-template-columns:1fr;}
 }
+
+/* =========================================================
+   MOBILE OPTIMIZATION — desktop layout remains unchanged
+   ========================================================= */
+@media (max-width: 860px){
+  #hero{
+    min-height:100svh;
+    height:auto;
+    padding:5.2rem 1rem 5.8rem;
+    justify-content:flex-start;
+  }
+
+  #hero .hero-badges{
+    width:100%;
+    margin-bottom:.35rem;
+    align-items:center;
+    gap:.7rem;
+  }
+
+  #hero .hero-badges .tag-rot{
+    font-size:.68rem;
+    padding:.3rem .65rem;
+    flex-shrink:0;
+  }
+
+  #hero .hero-note{
+    position:relative;
+    top:auto;
+    right:auto;
+    max-width:145px;
+    margin-left:auto;
+    font-size:.68rem;
+    line-height:1.25;
+  }
+
+  #hero .hero-note b{
+    font-size:.85rem !important;
+    margin-bottom:.1rem !important;
+  }
+
+  .hero-main-layout{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:.25rem;
+    min-height:0;
+    width:100%;
+  }
+
+  .hero-left-content{
+    width:100%;
+    align-items:center;
+    text-align:center;
+    order:0;
+    position:relative;
+    z-index:3;
+  }
+
+  .hero-word{
+    width:100%;
+    font-size:clamp(3.25rem,15vw,5.3rem);
+    line-height:.9;
+    text-align:center;
+    white-space:nowrap;
+    margin:0;
+  }
+
+  .hero-role{
+    width:100%;
+    align-items:center;
+    gap:.45rem;
+    margin-top:1.1rem;
+  }
+
+  .hero-role-row{
+    width:auto;
+    max-width:100%;
+    justify-content:center;
+    align-items:baseline;
+    gap:.45rem;
+    padding:.18rem .35rem;
+    text-align:center;
+  }
+
+  .hero-role-label{
+    font-size:.68rem;
+  }
+
+  .hero-role-val{
+    font-size:clamp(1.25rem,5.8vw,1.7rem);
+  }
+
+  .hero-image-container{
+    position:relative;
+    inset:auto;
+    order:1;
+    width:min(92vw,430px);
+    height:min(43svh,390px);
+    max-width:100%;
+    margin:.15rem auto 0;
+    align-self:center;
+    justify-content:center;
+    z-index:1;
+  }
+
+  .hero-image-container img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:center bottom;
+  }
+
+  .hero-foot{
+    position:relative;
+    left:auto;
+    right:auto;
+    bottom:auto;
+    width:100%;
+    margin:.15rem 0 0;
+    padding:0;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    gap:.7rem;
+    z-index:4;
+  }
+
+  .hero-cta{
+    font-size:1.15rem;
+    padding:.62rem 1.35rem;
+  }
+
+  .hero-foot .tag-rot{
+    font-size:.68rem;
+    padding:.28rem .65rem;
+  }
+
+  /* Keep decorative hero words subtle and away from the reading path. */
+  #hero .pl-float{
+    font-size:.72rem !important;
+    opacity:.055 !important;
+    filter:blur(1.2px) !important;
+  }
+
+  #bottomnav{
+    bottom:.55rem;
+    width:calc(100vw - 1rem);
+    max-width:calc(100vw - 1rem);
+    gap:.12rem;
+    padding:.3rem;
+  }
+
+  #bottomnav .bn-item{
+    flex:1 1 0;
+    min-width:0;
+    padding:.42rem .18rem;
+    font-size:.66rem;
+  }
+
+  /* Prevent long content from causing horizontal overflow. */
+  body, section{
+    max-width:100%;
+    overflow-x:hidden;
+  }
+}
+
+@media (max-width:600px){
+  #hero{
+    padding-left:.75rem;
+    padding-right:.75rem;
+  }
+
+  .hero-word{
+    font-size:clamp(3rem,14.5vw,4.6rem);
+  }
+
+  .hero-role{
+    gap:.35rem;
+    margin-top:.9rem;
+  }
+
+  .hero-role-row{
+    flex-wrap:nowrap;
+    max-width:100%;
+  }
+
+  .hero-role-label{
+    flex:0 0 auto;
+  }
+
+  .hero-role-val{
+    font-size:clamp(1.15rem,5.5vw,1.5rem);
+  }
+
+  .hero-image-container{
+    width:min(94vw,380px);
+    height:min(39svh,330px);
+    margin-top:.05rem;
+  }
+
+  .hero-foot{
+    margin-top:.1rem;
+  }
+
+  .hero-cta{
+    font-size:1.08rem;
+    padding:.58rem 1.2rem;
+  }
+
+  .hero-foot .tag-rot{
+    display:none;
+  }
+
+  #bottomnav .bn-item{
+    font-size:.6rem;
+    padding:.4rem .08rem;
+  }
+}
+
 </style>
 </head>
 <body class="theme-lime">
@@ -1280,7 +1499,7 @@ const SKILL_WORDS = [
   'Team Leadership','Sora','Claude'
 ];
 
-placeFloatingWords(document.getElementById('hero'), SKILL_WORDS, {
+placeFloatingWords(document.getElementById('hero'), window.innerWidth <= 860 ? SKILL_WORDS.slice(0,12) : SKILL_WORDS, {
   minSize:.75,
   sizeRange:1.25,
   minOpacity:0.07,
