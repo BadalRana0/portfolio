@@ -579,6 +579,13 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
 .f-sign{font-family:var(--fh);font-size:1.7rem;font-weight:700;color:var(--blue2);}
 .f-note{font-family:var(--fb);font-weight:600;font-size:.88rem;max-width:320px;}
 
+/* DESKTOP HERO TEXT INSET — 55px inside from the previous position */
+@media (min-width: 861px){
+  #hero .hero-left-content{
+    padding-left:70px;
+  }
+}
+
 @media(max-width:1050px){
   .about-stats-row{grid-template-columns:repeat(2,1fr);}
   .case-title{white-space:normal;}
@@ -833,6 +840,23 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
 }
 
 </style>
+
+<style id="hero-button-alignment">
+@media (min-width: 861px){
+  /* The hero content has a 70px inset. Match the CTA to that exact left edge. */
+  #hero .hero-foot{
+    padding-left:70px;
+  }
+  #hero .hero-left-content .hero-cta,
+  #hero .hero-left-content .see-work,
+  #hero .hero-left-content a[href*="#reel"]{
+    margin-left:0 !important;
+    left:0 !important;
+    transform-origin:left center;
+  }
+}
+</style>
+
 </head>
 <body class="theme-lime">
 
