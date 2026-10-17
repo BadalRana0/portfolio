@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Award Design — Badal Rana</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Kalam:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --blue:#2A3FE4; --blue2:#1E2FBE; --ink:#0A0A10;
+  --cream:#F4F0E4; --cream2:#EAE4D4; --text:#F4F0E4; --dark:#14141c;
+  --lime:#D9FF4B; --red:#FF5A4E;
+  --fh:'Caveat',cursive; --fk:'Kalam',cursive; --fb:'Inter',sans-serif;
+  --cur-color: var(--lime);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--blue);color:var(--text);font-family:var(--fb);line-height:1.6;overflow-x:hidden;}
+a{color:inherit;}
+img,video,iframe{max-width:100%;display:block;}
+::selection{background:var(--lime);color:#111;}
+
+/* CUSTOM CURSOR */
+#cur{
+  width:8px;height:8px;background:var(--cur-color);border-radius:50%;
+  position:fixed;top:0;left:0;pointer-events:none;z-index:9500;
+  transform:translate(-50%,-50%);transition:transform .15s ease,opacity .25s ease,background-color .2s ease;
+}
+#cur-r{
+  width:36px;height:36px;border:1.5px solid var(--cur-color);border-radius:50%;
+  position:fixed;top:0;left:0;pointer-events:none;z-index:9499;
+  transform:translate(-50%,-50%);transition:opacity .25s ease,transform .2s ease,border-color .2s ease;
+}
+body.hide-cursor #cur, body.hide-cursor #cur-r{opacity:0;transform:translate(-50%,-50%) scale(0.4);}
+@media(hover:none){#cur,#cur-r{display:none;}}
+
+/* UNIFIED SMOOTH PARALLAX TRANSFORM CARRIER */
+.follow-mouse{
+  will-change:transform;
+  transform: translate3d(calc(var(--px, 0px) * var(--pm, 1)), calc(var(--py, 0px) * var(--pm, 1)), 0) rotate(var(--base-rot, 0deg));
+}
+
+/* TOPBAR */
+.topbar{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(10,10,16,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(244,240,228,.15);}
+.back-link{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fk);font-size:.85rem;font-weight:700;color:rgba(244,240,228,.8);text-decoration:none;transition:color .2s;}
+.back-link:hover{color:var(--lime);}
+.back-link svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.n-logo{font-family:var(--fh);font-size:1.4rem;font-weight:700;color:var(--cream);text-decoration:none;}
+.n-logo span{color:var(--lime);}
+
+/* HEADER */
+.g-header{padding:5rem 3rem 3.5rem;background:var(--blue);border-bottom:1px solid rgba(244,240,228,.15);position:relative;overflow:hidden;}
+.blueprint{background-image:linear-gradient(rgba(244,240,228,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(244,240,228,.06) 1px,transparent 1px);background-size:38px 38px;}
+.g-cat-badge{
+  display:inline-block;background:var(--cream);color:#111;font-family:var(--fk);
+  font-size:.78rem;font-weight:700;padding:.35rem .9rem;border:2px solid #111;
+  border-radius:4px;box-shadow:4px 4px 0 rgba(0,0,0,.25);margin-bottom:1.4rem;
+  --base-rot: -2deg;
+}
+.g-title{font-family:var(--fh);font-size:clamp(2.8rem,7vw,5.5rem);font-weight:700;line-height:.95;color:var(--cream);letter-spacing:-.02em;margin-bottom:1.2rem;}
+.g-desc{font-size:.98rem;color:rgba(244,240,228,.82);line-height:1.75;max-width:680px;}
+.g-drive{
+  display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fh);
+  font-size:1.2rem;font-weight:700;color:var(--ink);background:var(--lime);
+  border:2px solid #111;padding:.6rem 1.5rem;border-radius:3rem;text-decoration:none;
+  margin-top:2rem;box-shadow:5px 5px 0 rgba(0,0,0,.3);
+  --base-rot: -1deg;
+  transition:box-shadow .2s ease;
+}
+.g-drive:hover{box-shadow:8px 8px 0 rgba(0,0,0,.35);}
+
+/* GALLERY WRAPPER */
+.g-wrap{padding:4rem 3rem 6rem;background:var(--cream);color:#14141c;min-height:60vh;}
+.gallery-grid-video{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:2.4rem;max-width:1420px;margin:0 auto;}
+.g-item-video{
+  position:relative;background:#fff;padding:10px 10px 38px;border:2px solid #111;
+  border-radius:10px;box-shadow:6px 6px 0 rgba(0,0,0,.15);
+  transition:box-shadow .3s ease;
+}
+.g-item-video:nth-child(odd){--base-rot: -1.2deg;}
+.g-item-video:nth-child(even){--base-rot: 1.2deg;}
+.g-item-video:hover{box-shadow:12px 12px 0 rgba(0,0,0,.22);z-index:2;}
+.video-inner{
+  position:relative;width:100%;height:280px;background:#0d0d14;
+  border:1.5px solid #111;border-radius:6px;overflow:hidden;
+}
+.video-inner iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
+
+footer{padding:3rem;background:var(--ink);color:var(--cream);text-align:center;font-family:var(--fk);font-size:.85rem;border-top:1px solid rgba(244,240,228,.15);}
+footer a{color:var(--lime);text-decoration:underline;text-underline-offset:4px;}
+
+@media(max-width:768px){
+  .topbar,.g-header,.g-wrap,footer{padding-left:1.5rem;padding-right:1.5rem;}
+  .gallery-grid-video{grid-template-columns:1fr;}
+  .g-item-video:nth-child(odd),.g-item-video:nth-child(even){--base-rot: 0deg;}
+  .video-inner{height:220px;}
+}
+</style>
+<style>
+.wait{max-width:760px;margin:0 auto;text-align:center;padding:2rem 0 3rem;}
+.wait-code{font-family:var(--fh);font-size:clamp(6rem,22vw,13rem);font-weight:700;line-height:.9;color:var(--blue);text-shadow:5px 6px 0 rgba(0,0,0,.18);letter-spacing:-.02em;}
+.wait-code span{display:inline-block;animation:bob 1.6s ease-in-out infinite;} .wait-code span:nth-child(2){animation-delay:.2s;color:#14141c;} .wait-code span:nth-child(3){animation-delay:.4s;}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.wait h2{font-family:var(--fh);font-size:clamp(2rem,5vw,3rem);margin:.6rem 0;}
+.wait p{font-size:1rem;color:rgba(20,20,28,.75);max-width:520px;margin:0 auto 1.8rem;}
+.wait-bar{width:min(420px,90%);height:16px;margin:0 auto 1rem;background:#fff;border:2px solid #111;border-radius:10px;overflow:hidden;box-shadow:4px 4px 0 rgba(0,0,0,.2);}
+.wait-bar i{display:block;height:100%;width:62%;background:repeating-linear-gradient(45deg,var(--lime) 0 12px,#111 12px 24px);animation:stripe 1.2s linear infinite;background-size:34px 34px;}
+@keyframes stripe{to{background-position:34px 0}}
+.wait-tag{display:inline-block;font-family:var(--fk);font-weight:700;font-size:.8rem;background:#111;color:var(--lime);padding:.3rem .9rem;border-radius:2rem;}
+.dots span{animation:blink 1.4s infinite both;} .dots span:nth-child(2){animation-delay:.2s} .dots span:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.2}40%{opacity:1}}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur-r"></div>
+
+<div class="topbar">
+  <a href="index.html#reel" class="back-link follow-mouse" data-mult="0.45">
+    <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to Portfolio
+  </a>
+  <a href="index.html" class="n-logo follow-mouse" data-mult="0.45">Badal<span>.</span></a>
+</div>
+
+<header class="g-header blueprint">
+  <div class="g-cat-badge follow-mouse" data-mult="0.6">AWARD WORK</div>
+  <h1 class="g-title follow-mouse" data-mult="0.9">Award Design</h1>
+  <p class="g-desc follow-mouse" data-mult="0.7">Award-winning work is being curated for this space.</p>
+</header>
+
+<div class="g-wrap">
+  <div class="wait follow-mouse" data-mult="0.6">
+    <div class="wait-code"><span>A</span><span>w</span><span>d</span></div>
+    <h2>Update in progress<span class="dots"><span>.</span><span>.</span><span>.</span></span></h2>
+    <p>Award-winning work is being curated and polished for this page. Check back soon — it will be worth the wait.</p>
+    <div class="wait-bar"><i></i></div>
+    <span class="wait-tag">CURATING · COMING SOON</span>
+  </div>
+</div>
+
+<footer class="follow-mouse" data-mult="0.4">
+  &copy; 2026 Badal Rana — <a href="index.html">Back to Portfolio Home</a>
+</footer>
+
+<script>
+const cur=document.getElementById('cur'), curR=document.getElementById('cur-r');
+let targetX=window.innerWidth/2, targetY=window.innerHeight/2, curX=targetX, curY=targetY, ringX=targetX, ringY=targetY, ringVx=0, ringVy=0;
+let smoothNormX=0, smoothNormY=0;
+const followNodes=Array.from(document.querySelectorAll('.follow-mouse'));
+
+window.addEventListener('mousemove',e=>{targetX=e.clientX;targetY=e.clientY;},{passive:true});
+
+function animLoop(){
+  curX+=(targetX-curX)*0.35; curY+=(targetY-curY)*0.35;
+  cur.style.left=curX+'px'; cur.style.top=curY+'px';
+  const ax=(targetX-ringX)*0.045, ay=(targetY-ringY)*0.045;
+  ringVx=(ringVx+ax)*0.72; ringVy=(ringVy+ay)*0.72;
+  ringX+=ringVx; ringY+=ringVy;
+  curR.style.left=ringX+'px'; curR.style.top=ringY+'px';
+
+  const normX=(targetX-window.innerWidth/2)/(window.innerWidth/2);
+  const normY=(targetY-window.innerHeight/2)/(window.innerHeight/2);
+  smoothNormX+=(normX-smoothNormX)*0.055;
+  smoothNormY+=(normY-smoothNormY)*0.055;
+
+  const px=(smoothNormX*14).toFixed(2);
+  const py=(smoothNormY*10).toFixed(2);
+
+  for(let i=0;i<followNodes.length;i++){
+    const node=followNodes[i];
+    const mult=node.getAttribute('data-mult')||'1';
+    node.style.setProperty('--px',px+'px');
+    node.style.setProperty('--py',py+'px');
+    node.style.setProperty('--pm',mult);
+  }
+  requestAnimationFrame(animLoop);
+}
+requestAnimationFrame(animLoop);
+
+document.querySelectorAll('a, button, .g-item-video').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2)';curR.style.transform='translate(-50%,-50%) scale(1.4)';});
+  el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';curR.style.transform='translate(-50%,-50%) scale(1)';});
+});
+document.querySelectorAll('iframe').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hide-cursor'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hide-cursor'));
+});
+</script>
+</body>
+</html>
