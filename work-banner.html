@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Banner &amp; Standee — Badal Rana</title>
+<title>Packaging Design — Badal Rana</title>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Kalam:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -69,21 +69,29 @@ body.hide-cursor #cur, body.hide-cursor #cur-r{opacity:0;transform:translate(-50
 }
 .g-drive:hover{box-shadow:8px 8px 0 rgba(0,0,0,.35);}
 
-/* RESPONSIVE ASSET GALLERY */
+/* FULLY RESPONSIVE MAGAZINE GRID (FLUID WIDTH & VIEWPORT-RESPONSIVE HEIGHT) */
 .g-wrap{padding:4rem 3rem 6rem;background:var(--cream);color:#14141c;min-height:60vh;}
 .gallery-grid-responsive{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
-  gap:2.2rem;
+  grid-template-columns:repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap:2.5rem;
   max-width:1420px;
   margin:0 auto;
+  align-items:stretch;
 }
 
 .g-item-responsive{
-  position:relative;background:#fff;padding:8px 8px 30px;border:2px solid #111;
-  border-radius:10px;box-shadow:6px 6px 0 rgba(0,0,0,.15);cursor:pointer;
+  position:relative;
+  background:#fff;
+  padding:12px 12px 34px;
+  border:2px solid #111;
+  border-radius:12px;
+  box-shadow:6px 6px 0 rgba(0,0,0,.15);
+  cursor:pointer;
   transition:box-shadow .3s ease;
   width:100%;
+  display:flex;
+  flex-direction:column;
 }
 .g-item-responsive:nth-child(odd){--base-rot: -1.2deg;}
 .g-item-responsive:nth-child(even){--base-rot: 1.2deg;}
@@ -92,36 +100,39 @@ body.hide-cursor #cur, body.hide-cursor #cur-r{opacity:0;transform:translate(-50
   z-index:2;
 }
 
-/* FIXED HEIGHT VIEW CONTAINER WITH FILL (COVER) */
+/* FLUID VIEWPORT-DRIVEN CARD HEIGHT WITH FILL FIT */
 .asset-box{
   position:relative;
   width:100%;
-  height:280px;
+  height:clamp(280px, 42vw, 540px);
   background:#0d0d14;
   border:1.5px solid #111;
-  border-radius:6px;
+  border-radius:8px;
   overflow:hidden;
   display:flex;
   align-items:center;
   justify-content:center;
+  flex-grow:1;
 }
 .asset-box img{
   width:100%;
   height:100%;
   object-fit:cover;
+  object-position:center top;
   display:block;
   transition:transform .4s ease;
 }
-.g-item-responsive:hover .asset-box img{transform:scale(1.05);}
+.g-item-responsive:hover .asset-box img{transform:scale(1.04);}
 .zoom-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;background:rgba(0,0,0,.45);transition:opacity .25s;}
 .g-item-responsive:hover .zoom-hint{opacity:1;}
-.zoom-hint svg{width:34px;height:34px;stroke:#fff;fill:none;stroke-width:2;}
+.zoom-hint svg{width:36px;height:36px;stroke:#fff;fill:none;stroke-width:2;}
+.pdf-badge{position:absolute;bottom:.8rem;left:.8rem;background:var(--blue);color:var(--cream);border:1.5px solid #111;font-family:var(--fk);font-size:.7rem;font-weight:700;letter-spacing:.08em;padding:.25rem .6rem;border-radius:4px;box-shadow:2px 2px 0 rgba(0,0,0,.25);}
 
 /* LIGHTBOX */
 .lb-overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(10,10,16,.94);backdrop-filter:blur(14px);align-items:center;justify-content:center;flex-direction:column;gap:1.2rem;}
 .lb-overlay.active{display:flex;}
-.lb-inner{position:relative;width:90vw;max-width:1200px;height:85vh;display:flex;align-items:center;justify-content:center;}
-.lb-inner img{max-width:88vw;max-height:80vh;object-fit:contain;border:3px solid #111;border-radius:12px;box-shadow:0 20px 40px rgba(0,0,0,.6);}
+.lb-inner{position:relative;width:92vw;max-width:1300px;height:88vh;display:flex;align-items:center;justify-content:center;}
+.lb-inner iframe{width:100%;height:100%;border:3px solid #111;border-radius:12px;background:#fff;box-shadow:0 20px 40px rgba(0,0,0,.6);}
 .lb-close{position:fixed;top:1.5rem;right:2rem;font-size:2.4rem;color:#fff;cursor:pointer;background:none;border:none;line-height:1;opacity:.8;transition:opacity .2s;z-index:1010;}
 .lb-close:hover{opacity:1;color:var(--lime);}
 .lb-nav{display:flex;gap:1.2rem;align-items:center;}
@@ -134,9 +145,9 @@ footer a{color:var(--lime);text-decoration:underline;text-underline-offset:4px;}
 
 @media(max-width:768px){
   .topbar,.g-header,.g-wrap,footer{padding-left:1.5rem;padding-right:1.5rem;}
-  .gallery-grid-responsive{grid-template-columns:1fr;}
+  .gallery-grid-responsive{grid-template-columns:1fr;gap:2rem;}
   .g-item-responsive:nth-child(odd),.g-item-responsive:nth-child(even){--base-rot: 0deg;}
-  .asset-box{height:220px;}
+  .asset-box{height:clamp(240px, 60vw, 360px);}
 }
 </style>
 </head>
@@ -154,10 +165,10 @@ footer a{color:var(--lime);text-decoration:underline;text-underline-offset:4px;}
 </div>
 
 <header class="g-header blueprint">
-  <div class="g-cat-badge follow-mouse" data-mult="0.6">OUTDOOR</div>
-  <h1 class="g-title follow-mouse" data-mult="0.9">Banner &amp; Standee</h1>
-  <p class="g-desc follow-mouse" data-mult="0.7">Large-format event and campaign visuals built to dominate physical spaces[cite: 12].</p>
-  <a href="https://drive.google.com/drive/folders/10suAR7qqmGT7VcIA049otAbJGQ10q12H" target="_blank" class="g-drive follow-mouse" data-mult="0.8">
+  <div class="g-cat-badge follow-mouse" data-mult="0.6">PACKAGING</div>
+  <h1 class="g-title follow-mouse" data-mult="0.9">Packaging Design</h1>
+  <p class="g-desc follow-mouse" data-mult="0.7">Packaging that earns its place on the shelf — structure, labels and visual hierarchy.</p>
+  <a href="https://drive.google.com/drive/folders/1Q9H4NkCkgPufUib74sp18Qv9SD1anwB5?usp=sharing" target="_blank" class="g-drive follow-mouse" data-mult="0.8">
     <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M15 3h6v6M10 14L21 3M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/></svg>
     View on Google Drive →
   </a>
@@ -165,26 +176,30 @@ footer a{color:var(--lime);text-decoration:underline;text-underline-offset:4px;}
 
 <div class="g-wrap">
   <div class="gallery-grid-responsive">
-    <div class="g-item-responsive follow-mouse" data-mult="0.75" data-lb="img" data-src="https://drive.google.com/thumbnail?id=10_jpibBt6RetjRCyV5II5rCL8SWpxKv6&sz=w1200"><div class="asset-box"><img src="https://drive.google.com/thumbnail?id=10_jpibBt6RetjRCyV5II5rCL8SWpxKv6&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div></div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.8" data-lb="img" data-src="https://drive.google.com/thumbnail?id=11FAz5Je5qcnueCt8GsdiYYNxpLmdSYDT&sz=w1200"><div class="asset-box"><img src="https://drive.google.com/thumbnail?id=11FAz5Je5qcnueCt8GsdiYYNxpLmdSYDT&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div></div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.7" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1Biow-eACWSo2QDYE7_x3O-QYLajgv9HK&sz=w1200"><div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1Biow-eACWSo2QDYE7_x3O-QYLajgv9HK&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div></div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.85" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1MFDGCsm5FtAKS-cSckS-MxinfsPXpwK6&sz=w1200"><div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1MFDGCsm5FtAKS-cSckS-MxinfsPXpwK6&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div></div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.75" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1RWB6ETnwQjvKZAdRF9t3rkt9wLl8Muct&sz=w1200"><div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1RWB6ETnwQjvKZAdRF9t3rkt9wLl8Muct&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div></div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.8" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1SvQD4ZV1HKa6cm5ZwWKXyKUlpCAeKD_u&sz=w1200"><div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1SvQD4ZV1HKa6cm5ZwWKXyKUlpCAeKD_u&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div></div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.7" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1UW8Ap_SLACmpOiQXgHgZeG-TXRRelhTN&sz=w1200"><div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1UW8Ap_SLACmpOiQXgHgZeG-TXRRelhTN&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div></div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.85" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1VK-B89XjrXgg7XZG_uhUbBX_pWwFIwUz&sz=w1200"><div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1VK-B89XjrXgg7XZG_uhUbBX_pWwFIwUz&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div></div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.75" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1grctj3Ca2oK29KuDmSxXsAheqIh1hv82&sz=w1200"><div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1grctj3Ca2oK29KuDmSxXsAheqIh1hv82&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div></div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.8" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1j9_lvfBNRN3rsZ4PZdZV_bl9Vu21RJAz&sz=w1200"><div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1j9_lvfBNRN3rsZ4PZdZV_bl9Vu21RJAz&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div></div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.7" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1jsYGt4M0vFhQaKiVt9-q4cuhHP0oSigW&sz=w1200"><div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1jsYGt4M0vFhQaKiVt9-q4cuhHP0oSigW&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div></div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.85" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1p_jdmVQ1qt99O4ziYQYda7drzcoc_oOp&sz=w1200"><div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1p_jdmVQ1qt99O4ziYQYda7drzcoc_oOp&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div></div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.75" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1sghzXejMYCatRJ42eEZDII7MES41tzSL&sz=w1200"><div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1sghzXejMYCatRJ42eEZDII7MES41tzSL&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div></div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.8" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1st5kMPCTTXfaHFsON-xL0L6FF1cB-oLL&sz=w1200"><div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1st5kMPCTTXfaHFsON-xL0L6FF1cB-oLL&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div></div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.7" data-lb="img" data-src="https://drive.google.com/thumbnail?id=14JrfpPaDmNsAvQP6L6qPJF5T8OChB-6D&sz=w1200"><div class="asset-box"><img src="https://drive.google.com/thumbnail?id=14JrfpPaDmNsAvQP6L6qPJF5T8OChB-6D&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div></div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.85" data-lb="img" data-src="https://drive.google.com/thumbnail?id=19x48Jwn4PIbRYC1SkjSzLHYoSfl-by_5&sz=w1200"><div class="asset-box"><img src="https://drive.google.com/thumbnail?id=19x48Jwn4PIbRYC1SkjSzLHYoSfl-by_5&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div></div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.75" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1b5Tq32L_-lngLXXS0k8pROtMcvKsgRY6&sz=w1200"><div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1b5Tq32L_-lngLXXS0k8pROtMcvKsgRY6&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div></div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.8" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1bRZUL73v4Y-_gEiZsJEWAzGu5SscJBWd&sz=w1200"><div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1bRZUL73v4Y-_gEiZsJEWAzGu5SscJBWd&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div></div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.7" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1lqACAU98yHRSI0BEG2YytCYeESpT6tXm&sz=w1200"><div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1lqACAU98yHRSI0BEG2YytCYeESpT6tXm&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div></div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.85" data-lb="img" data-src="https://drive.google.com/thumbnail?id=1nIIeFouEuzNffvvIxFMkLmxkJj9sPo5b&sz=w1200"><div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1nIIeFouEuzNffvvIxFMkLmxkJj9sPo5b&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div></div>
+    <div class="g-item-responsive follow-mouse" data-mult="0.75" data-lb="pdf" data-src="https://drive.google.com/file/d/14JrfpPaDmNsAvQP6L6qPJF5T8OChB-6D/preview">
+      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=14JrfpPaDmNsAvQP6L6qPJF5T8OChB-6D&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">PACKAGING</div></div>
+    </div>
+    <div class="g-item-responsive follow-mouse" data-mult="0.8" data-lb="pdf" data-src="https://drive.google.com/file/d/167yfkNsbjhFgwqMof3drkzNpD4rHs0KT/preview">
+      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=167yfkNsbjhFgwqMof3drkzNpD4rHs0KT&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">PACKAGING</div></div>
+    </div>
+    <div class="g-item-responsive follow-mouse" data-mult="0.7" data-lb="pdf" data-src="https://drive.google.com/file/d/19x48Jwn4PIbRYC1SkjSzLHYoSfl-by_5/preview">
+      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=19x48Jwn4PIbRYC1SkjSzLHYoSfl-by_5&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">PACKAGING</div></div>
+    </div>
+    <div class="g-item-responsive follow-mouse" data-mult="0.85" data-lb="pdf" data-src="https://drive.google.com/file/d/1ackqk2y7LTW0oKhTDny9T3qADdtQ-yfu/preview">
+      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1ackqk2y7LTW0oKhTDny9T3qADdtQ-yfu&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">PACKAGING</div></div>
+    </div>
+    <div class="g-item-responsive follow-mouse" data-mult="0.75" data-lb="pdf" data-src="https://drive.google.com/file/d/1b5Tq32L_-lngLXXS0k8pROtMcvKsgRY6/preview">
+      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1b5Tq32L_-lngLXXS0k8pROtMcvKsgRY6&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">PACKAGING</div></div>
+    </div>
+    <div class="g-item-responsive follow-mouse" data-mult="0.8" data-lb="pdf" data-src="https://drive.google.com/file/d/1bRZUL73v4Y-_gEiZsJEWAzGu5SscJBWd/preview">
+      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1bRZUL73v4Y-_gEiZsJEWAzGu5SscJBWd&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">PACKAGING</div></div>
+    </div>
+    <div class="g-item-responsive follow-mouse" data-mult="0.7" data-lb="pdf" data-src="https://drive.google.com/file/d/1lqACAU98yHRSI0BEG2YytCYeESpT6tXm/preview">
+      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1lqACAU98yHRSI0BEG2YytCYeESpT6tXm&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">PACKAGING</div></div>
+    </div>
+    <div class="g-item-responsive follow-mouse" data-mult="0.85" data-lb="pdf" data-src="https://drive.google.com/file/d/1nIIeFouEuzNffvvIxFMkLmxkJj9sPo5b/preview">
+      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1nIIeFouEuzNffvvIxFMkLmxkJj9sPo5b&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">PACKAGING</div></div>
+    </div>
   </div>
 </div>
 
@@ -199,64 +214,90 @@ footer a{color:var(--lime);text-decoration:underline;text-underline-offset:4px;}
 </div>
 
 <footer class="follow-mouse" data-mult="0.4">
-  &copy; 2026 Badal Rana — <a href="index.html">Back to Portfolio Home</a>[cite: 12]
+  &copy; 2026 Badal Rana — <a href="index.html">Back to Portfolio Home</a>
 </footer>
 
 <script>
-const cur=document.getElementById('cur'), curR=document.getElementById('cur-r');
-let targetX=window.innerWidth/2, targetY=window.innerHeight/2, curX=targetX, curY=targetY, ringX=targetX, ringY=targetY, ringVx=0, ringVy=0;
-let smoothNormX=0, smoothNormY=0;
-const followNodes=Array.from(document.querySelectorAll('.follow-mouse'));
+/* ===== Custom Cursor & Eased Parallax Tracking Loop ===== */
+const cur = document.getElementById('cur'), curR = document.getElementById('cur-r');
+let targetX = window.innerWidth / 2, targetY = window.innerHeight / 2;
+let curX = targetX, curY = targetY;
+let ringX = targetX, ringY = targetY;
+let ringVx = 0, ringVy = 0;
+let smoothNormX = 0, smoothNormY = 0;
 
-window.addEventListener('mousemove',e=>{targetX=e.clientX;targetY=e.clientY;},{passive:true});
+const followNodes = Array.from(document.querySelectorAll('.follow-mouse'));
+
+window.addEventListener('mousemove', e => {
+  targetX = e.clientX;
+  targetY = e.clientY;
+}, {passive: true});
 
 function animLoop(){
-  curX+=(targetX-curX)*0.35; curY+=(targetY-curY)*0.35;
-  cur.style.left=curX+'px'; cur.style.top=curY+'px';
-  const ax=(targetX-ringX)*0.045, ay=(targetY-ringY)*0.045;
-  ringVx=(ringVx+ax)*0.72; ringVy=(ringVy+ay)*0.72;
-  ringX+=ringVx; ringY+=ringVy;
-  curR.style.left=ringX+'px'; curR.style.top=ringY+'px';
+  // Cursor Dot Lerp
+  curX += (targetX - curX) * 0.35;
+  curY += (targetY - curY) * 0.35;
+  cur.style.left = curX + 'px';
+  cur.style.top = curY + 'px';
 
-  const normX=(targetX-window.innerWidth/2)/(window.innerWidth/2);
-  const normY=(targetY-window.innerHeight/2)/(window.innerHeight/2);
-  smoothNormX+=(normX-smoothNormX)*0.055;
-  smoothNormY+=(normY-smoothNormY)*0.055;
+  // Cursor Ring Spring
+  const ax = (targetX - ringX) * 0.045;
+  const ay = (targetY - ringY) * 0.045;
+  ringVx = (ringVx + ax) * 0.72;
+  ringVy = (ringVy + ay) * 0.72;
+  ringX += ringVx;
+  ringY += ringVy;
+  curR.style.left = ringX + 'px';
+  curR.style.top = ringY + 'px';
 
-  const px=(smoothNormX*14).toFixed(2);
-  const py=(smoothNormY*10).toFixed(2);
+  // Normalized Screen Vector for Smooth Parallax
+  const normX = (targetX - window.innerWidth / 2) / (window.innerWidth / 2);
+  const normY = (targetY - window.innerHeight / 2) / (window.innerHeight / 2);
+  smoothNormX += (normX - smoothNormX) * 0.055;
+  smoothNormY += (normY - smoothNormY) * 0.055;
 
-  for(let i=0;i<followNodes.length;i++){
-    const node=followNodes[i];
-    const mult=node.getAttribute('data-mult')||'1';
-    node.style.setProperty('--px',px+'px');
-    node.style.setProperty('--py',py+'px');
-    node.style.setProperty('--pm',mult);
+  const px = (smoothNormX * 14).toFixed(2);
+  const py = (smoothNormY * 10).toFixed(2);
+
+  for(let i = 0; i < followNodes.length; i++){
+    const node = followNodes[i];
+    const mult = node.getAttribute('data-mult') || '1';
+    node.style.setProperty('--px', px + 'px');
+    node.style.setProperty('--py', py + 'px');
+    node.style.setProperty('--pm', mult);
   }
+
   requestAnimationFrame(animLoop);
 }
 requestAnimationFrame(animLoop);
 
-const lb=document.getElementById('lb'), lbContent=document.getElementById('lb-content');
-let items=[], curIdx=0;
+/* ===== Lightbox Controller ===== */
+const lb = document.getElementById('lb'), lbContent = document.getElementById('lb-content');
+let items = [], curIdx = 0;
 document.querySelectorAll('[data-lb]').forEach((el,i)=>{
-  el.dataset.lbIdx=i;
-  items.push({type:el.dataset.lb, src:el.dataset.src});
-  el.addEventListener('click',()=>open(i));
+  el.dataset.lbIdx = i;
+  items.push({type: el.dataset.lb, src: el.dataset.src});
+  el.addEventListener('click', ()=>open(i));
 });
-function open(i){ curIdx=i; render(); lb.classList.add('active'); document.body.style.overflow='hidden'; }
+function open(i){ curIdx = i; render(); lb.classList.add('active'); document.body.style.overflow='hidden'; }
 function close(){ lb.classList.remove('active'); lbContent.innerHTML=''; document.body.style.overflow=''; }
-function render(){ lbContent.innerHTML=`<img src="${items[curIdx].src}" alt="">`; document.getElementById('lb-counter').textContent=(curIdx+1)+' / '+items.length; }
+function render(){
+  const d = items[curIdx];
+  lbContent.innerHTML = `<iframe src="${d.src}" allowfullscreen></iframe>`;
+  document.getElementById('lb-counter').textContent = (curIdx+1)+' / '+items.length;
+}
 function prev(){ curIdx=(curIdx-1+items.length)%items.length; render(); }
 function next(){ curIdx=(curIdx+1)%items.length; render(); }
-document.getElementById('lb-close').addEventListener('click',close);
-lb.addEventListener('click',e=>{ if(e.target===lb) close(); });
-document.addEventListener('keydown',e=>{
+
+document.getElementById('lb-close').addEventListener('click', close);
+lb.addEventListener('click', e=>{ if(e.target===lb) close(); });
+document.addEventListener('keydown', e=>{
   if(!lb.classList.contains('active')) return;
   if(e.key==='Escape') close();
   if(e.key==='ArrowRight') next();
   if(e.key==='ArrowLeft') prev();
 });
+
 document.querySelectorAll('a, button, .g-item-responsive').forEach(el=>{
   el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2)';curR.style.transform='translate(-50%,-50%) scale(1.4)';});
   el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';curR.style.transform='translate(-50%,-50%) scale(1)';});
