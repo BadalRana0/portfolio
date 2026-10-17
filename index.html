@@ -10,6 +10,7 @@
   gtag('config', 'G-L9T6LFYBLF');
 </script>
 <head>
+<script>(function(){try{var n=performance.getEntriesByType('navigation')[0],r=n&&n.type==='reload';if(sessionStorage.getItem('plSeen')&&!r){document.documentElement.classList.add('skip-pre');}sessionStorage.setItem('plSeen','1');}catch(e){}})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='26' fill='%230A0A10'/%3E%3Ctext x='64' y='78' text-anchor='middle' font-family='cursive' font-size='42' font-weight='700' fill='%23F4F0E4'%3EBadal.%3C/text%3E%3C/svg%3E">
@@ -164,6 +165,8 @@ body.theme-white{--cur-color: #FFFFFF;}
 .eyebrow{font-family:var(--fk);font-size:.85rem;color:rgba(244,240,228,.6);margin-bottom:.6rem;}
 .eyebrow-dark{font-family:var(--fk);font-size:.85rem;color:rgba(20,20,28,.6);margin-bottom:.6rem;}
 
+html.skip-pre #preloader{display:none !important;}
+html.skip-pre #hero{transition:none;}
 #hero{
   opacity:0;filter:blur(14px);transform:translateY(24px) scale(.985);
   transition:opacity 2.45s cubic-bezier(.18,.7,.12,1),
@@ -855,6 +858,27 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
     transform-origin:left center;
   }
 }
+
+/* ===== v2 RELAYOUT ===== */
+@media(min-width:901px){
+ /* hero: roles as a horizontal timeline */
+ #hero .hero-role{flex-direction:row;flex-wrap:wrap;gap:.9rem;margin-top:1.8rem;position:relative;}
+ #hero .hero-role-row{flex-direction:column;align-items:flex-start;gap:.1rem;padding:.8rem 1.1rem;background:rgba(10,10,16,.28);border:1.5px solid rgba(244,240,228,.22);border-radius:12px;width:auto;min-width:150px;}
+ #hero .hero-role-row:nth-child(3){background:var(--lime);border-color:#111;box-shadow:4px 4px 0 rgba(0,0,0,.35);}
+ #hero .hero-role-row:nth-child(3) .hero-role-label{color:rgba(10,10,16,.65);}
+ #hero .hero-role-row:nth-child(3) .hero-role-val.now{color:#0A0A10;}
+ #hero .hero-role-row:hover{transform:translateY(-4px);}
+ #hero .hero-role-val{font-size:clamp(1.1rem,1.7vw,1.5rem);}
+}
+/* about: one compact grid, no dead space */
+.about-hero-grid{display:grid;grid-template-columns:1.25fr 1fr 230px;grid-template-areas:"bar bar pol" "hero nums pol";gap:1.2rem;align-items:stretch;margin:1rem 0 2.5rem;width:100%;}
+.about-hero-grid .ah-bar{grid-area:bar;margin:0;}
+.about-hero-grid .ah-pol{grid-area:pol;align-self:start;margin:0;}
+.about-hero-grid .ah-hero{grid-area:hero;display:flex;}.about-hero-grid .ah-hero .ms-hero{flex:1;}
+.about-hero-grid .ah-nums{grid-area:nums;display:flex;flex-direction:column;gap:.8rem;}
+.about-hero-grid .ah-nums .ms-card{flex:1;flex-direction:row;align-items:center;gap:1rem;padding:.7rem 1.1rem;}
+.about-hero-grid .ah-nums .ms-num{font-size:2rem;min-width:84px;}.about-hero-grid .ah-nums .ms-label{margin:0;}
+@media(max-width:900px){.about-hero-grid{grid-template-columns:1fr;grid-template-areas:"bar" "pol" "hero" "nums";}.about-hero-grid .ah-pol{justify-self:center;}}
 </style>
 
 </head>
@@ -942,12 +966,12 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
     <article class="case-study" style="min-height: auto; height: fit-content; align-items: center;">
       <div class="case-copy follow-mouse" data-mult="0.7" style="padding-top: 0; padding-bottom: 0;">
         <div class="case-index">01 / AI VIDEO</div>
-        <span class="case-type">BIGBASKET × BLINKIT</span>
+        <span class="case-type">BIGBASKET</span>
         <h3>From storyboard to a crazy final frame.</h3>
         <p>
           We developed the idea from scratch — starting with the storyboard and visual
           direction, then using AI-assisted generation, motion and compositing to build
-          a high-energy output for BigBasket and Blinkit.
+          a high-energy video for BigBasket.
         </p>
         <div class="case-process">
           <span>IDEATION</span><span>STORYBOARD</span><span>AI GENERATION</span>
@@ -957,7 +981,7 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
       </div>
       <div class="case-media-frame follow-mouse" data-mult="0.9" style="min-height: auto; height: fit-content;">
         <div class="case-media" style="min-height: auto; height: auto; aspect-ratio: 16 / 9;">
-          <iframe src="https://drive.google.com/file/d/15w88I6bGgl0pq3ypYIm0iSgBaKycl0s8/preview" allow="autoplay" style="min-height: auto; height: 100%; aspect-ratio: 16 / 9;"></iframe>
+          <iframe src="https://drive.google.com/file/d/1AL6u2-ntxG6X1o5GFGRDTaXLB5vKDF-y/preview" allow="autoplay" style="min-height: auto; height: 100%; aspect-ratio: 16 / 9;"></iframe>
         </div>
       </div>
     </article>
@@ -1038,111 +1062,62 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   <h2 style="font-family:var(--fh);font-size:clamp(1.9rem,4.5vw,3rem);font-weight:700;color:var(--cream);text-align:center;" class="follow-mouse" data-mult="0.6">Selected work.</h2>
   
   <div class="reel-grid follow-mouse" data-mult="0.8">
-    
-    <a href="work-ai-video.html" class="reel-tile">
-      <div class="reel-photo">
-        <div class="reel-tape"></div>
-        <div class="canvas-wrapper">
-          <canvas class="reel-canvas" id="r1"></canvas>
-        </div>
-        <div class="reel-info">
-          <span class="reel-cat track-txt" data-tm="0.55">AI Generated</span>
-          <span class="reel-name track-txt" data-tm="0.85">AI Video</span>
-        </div>
-      </div>
-    </a>
-
     <a href="work-posts.html" class="reel-tile">
       <div class="reel-photo">
         <div class="reel-tape"></div>
-        <div class="canvas-wrapper">
-          <canvas class="reel-canvas" id="r2"></canvas>
-        </div>
-        <div class="reel-info">
-          <span class="reel-cat track-txt" data-tm="0.55">Social Media</span>
-          <span class="reel-name track-txt" data-tm="0.85">Posts &amp; Creatives</span>
-        </div>
+        <div class="canvas-wrapper"><canvas class="reel-canvas" id="r1"></canvas></div>
+        <div class="reel-info"><span class="reel-cat track-txt" data-tm="0.55">Social Media</span><span class="reel-name track-txt" data-tm="0.85">Posts &amp; Creatives</span></div>
       </div>
     </a>
-
-    <a href="work-video.html" class="reel-tile">
-      <div class="reel-photo">
-        <div class="reel-tape"></div>
-        <div class="canvas-wrapper">
-          <canvas class="reel-canvas" id="r3"></canvas>
-        </div>
-        <div class="reel-info">
-          <span class="reel-cat track-txt" data-tm="0.55">Video Edit</span>
-          <span class="reel-name track-txt" data-tm="0.85">Video Production</span>
-        </div>
-      </div>
-    </a>
-
     <a href="work-logo.html" class="reel-tile">
       <div class="reel-photo">
         <div class="reel-tape"></div>
-        <div class="canvas-wrapper">
-          <canvas class="reel-canvas" id="r4"></canvas>
-        </div>
-        <div class="reel-info">
-          <span class="reel-cat track-txt" data-tm="0.55">Branding</span>
-          <span class="reel-name track-txt" data-tm="0.85">Logo Design</span>
-        </div>
+        <div class="canvas-wrapper"><canvas class="reel-canvas" id="r2"></canvas></div>
+        <div class="reel-info"><span class="reel-cat track-txt" data-tm="0.55">Branding</span><span class="reel-name track-txt" data-tm="0.85">Logos</span></div>
       </div>
     </a>
-
-    <a href="work-cover.html" class="reel-tile">
-      <div class="reel-photo">
-        <div class="reel-tape"></div>
-        <div class="canvas-wrapper">
-          <canvas class="reel-canvas" id="r5"></canvas>
-        </div>
-        <div class="reel-info">
-          <span class="reel-cat track-txt" data-tm="0.55">Print</span>
-          <span class="reel-name track-txt" data-tm="0.85">Cover Design</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="work-magazine.html" class="reel-tile">
-      <div class="reel-photo">
-        <div class="reel-tape"></div>
-        <div class="canvas-wrapper">
-          <canvas class="reel-canvas" id="r6"></canvas>
-        </div>
-        <div class="reel-info">
-          <span class="reel-cat track-txt" data-tm="0.55">Editorial</span>
-          <span class="reel-name track-txt" data-tm="0.85">Magazine Design</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="work-banner.html" class="reel-tile">
-      <div class="reel-photo">
-        <div class="reel-tape"></div>
-        <div class="canvas-wrapper">
-          <canvas class="reel-canvas" id="r7"></canvas>
-        </div>
-        <div class="reel-info">
-          <span class="reel-cat track-txt" data-tm="0.55">Outdoor</span>
-          <span class="reel-name track-txt" data-tm="0.85">Banner &amp; Standee</span>
-        </div>
-      </div>
-    </a>
-
     <a href="work-animation.html" class="reel-tile">
       <div class="reel-photo">
         <div class="reel-tape"></div>
-        <div class="canvas-wrapper">
-          <canvas class="reel-canvas" id="r8"></canvas>
-        </div>
-        <div class="reel-info">
-          <span class="reel-cat track-txt" data-tm="0.55">Animation</span>
-          <span class="reel-name track-txt" data-tm="0.85">Animated Video</span>
-        </div>
+        <div class="canvas-wrapper"><canvas class="reel-canvas" id="r3"></canvas></div>
+        <div class="reel-info"><span class="reel-cat track-txt" data-tm="0.55">Animation</span><span class="reel-name track-txt" data-tm="0.85">Animated Videos</span></div>
       </div>
     </a>
-
+    <a href="work-ai-video.html" class="reel-tile">
+      <div class="reel-photo">
+        <div class="reel-tape"></div>
+        <div class="canvas-wrapper"><canvas class="reel-canvas" id="r4"></canvas></div>
+        <div class="reel-info"><span class="reel-cat track-txt" data-tm="0.55">AI Generated</span><span class="reel-name track-txt" data-tm="0.85">AI Generated Video</span></div>
+      </div>
+    </a>
+    <a href="work-video.html" class="reel-tile">
+      <div class="reel-photo">
+        <div class="reel-tape"></div>
+        <div class="canvas-wrapper"><canvas class="reel-canvas" id="r5"></canvas></div>
+        <div class="reel-info"><span class="reel-cat track-txt" data-tm="0.55">Video Edit</span><span class="reel-name track-txt" data-tm="0.85">Video Production</span></div>
+      </div>
+    </a>
+    <a href="work-packaging.html" class="reel-tile">
+      <div class="reel-photo">
+        <div class="reel-tape"></div>
+        <div class="canvas-wrapper"><canvas class="reel-canvas" id="r6"></canvas></div>
+        <div class="reel-info"><span class="reel-cat track-txt" data-tm="0.55">Packaging</span><span class="reel-name track-txt" data-tm="0.85">Packaging Design</span></div>
+      </div>
+    </a>
+    <a href="work-print.html" class="reel-tile">
+      <div class="reel-photo">
+        <div class="reel-tape"></div>
+        <div class="canvas-wrapper"><canvas class="reel-canvas" id="r7"></canvas></div>
+        <div class="reel-info"><span class="reel-cat track-txt" data-tm="0.55">Print &amp; Editorial</span><span class="reel-name track-txt" data-tm="0.85">Magazine, Brochure &amp; Poster</span></div>
+      </div>
+    </a>
+    <a href="work-award.html" class="reel-tile">
+      <div class="reel-photo">
+        <div class="reel-tape"></div>
+        <div class="canvas-wrapper"><canvas class="reel-canvas" id="r8"></canvas></div>
+        <div class="reel-info"><span class="reel-cat track-txt" data-tm="0.55">Recognition</span><span class="reel-name track-txt" data-tm="0.85">Award Design</span></div>
+      </div>
+    </a>
   </div>
 
   <a href="https://drive.google.com/drive/folders/1Q9H4NkCkgPufUib74sp18Qv9SD1anwB5?usp=sharing" target="_blank" class="reel-drive follow-mouse" data-mult="0.5">Or see everything on the full Drive →</a>
@@ -1180,18 +1155,15 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
 <!-- 4 ABOUT -->
 <section id="about" class="blueprint" data-index="4" data-cur="lime">
   <div class="eyebrow follow-mouse" data-mult="0.4">04 — About &amp; Career</div>
-  <div class="about-top">
-    <div class="about-bar follow-mouse" data-mult="0.7" style="margin:1rem 0 0;">Started as a designer in 2021. Now a <span class="hi">Media &amp; Design Analyst</span> who still edits, leads and builds campaigns.</div>
-    <div class="about-polaroid follow-mouse" data-mult="0.9">
+  <div class="about-hero-grid">
+    <div class="about-bar ah-bar follow-mouse" data-mult="0.7" >Started as a designer in 2021. Now a <span class="hi">Media &amp; Design Analyst</span> who still edits, leads and builds campaigns.</div>
+    <div class="about-polaroid ah-pol follow-mouse" data-mult="0.9">
       <div class="about-image-placeholder">
         <img src="Badal.jpeg" alt="Badal Rana">
       </div>
       <figcaption>Badal Rana — designer, editor, mostly running on chai.</figcaption>
     </div>
-  </div>
-
-  <div class="about-stats-row follow-mouse" data-mult="0.8">
-    <div class="ms-hero">
+    <div class="ah-hero follow-mouse" data-mult="0.8"><div class="ms-hero">
       <div>
         <div class="ms-hero-title">The hero product: a multi-disciplinary creative.</div>
         <p>I started as a designer in 2021. Now I'm a <strong>Media &amp; Design Analyst</strong> who ships brand campaigns on the side.</p>
@@ -1199,10 +1171,8 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
       <div class="ms-hero-chips">
         <span>Design</span><span>Motion</span><span>Video</span><span>AI</span>
       </div>
-    </div>
-    <div class="ms-card"><div class="ms-num">1000+</div><div class="ms-label">Creative assets delivered</div></div>
-    <div class="ms-card"><div class="ms-num">50+</div><div class="ms-label">Brands &amp; organizations</div></div>
-    <div class="ms-card"><div class="ms-num">5+</div><div class="ms-label">Years in the field</div></div>
+    </div></div>
+    <div class="ah-nums follow-mouse" data-mult="0.8"><div class="ms-card"><div class="ms-num">1000+</div><div class="ms-label">Creative assets delivered</div></div><div class="ms-card"><div class="ms-num">50+</div><div class="ms-label">Brands &amp; organizations</div></div><div class="ms-card"><div class="ms-num">5+</div><div class="ms-label">Years in the field</div></div></div>
   </div>
 
   <div class="career-col-title follow-mouse" data-mult="0.4">// Full-Time</div>
@@ -1284,6 +1254,7 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
   const status = document.getElementById('pl-status-text');
   const ready = document.getElementById('pl-ready');
   if(!pre) return;
+  if(document.documentElement.classList.contains('skip-pre')){pre.remove();document.body.classList.add('page-ready');return;}
 
   const DURATION = 2550;
   const start = Date.now();
