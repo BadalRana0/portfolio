@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Packaging Design — Badal Rana</title>
+<title>Award Design — Badal Rana</title>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Kalam:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -17,7 +17,7 @@
 html{scroll-behavior:smooth;}
 body{background:var(--blue);color:var(--text);font-family:var(--fb);line-height:1.6;overflow-x:hidden;}
 a{color:inherit;}
-img,video{max-width:100%;display:block;}
+img,video,iframe{max-width:100%;display:block;}
 ::selection{background:var(--lime);color:#111;}
 
 /* CUSTOM CURSOR */
@@ -69,86 +69,46 @@ body.hide-cursor #cur, body.hide-cursor #cur-r{opacity:0;transform:translate(-50
 }
 .g-drive:hover{box-shadow:8px 8px 0 rgba(0,0,0,.35);}
 
-/* FULLY RESPONSIVE MAGAZINE GRID (FLUID WIDTH & VIEWPORT-RESPONSIVE HEIGHT) */
+/* GALLERY WRAPPER */
 .g-wrap{padding:4rem 3rem 6rem;background:var(--cream);color:#14141c;min-height:60vh;}
-.gallery-grid-responsive{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(min(100%, 420px), 1fr));
-  gap:2.5rem;
-  max-width:1420px;
-  margin:0 auto;
-  align-items:stretch;
-}
-
-.g-item-responsive{
-  position:relative;
-  background:#fff;
-  padding:12px 12px 34px;
-  border:2px solid #111;
-  border-radius:12px;
-  box-shadow:6px 6px 0 rgba(0,0,0,.15);
-  cursor:pointer;
+.gallery-grid-video{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:2.4rem;max-width:1420px;margin:0 auto;}
+.g-item-video{
+  position:relative;background:#fff;padding:10px 10px 38px;border:2px solid #111;
+  border-radius:10px;box-shadow:6px 6px 0 rgba(0,0,0,.15);
   transition:box-shadow .3s ease;
-  width:100%;
-  display:flex;
-  flex-direction:column;
 }
-.g-item-responsive:nth-child(odd){--base-rot: -1.2deg;}
-.g-item-responsive:nth-child(even){--base-rot: 1.2deg;}
-.g-item-responsive:hover{
-  box-shadow:12px 12px 0 rgba(0,0,0,.22);
-  z-index:2;
+.g-item-video:nth-child(odd){--base-rot: -1.2deg;}
+.g-item-video:nth-child(even){--base-rot: 1.2deg;}
+.g-item-video:hover{box-shadow:12px 12px 0 rgba(0,0,0,.22);z-index:2;}
+.video-inner{
+  position:relative;width:100%;height:280px;background:#0d0d14;
+  border:1.5px solid #111;border-radius:6px;overflow:hidden;
 }
-
-/* FLUID VIEWPORT-DRIVEN CARD HEIGHT WITH FILL FIT */
-.asset-box{
-  position:relative;
-  width:100%;
-  height:clamp(280px, 42vw, 540px);
-  background:#0d0d14;
-  border:1.5px solid #111;
-  border-radius:8px;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-grow:1;
-}
-.asset-box img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center top;
-  display:block;
-  transition:transform .4s ease;
-}
-.g-item-responsive:hover .asset-box img{transform:scale(1.04);}
-.zoom-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;background:rgba(0,0,0,.45);transition:opacity .25s;}
-.g-item-responsive:hover .zoom-hint{opacity:1;}
-.zoom-hint svg{width:36px;height:36px;stroke:#fff;fill:none;stroke-width:2;}
-.pdf-badge{position:absolute;bottom:.8rem;left:.8rem;background:var(--blue);color:var(--cream);border:1.5px solid #111;font-family:var(--fk);font-size:.7rem;font-weight:700;letter-spacing:.08em;padding:.25rem .6rem;border-radius:4px;box-shadow:2px 2px 0 rgba(0,0,0,.25);}
-
-/* LIGHTBOX */
-.lb-overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(10,10,16,.94);backdrop-filter:blur(14px);align-items:center;justify-content:center;flex-direction:column;gap:1.2rem;}
-.lb-overlay.active{display:flex;}
-.lb-inner{position:relative;width:92vw;max-width:1300px;height:88vh;display:flex;align-items:center;justify-content:center;}
-.lb-inner iframe{width:100%;height:100%;border:3px solid #111;border-radius:12px;background:#fff;box-shadow:0 20px 40px rgba(0,0,0,.6);}
-.lb-close{position:fixed;top:1.5rem;right:2rem;font-size:2.4rem;color:#fff;cursor:pointer;background:none;border:none;line-height:1;opacity:.8;transition:opacity .2s;z-index:1010;}
-.lb-close:hover{opacity:1;color:var(--lime);}
-.lb-nav{display:flex;gap:1.2rem;align-items:center;}
-.lb-btn{background:var(--lime);border:2px solid #111;color:var(--ink);padding:.5rem 1.4rem;border-radius:2rem;cursor:pointer;font-family:var(--fk);font-weight:700;font-size:.85rem;box-shadow:3px 3px 0 rgba(0,0,0,.4);transition:transform .2s;}
-.lb-btn:hover{transform:scale(1.05);}
-#lb-counter{color:var(--cream);font-family:var(--fk);font-weight:700;font-size:.85rem;}
+.video-inner iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
 
 footer{padding:3rem;background:var(--ink);color:var(--cream);text-align:center;font-family:var(--fk);font-size:.85rem;border-top:1px solid rgba(244,240,228,.15);}
 footer a{color:var(--lime);text-decoration:underline;text-underline-offset:4px;}
 
 @media(max-width:768px){
   .topbar,.g-header,.g-wrap,footer{padding-left:1.5rem;padding-right:1.5rem;}
-  .gallery-grid-responsive{grid-template-columns:1fr;gap:2rem;}
-  .g-item-responsive:nth-child(odd),.g-item-responsive:nth-child(even){--base-rot: 0deg;}
-  .asset-box{height:clamp(240px, 60vw, 360px);}
+  .gallery-grid-video{grid-template-columns:1fr;}
+  .g-item-video:nth-child(odd),.g-item-video:nth-child(even){--base-rot: 0deg;}
+  .video-inner{height:220px;}
 }
+</style>
+<style>
+.wait{max-width:760px;margin:0 auto;text-align:center;padding:2rem 0 3rem;}
+.wait-code{font-family:var(--fh);font-size:clamp(6rem,22vw,13rem);font-weight:700;line-height:.9;color:var(--blue);text-shadow:5px 6px 0 rgba(0,0,0,.18);letter-spacing:-.02em;}
+.wait-code span{display:inline-block;animation:bob 1.6s ease-in-out infinite;} .wait-code span:nth-child(2){animation-delay:.2s;color:#14141c;} .wait-code span:nth-child(3){animation-delay:.4s;}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.wait h2{font-family:var(--fh);font-size:clamp(2rem,5vw,3rem);margin:.6rem 0;}
+.wait p{font-size:1rem;color:rgba(20,20,28,.75);max-width:520px;margin:0 auto 1.8rem;}
+.wait-bar{width:min(420px,90%);height:16px;margin:0 auto 1rem;background:#fff;border:2px solid #111;border-radius:10px;overflow:hidden;box-shadow:4px 4px 0 rgba(0,0,0,.2);}
+.wait-bar i{display:block;height:100%;width:62%;background:repeating-linear-gradient(45deg,var(--lime) 0 12px,#111 12px 24px);animation:stripe 1.2s linear infinite;background-size:34px 34px;}
+@keyframes stripe{to{background-position:34px 0}}
+.wait-tag{display:inline-block;font-family:var(--fk);font-weight:700;font-size:.8rem;background:#111;color:var(--lime);padding:.3rem .9rem;border-radius:2rem;}
+.dots span{animation:blink 1.4s infinite both;} .dots span:nth-child(2){animation-delay:.2s} .dots span:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.2}40%{opacity:1}}
 </style>
 </head>
 <body>
@@ -165,51 +125,18 @@ footer a{color:var(--lime);text-decoration:underline;text-underline-offset:4px;}
 </div>
 
 <header class="g-header blueprint">
-  <div class="g-cat-badge follow-mouse" data-mult="0.6">PACKAGING</div>
-  <h1 class="g-title follow-mouse" data-mult="0.9">Packaging Design</h1>
-  <p class="g-desc follow-mouse" data-mult="0.7">Packaging that earns its place on the shelf — structure, labels and visual hierarchy.</p>
-  <a href="https://drive.google.com/drive/folders/1Q9H4NkCkgPufUib74sp18Qv9SD1anwB5?usp=sharing" target="_blank" class="g-drive follow-mouse" data-mult="0.8">
-    <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M15 3h6v6M10 14L21 3M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/></svg>
-    View on Google Drive →
-  </a>
+  <div class="g-cat-badge follow-mouse" data-mult="0.6">AWARD WORK</div>
+  <h1 class="g-title follow-mouse" data-mult="0.9">Award Design</h1>
+  <p class="g-desc follow-mouse" data-mult="0.7">Award-winning work is being curated for this space.</p>
 </header>
 
 <div class="g-wrap">
-  <div class="gallery-grid-responsive">
-    <div class="g-item-responsive follow-mouse" data-mult="0.75" data-lb="pdf" data-src="https://drive.google.com/file/d/14JrfpPaDmNsAvQP6L6qPJF5T8OChB-6D/preview">
-      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=14JrfpPaDmNsAvQP6L6qPJF5T8OChB-6D&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">PACKAGING</div></div>
-    </div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.8" data-lb="pdf" data-src="https://drive.google.com/file/d/167yfkNsbjhFgwqMof3drkzNpD4rHs0KT/preview">
-      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=167yfkNsbjhFgwqMof3drkzNpD4rHs0KT&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">PACKAGING</div></div>
-    </div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.7" data-lb="pdf" data-src="https://drive.google.com/file/d/19x48Jwn4PIbRYC1SkjSzLHYoSfl-by_5/preview">
-      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=19x48Jwn4PIbRYC1SkjSzLHYoSfl-by_5&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">PACKAGING</div></div>
-    </div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.85" data-lb="pdf" data-src="https://drive.google.com/file/d/1ackqk2y7LTW0oKhTDny9T3qADdtQ-yfu/preview">
-      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1ackqk2y7LTW0oKhTDny9T3qADdtQ-yfu&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">PACKAGING</div></div>
-    </div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.75" data-lb="pdf" data-src="https://drive.google.com/file/d/1b5Tq32L_-lngLXXS0k8pROtMcvKsgRY6/preview">
-      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1b5Tq32L_-lngLXXS0k8pROtMcvKsgRY6&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">PACKAGING</div></div>
-    </div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.8" data-lb="pdf" data-src="https://drive.google.com/file/d/1bRZUL73v4Y-_gEiZsJEWAzGu5SscJBWd/preview">
-      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1bRZUL73v4Y-_gEiZsJEWAzGu5SscJBWd&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">PACKAGING</div></div>
-    </div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.7" data-lb="pdf" data-src="https://drive.google.com/file/d/1lqACAU98yHRSI0BEG2YytCYeESpT6tXm/preview">
-      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1lqACAU98yHRSI0BEG2YytCYeESpT6tXm&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">PACKAGING</div></div>
-    </div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.85" data-lb="pdf" data-src="https://drive.google.com/file/d/1nIIeFouEuzNffvvIxFMkLmxkJj9sPo5b/preview">
-      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1nIIeFouEuzNffvvIxFMkLmxkJj9sPo5b&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">PACKAGING</div></div>
-    </div>
-  </div>
-</div>
-
-<div class="lb-overlay" id="lb">
-  <button class="lb-close" id="lb-close">&times;</button>
-  <div class="lb-inner" id="lb-content"></div>
-  <div class="lb-nav">
-    <button class="lb-btn" onclick="prev()">&#8592; Prev</button>
-    <span id="lb-counter"></span>
-    <button class="lb-btn" onclick="next()">Next &#8594;</button>
+  <div class="wait follow-mouse" data-mult="0.6">
+    <div class="wait-code"><span>A</span><span>w</span><span>d</span></div>
+    <h2>Update in progress<span class="dots"><span>.</span><span>.</span><span>.</span></span></h2>
+    <p>Award-winning work is being curated and polished for this page. Check back soon — it will be worth the wait.</p>
+    <div class="wait-bar"><i></i></div>
+    <span class="wait-tag">CURATING · COMING SOON</span>
   </div>
 </div>
 
@@ -218,89 +145,47 @@ footer a{color:var(--lime);text-decoration:underline;text-underline-offset:4px;}
 </footer>
 
 <script>
-/* ===== Custom Cursor & Eased Parallax Tracking Loop ===== */
-const cur = document.getElementById('cur'), curR = document.getElementById('cur-r');
-let targetX = window.innerWidth / 2, targetY = window.innerHeight / 2;
-let curX = targetX, curY = targetY;
-let ringX = targetX, ringY = targetY;
-let ringVx = 0, ringVy = 0;
-let smoothNormX = 0, smoothNormY = 0;
+const cur=document.getElementById('cur'), curR=document.getElementById('cur-r');
+let targetX=window.innerWidth/2, targetY=window.innerHeight/2, curX=targetX, curY=targetY, ringX=targetX, ringY=targetY, ringVx=0, ringVy=0;
+let smoothNormX=0, smoothNormY=0;
+const followNodes=Array.from(document.querySelectorAll('.follow-mouse'));
 
-const followNodes = Array.from(document.querySelectorAll('.follow-mouse'));
-
-window.addEventListener('mousemove', e => {
-  targetX = e.clientX;
-  targetY = e.clientY;
-}, {passive: true});
+window.addEventListener('mousemove',e=>{targetX=e.clientX;targetY=e.clientY;},{passive:true});
 
 function animLoop(){
-  // Cursor Dot Lerp
-  curX += (targetX - curX) * 0.35;
-  curY += (targetY - curY) * 0.35;
-  cur.style.left = curX + 'px';
-  cur.style.top = curY + 'px';
+  curX+=(targetX-curX)*0.35; curY+=(targetY-curY)*0.35;
+  cur.style.left=curX+'px'; cur.style.top=curY+'px';
+  const ax=(targetX-ringX)*0.045, ay=(targetY-ringY)*0.045;
+  ringVx=(ringVx+ax)*0.72; ringVy=(ringVy+ay)*0.72;
+  ringX+=ringVx; ringY+=ringVy;
+  curR.style.left=ringX+'px'; curR.style.top=ringY+'px';
 
-  // Cursor Ring Spring
-  const ax = (targetX - ringX) * 0.045;
-  const ay = (targetY - ringY) * 0.045;
-  ringVx = (ringVx + ax) * 0.72;
-  ringVy = (ringVy + ay) * 0.72;
-  ringX += ringVx;
-  ringY += ringVy;
-  curR.style.left = ringX + 'px';
-  curR.style.top = ringY + 'px';
+  const normX=(targetX-window.innerWidth/2)/(window.innerWidth/2);
+  const normY=(targetY-window.innerHeight/2)/(window.innerHeight/2);
+  smoothNormX+=(normX-smoothNormX)*0.055;
+  smoothNormY+=(normY-smoothNormY)*0.055;
 
-  // Normalized Screen Vector for Smooth Parallax
-  const normX = (targetX - window.innerWidth / 2) / (window.innerWidth / 2);
-  const normY = (targetY - window.innerHeight / 2) / (window.innerHeight / 2);
-  smoothNormX += (normX - smoothNormX) * 0.055;
-  smoothNormY += (normY - smoothNormY) * 0.055;
+  const px=(smoothNormX*14).toFixed(2);
+  const py=(smoothNormY*10).toFixed(2);
 
-  const px = (smoothNormX * 14).toFixed(2);
-  const py = (smoothNormY * 10).toFixed(2);
-
-  for(let i = 0; i < followNodes.length; i++){
-    const node = followNodes[i];
-    const mult = node.getAttribute('data-mult') || '1';
-    node.style.setProperty('--px', px + 'px');
-    node.style.setProperty('--py', py + 'px');
-    node.style.setProperty('--pm', mult);
+  for(let i=0;i<followNodes.length;i++){
+    const node=followNodes[i];
+    const mult=node.getAttribute('data-mult')||'1';
+    node.style.setProperty('--px',px+'px');
+    node.style.setProperty('--py',py+'px');
+    node.style.setProperty('--pm',mult);
   }
-
   requestAnimationFrame(animLoop);
 }
 requestAnimationFrame(animLoop);
 
-/* ===== Lightbox Controller ===== */
-const lb = document.getElementById('lb'), lbContent = document.getElementById('lb-content');
-let items = [], curIdx = 0;
-document.querySelectorAll('[data-lb]').forEach((el,i)=>{
-  el.dataset.lbIdx = i;
-  items.push({type: el.dataset.lb, src: el.dataset.src});
-  el.addEventListener('click', ()=>open(i));
-});
-function open(i){ curIdx = i; render(); lb.classList.add('active'); document.body.style.overflow='hidden'; }
-function close(){ lb.classList.remove('active'); lbContent.innerHTML=''; document.body.style.overflow=''; }
-function render(){
-  const d = items[curIdx];
-  lbContent.innerHTML = `<iframe src="${d.src}" allowfullscreen></iframe>`;
-  document.getElementById('lb-counter').textContent = (curIdx+1)+' / '+items.length;
-}
-function prev(){ curIdx=(curIdx-1+items.length)%items.length; render(); }
-function next(){ curIdx=(curIdx+1)%items.length; render(); }
-
-document.getElementById('lb-close').addEventListener('click', close);
-lb.addEventListener('click', e=>{ if(e.target===lb) close(); });
-document.addEventListener('keydown', e=>{
-  if(!lb.classList.contains('active')) return;
-  if(e.key==='Escape') close();
-  if(e.key==='ArrowRight') next();
-  if(e.key==='ArrowLeft') prev();
-});
-
-document.querySelectorAll('a, button, .g-item-responsive').forEach(el=>{
+document.querySelectorAll('a, button, .g-item-video').forEach(el=>{
   el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2)';curR.style.transform='translate(-50%,-50%) scale(1.4)';});
   el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';curR.style.transform='translate(-50%,-50%) scale(1)';});
+});
+document.querySelectorAll('iframe').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hide-cursor'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hide-cursor'));
 });
 </script>
 </body>
