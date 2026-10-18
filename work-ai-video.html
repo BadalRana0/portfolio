@@ -97,6 +97,10 @@ footer a{color:var(--lime);text-decoration:underline;text-underline-offset:4px;}
 }
 .video-inner{height:auto !important;aspect-ratio:16/9;}
 .gallery-grid-video{grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr)) !important;}
+.gallery-grid-video{display:flex !important;flex-wrap:wrap;justify-content:center;gap:2rem !important;max-width:1100px !important;}
+.g-item-video{padding:12px !important;transform:none !important;flex:0 0 calc((100% - 2rem)/2);max-width:calc((100% - 2rem)/2);transition:box-shadow .3s ease,translate .3s ease;}
+.g-item-video:hover{translate:0 -4px;}
+@media(max-width:768px){.g-item-video{flex-basis:100%;max-width:100%;}}
 </style>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='26' fill='%230A0A10'/%3E%3Ctext x='64' y='78' text-anchor='middle' font-family='cursive' font-size='42' font-weight='700' fill='%23F4F0E4'%3EBadal.%3C/text%3E%3C/svg%3E">
 </head>
