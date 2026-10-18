@@ -318,5 +318,15 @@ document.querySelectorAll('a, button, .g-item-responsive').forEach(el=>{
   el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';curR.style.transform='translate(-50%,-50%) scale(1)';});
 });
 </script>
+<script>
+(function(){
+  document.querySelectorAll('img[src*="drive.google.com/thumbnail"]').forEach(function(im){
+    var m=im.src.match(/[?&]id=([\w-]+)/);if(!m)return;var id=m[1],step=0;
+    var alt=['https://lh3.googleusercontent.com/d/'+id+'=w1200','https://drive.google.com/thumbnail?id='+id+'&sz=w1200&r='+Date.now()];
+    im.referrerPolicy='no-referrer';
+    im.addEventListener('error',function(){if(step<alt.length){var s=alt[step++];setTimeout(function(){im.src=s;},step*600);}});
+  });
+})();
+</script>
 </body>
 </html>
