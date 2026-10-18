@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Logos — Badal Rana</title>
+<title>Logo Design — Badal Rana</title>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Kalam:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -69,69 +69,59 @@ body.hide-cursor #cur, body.hide-cursor #cur-r{opacity:0;transform:translate(-50
 }
 .g-drive:hover{box-shadow:8px 8px 0 rgba(0,0,0,.35);}
 
-/* FULLY RESPONSIVE MAGAZINE GRID (FLUID WIDTH & VIEWPORT-RESPONSIVE HEIGHT) */
+/* RESPONSIVE ASSET GALLERY */
 .g-wrap{padding:4rem 3rem 6rem;background:var(--cream);color:#14141c;min-height:60vh;}
 .gallery-grid-responsive{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(min(100%, 420px), 1fr));
-  gap:2.5rem;
+  grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+  gap:2.2rem;
   max-width:1420px;
   margin:0 auto;
-  align-items:stretch;
 }
 
 .g-item-responsive{
-  position:relative;
-  background:#fff;
-  padding:12px 12px 34px;
-  border:2px solid #111;
-  border-radius:12px;
-  box-shadow:6px 6px 0 rgba(0,0,0,.15);
-  cursor:pointer;
+  position:relative;background:#fff;padding:8px 8px 30px;border:2px solid #111;
+  border-radius:10px;box-shadow:6px 6px 0 rgba(0,0,0,.15);cursor:pointer;
   transition:box-shadow .3s ease;
   width:100%;
-  display:flex;
-  flex-direction:column;
 }
-.g-item-responsive:nth-child(odd){--base-rot: -1.2deg;}
-.g-item-responsive:nth-child(even){--base-rot: 1.2deg;}
+.g-item-responsive:nth-child(odd){--base-rot: -1.4deg;}
+.g-item-responsive:nth-child(even){--base-rot: 1.4deg;}
 .g-item-responsive:hover{
   box-shadow:12px 12px 0 rgba(0,0,0,.22);
   z-index:2;
 }
 
-/* FLUID VIEWPORT-DRIVEN CARD HEIGHT WITH FILL FIT */
+/* FIXED HEIGHT VIEW CONTAINER WITH FILL (COVER) */
 .asset-box{
   position:relative;
   width:100%;
-  height:clamp(280px, 42vw, 540px);
+  height:280px;
   background:#0d0d14;
   border:1.5px solid #111;
-  border-radius:8px;
+  border-radius:6px;
   overflow:hidden;
   display:flex;
   align-items:center;
   justify-content:center;
-  flex-grow:1;
 }
 .asset-box img{
   width:100%;
   height:100%;
   object-fit:cover;
-  object-position:center top;
   display:block;
   transition:transform .4s ease;
 }
-.g-item-responsive:hover .asset-box img{transform:scale(1.04);}
+.g-item-responsive:hover .asset-box img{transform:scale(1.05);}
 .zoom-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;background:rgba(0,0,0,.45);transition:opacity .25s;}
 .g-item-responsive:hover .zoom-hint{opacity:1;}
-.zoom-hint svg{width:36px;height:36px;stroke:#fff;fill:none;stroke-width:2;}
-.pdf-badge{position:absolute;bottom:.8rem;left:.8rem;background:var(--blue);color:var(--cream);border:1.5px solid #111;font-family:var(--fk);font-size:.7rem;font-weight:700;letter-spacing:.08em;padding:.25rem .6rem;border-radius:4px;box-shadow:2px 2px 0 rgba(0,0,0,.25);}
+.zoom-hint svg{width:34px;height:34px;stroke:#fff;fill:none;stroke-width:2;}
+.pdf-badge{position:absolute;bottom:.7rem;left:.7rem;background:var(--blue);color:var(--cream);border:1.5px solid #111;font-family:var(--fk);font-size:.68rem;font-weight:700;letter-spacing:.08em;padding:.22rem .55rem;border-radius:4px;box-shadow:2px 2px 0 rgba(0,0,0,.2);}
 
 /* LIGHTBOX */
 .lb-overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(10,10,16,.94);backdrop-filter:blur(14px);align-items:center;justify-content:center;flex-direction:column;gap:1.2rem;}
 .lb-overlay.active{display:flex;}
-.lb-inner{position:relative;width:92vw;max-width:1300px;height:88vh;display:flex;align-items:center;justify-content:center;}
+.lb-inner{position:relative;width:90vw;max-width:1200px;height:85vh;display:flex;align-items:center;justify-content:center;}
 .lb-inner iframe{width:100%;height:100%;border:3px solid #111;border-radius:12px;background:#fff;box-shadow:0 20px 40px rgba(0,0,0,.6);}
 .lb-close{position:fixed;top:1.5rem;right:2rem;font-size:2.4rem;color:#fff;cursor:pointer;background:none;border:none;line-height:1;opacity:.8;transition:opacity .2s;z-index:1010;}
 .lb-close:hover{opacity:1;color:var(--lime);}
@@ -145,32 +135,10 @@ footer a{color:var(--lime);text-decoration:underline;text-underline-offset:4px;}
 
 @media(max-width:768px){
   .topbar,.g-header,.g-wrap,footer{padding-left:1.5rem;padding-right:1.5rem;}
-  .gallery-grid-responsive{grid-template-columns:1fr;gap:2rem;}
+  .gallery-grid-responsive{grid-template-columns:1fr;}
   .g-item-responsive:nth-child(odd),.g-item-responsive:nth-child(even){--base-rot: 0deg;}
-  .asset-box{height:clamp(240px, 60vw, 360px);}
+  .asset-box{height:220px;}
 }
-.gallery-grid-responsive{align-items:start !important;}
-.g-item-responsive{display:block !important;}
-.asset-box{height:auto !important;min-height:200px;display:block !important;background:#f1eee4 !important;}
-.asset-box img{height:auto !important;width:100%;object-fit:contain !important;object-position:center !important;}
-/* uniform ratio buckets */
-.gallery-grid-responsive,.gallery-grid-video{display:flex !important;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:2rem !important;max-width:1280px !important;}
-.g-item-responsive,.g-item-video{padding:12px !important;transform:none !important;border-radius:12px !important;flex:0 0 calc((100% - 6rem)/4);max-width:calc((100% - 6rem)/4);transition:box-shadow .3s ease,translate .3s ease;}
-.g-item-responsive:hover,.g-item-video:hover{translate:0 -4px;}
-.g-item-responsive.r-l,.g-item-video.r-l{flex-basis:calc((100% - 4rem)/3);max-width:calc((100% - 4rem)/3);}
-.gallery-grid-responsive>h2{flex:0 0 100%;}
-.bk-label{flex:0 0 100%;display:flex;align-items:center;gap:.9rem;margin:1.4rem 0 .2rem;font-family:var(--fh);font-size:2rem;font-weight:700;color:#14141c;}
-.bk-label::after{content:"";flex:1;height:2px;background:#14141c;opacity:.15;}
-.bk-label b{font-family:var(--fk);font-size:.72rem;letter-spacing:.06em;background:#14141c;color:var(--lime);padding:.2rem .7rem;border-radius:2rem;}
-.g-item-responsive .asset-box{height:auto !important;min-height:0 !important;aspect-ratio:9/16;position:relative;display:block !important;background:#f1eee4 !important;}
-.g-item-responsive.r-l .asset-box{aspect-ratio:16/9;}
-.g-item-responsive.r-s .asset-box{aspect-ratio:1/1;}
-.g-item-responsive .asset-box img{position:absolute;inset:0;width:100% !important;height:100% !important;object-fit:contain !important;}
-.g-item-video .video-inner{width:100% !important;margin:0 !important;height:auto !important;aspect-ratio:16/9;}
-.g-item-video.r-p .video-inner{aspect-ratio:9/16;}
-.g-item-video.r-s .video-inner{aspect-ratio:1/1;}
-@media(max-width:1100px){.g-item-responsive,.g-item-video{flex-basis:calc((100% - 4rem)/3);max-width:calc((100% - 4rem)/3);}.g-item-responsive.r-l,.g-item-video.r-l{flex-basis:calc((100% - 2rem)/2);max-width:calc((100% - 2rem)/2);}}
-@media(max-width:700px){.gallery-grid-responsive,.gallery-grid-video{gap:1.2rem !important;}.g-item-responsive,.g-item-video{flex-basis:calc((100% - 1.2rem)/2);max-width:calc((100% - 1.2rem)/2);padding:8px !important;}.g-item-responsive.r-l,.g-item-video.r-l{flex-basis:100%;max-width:100%;}}
 </style>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='26' fill='%230A0A10'/%3E%3Ctext x='64' y='78' text-anchor='middle' font-family='cursive' font-size='42' font-weight='700' fill='%23F4F0E4'%3EBadal.%3C/text%3E%3C/svg%3E">
 </head>
@@ -189,7 +157,7 @@ footer a{color:var(--lime);text-decoration:underline;text-underline-offset:4px;}
 
 <header class="g-header blueprint">
   <div class="g-cat-badge follow-mouse" data-mult="0.6">BRANDING</div>
-  <h1 class="g-title follow-mouse" data-mult="0.9">Logos</h1>
+  <h1 class="g-title follow-mouse" data-mult="0.9">Logo Design</h1>
   <p class="g-desc follow-mouse" data-mult="0.7">Identities that speak before words do — logos and brand marks built for clarity and recall.</p>
   <a href="https://drive.google.com/drive/folders/18EwI5P_Drri9jfXjaK5fIhW8-349h5lA" target="_blank" class="g-drive follow-mouse" data-mult="0.8">
     <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M15 3h6v6M10 14L21 3M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/></svg>
@@ -200,23 +168,53 @@ footer a{color:var(--lime);text-decoration:underline;text-underline-offset:4px;}
 <div class="g-wrap">
   <div class="gallery-grid-responsive">
     <div class="g-item-responsive follow-mouse" data-mult="0.75" data-lb="pdf" data-src="https://drive.google.com/file/d/10MDZruq24Cv6sPOUYj1_ST56F6POzDvs/preview">
-      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=10MDZruq24Cv6sPOUYj1_ST56F6POzDvs&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">LOGO</div></div>
+      <div class="asset-box">
+        <img src="https://drive.google.com/thumbnail?id=10MDZruq24Cv6sPOUYj1_ST56F6POzDvs&sz=w1200" alt="" loading="lazy">
+        <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="pdf-badge">PDF GUIDELINE</div>
+      </div>
     </div>
+
     <div class="g-item-responsive follow-mouse" data-mult="0.8" data-lb="pdf" data-src="https://drive.google.com/file/d/18opyONcv9YenR8F_JatIXGYhhZbGx1az/preview">
-      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=18opyONcv9YenR8F_JatIXGYhhZbGx1az&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">LOGO</div></div>
+      <div class="asset-box">
+        <img src="https://drive.google.com/thumbnail?id=18opyONcv9YenR8F_JatIXGYhhZbGx1az&sz=w1200" alt="" loading="lazy">
+        <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="pdf-badge">PDF GUIDELINE</div>
+      </div>
     </div>
+
     <div class="g-item-responsive follow-mouse" data-mult="0.7" data-lb="pdf" data-src="https://drive.google.com/file/d/1LuLofHRgWFpyX9-V-qlwwFaWRpeYf63M/preview">
-      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1LuLofHRgWFpyX9-V-qlwwFaWRpeYf63M&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">LOGO</div></div>
+      <div class="asset-box">
+        <img src="https://drive.google.com/thumbnail?id=1LuLofHRgWFpyX9-V-qlwwFaWRpeYf63M&sz=w1200" alt="" loading="lazy">
+        <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="pdf-badge">PDF GUIDELINE</div>
+      </div>
     </div>
+
     <div class="g-item-responsive follow-mouse" data-mult="0.85" data-lb="pdf" data-src="https://drive.google.com/file/d/1du7CF2eiDzdUQ2SYRsYEEYS-v65xQa0X/preview">
-      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1du7CF2eiDzdUQ2SYRsYEEYS-v65xQa0X&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">LOGO</div></div>
+      <div class="asset-box">
+        <img src="https://drive.google.com/thumbnail?id=1du7CF2eiDzdUQ2SYRsYEEYS-v65xQa0X&sz=w1200" alt="" loading="lazy">
+        <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="pdf-badge">PDF GUIDELINE</div>
+      </div>
     </div>
+
     <div class="g-item-responsive follow-mouse" data-mult="0.75" data-lb="pdf" data-src="https://drive.google.com/file/d/1mLITq_vtCp5i2yvwr6y9ni8OOcI1DqtZ/preview">
-      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1mLITq_vtCp5i2yvwr6y9ni8OOcI1DqtZ&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">LOGO</div></div>
+      <div class="asset-box">
+        <img src="https://drive.google.com/thumbnail?id=1mLITq_vtCp5i2yvwr6y9ni8OOcI1DqtZ&sz=w1200" alt="" loading="lazy">
+        <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="pdf-badge">PDF GUIDELINE</div>
+      </div>
     </div>
+
     <div class="g-item-responsive follow-mouse" data-mult="0.8" data-lb="pdf" data-src="https://drive.google.com/file/d/1qSWgTncw8gxy6gUqJN6wtuKXg8uet_35/preview">
-      <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1qSWgTncw8gxy6gUqJN6wtuKXg8uet_35&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">LOGO</div></div>
+      <div class="asset-box">
+        <img src="https://drive.google.com/thumbnail?id=1qSWgTncw8gxy6gUqJN6wtuKXg8uet_35&sz=w1200" alt="" loading="lazy">
+        <div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="pdf-badge">PDF GUIDELINE</div>
+      </div>
     </div>
+
   </div>
 </div>
 
@@ -319,41 +317,6 @@ document.querySelectorAll('a, button, .g-item-responsive').forEach(el=>{
   el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2)';curR.style.transform='translate(-50%,-50%) scale(1.4)';});
   el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';curR.style.transform='translate(-50%,-50%) scale(1)';});
 });
-</script>
-<script>
-(function(){
-  var grid=document.querySelector('.gallery-grid-responsive,.gallery-grid-video');if(!grid)return;
-  var isVid=grid.classList.contains('gallery-grid-video');
-  var kids=Array.prototype.slice.call(grid.children);
-  var cards=kids.filter(function(k){return /g-item-/.test(k.className);});
-  function idOf(el){var s=el.dataset.src||(el.querySelector('iframe')||{}).src||'';var m=s.match(/\/d\/([\w-]+)/);return m&&m[1];}
-  function bucket(r){return r<0.8?'p':(r>1.25?'l':'s');}
-  var done=0,fin=false;
-  function finish(){
-    if(fin)return;fin=true;
-    var rank={p:0,l:1,s:2},n=0,seg=[];
-    function flush(){var names={p:['Vertical','9:16'],l:['Horizontal','16:9'],s:['Square','1:1']};var by={p:[],l:[],s:[]};seg.forEach(function(e){by[e._b].push(e);});var used=['p','l','s'].filter(function(b){return by[b].length;});used.forEach(function(b){if(used.length>1){var h=document.createElement('div');h.className='bk-label';h.innerHTML=names[b][0]+' <b>'+names[b][1]+'</b>';h.style.order=n++;grid.appendChild(h);}by[b].forEach(function(e){e.style.order=n++;});});seg=[];}
-    kids.forEach(function(k){
-      if(cards.indexOf(k)<0){flush();k.style.order=n++;}
-      else{k.classList.add('r-'+k._b);seg.push(k);}
-    });
-    flush();
-    if(document.getElementById('lb')){
-      var sorted=cards.slice().sort(function(a,b){return a.style.order-b.style.order;});
-      items.length=0;
-      sorted.forEach(function(el,i){items.push({type:el.dataset.lb,src:el.dataset.src});el.addEventListener('click',function(e){e.stopImmediatePropagation();open(i);},true);});
-    }
-  }
-  cards.forEach(function(el){
-    el._b=isVid?'l':'p';var id=idOf(el);
-    var im=new Image();
-    im.onload=function(){var r=im.naturalWidth/im.naturalHeight;if(r&&isFinite(r))el._b=bucket(r);if(++done===cards.length)finish();};
-    im.onerror=function(){if(++done===cards.length)finish();};
-    im.src=id?'https://drive.google.com/thumbnail?id='+id+'&sz=w400':'';
-    if(!id&&++done===cards.length)finish();
-  });
-  setTimeout(finish,6000);
-})();
 </script>
 </body>
 </html>
