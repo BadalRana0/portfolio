@@ -860,16 +860,6 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
 }
 
 /* ===== v2 RELAYOUT ===== */
-@media(min-width:901px){
- /* hero: roles as a horizontal timeline */
- #hero .hero-role{flex-direction:row;flex-wrap:wrap;gap:.9rem;margin-top:1.8rem;position:relative;}
- #hero .hero-role-row{flex-direction:column;align-items:flex-start;gap:.1rem;padding:.8rem 1.1rem;background:rgba(10,10,16,.28);border:1.5px solid rgba(244,240,228,.22);border-radius:12px;width:auto;min-width:150px;}
- #hero .hero-role-row:nth-child(3){background:var(--lime);border-color:#111;box-shadow:4px 4px 0 rgba(0,0,0,.35);}
- #hero .hero-role-row:nth-child(3) .hero-role-label{color:rgba(10,10,16,.65);}
- #hero .hero-role-row:nth-child(3) .hero-role-val.now{color:#0A0A10;}
- #hero .hero-role-row:hover{transform:translateY(-4px);}
- #hero .hero-role-val{font-size:clamp(1.1rem,1.7vw,1.5rem);}
-}
 /* about: one compact grid, no dead space */
 .about-hero-grid{display:grid;grid-template-columns:1.25fr 1fr 230px;grid-template-areas:"bar bar pol" "hero nums pol";gap:1.2rem;align-items:stretch;margin:1rem 0 2.5rem;width:100%;}
 .about-hero-grid .ah-bar{grid-area:bar;margin:0;}
@@ -879,6 +869,25 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
 .about-hero-grid .ah-nums .ms-card{flex:1;flex-direction:row;align-items:center;gap:1rem;padding:.7rem 1.1rem;}
 .about-hero-grid .ah-nums .ms-num{font-size:2rem;min-width:84px;}.about-hero-grid .ah-nums .ms-label{margin:0;}
 @media(max-width:900px){.about-hero-grid{grid-template-columns:1fr;grid-template-areas:"bar" "pol" "hero" "nums";}.about-hero-grid .ah-pol{justify-self:center;}}
+
+.canvas-wrapper{background:linear-gradient(135deg,#1E2FBE,#0A0A10) !important;}
+.reel-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#0d0d14;z-index:1;}
+.reel-award{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:3rem;color:var(--lime);background:rgba(10,10,16,.55);}
+.reel-award span{font-family:var(--fk);font-size:.9rem;letter-spacing:.08em;margin-top:.3rem;}
+.about-hero-grid{grid-template-columns:1.2fr 1fr 340px !important;}
+.about-hero-grid .ah-pol{width:100% !important;max-width:340px;padding:10px 10px 30px;justify-self:center;}
+.about-hero-grid .ah-pol .about-image-placeholder{height:auto !important;aspect-ratio:4/5;}
+.about-hero-grid .ah-pol figcaption{font-size:.9rem;}
+.about-hero-grid .ah-nums .ms-num{font-size:2.4rem;}
+@media(max-width:900px){.about-hero-grid{grid-template-columns:1fr !important;}}
+
+.canvas-wrapper{background:#F4F0E4 !important;position:relative;}
+.reel-cover{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;background-image:linear-gradient(rgba(10,10,16,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(10,10,16,.07) 1px,transparent 1px);background-size:26px 26px;}
+.reel-cover svg{width:34%;height:auto;}
+.reel-cover.c1{background-color:#F4F0E4;color:#2A3FE4;}.reel-cover.c2{background-color:#D9FF4B;color:#0A0A10;}.reel-cover.c3{background-color:#FF5A4E;color:#F4F0E4;}.reel-cover.c4{background-color:#6D3BFF;color:#D9FF4B;}
+.reel-cover.c5{background-color:#2A3FE4;color:#F4F0E4;}.reel-cover.c6{background-color:#EAE4D4;color:#FF5A4E;}.reel-cover.c7{background-color:#D9FF4B;color:#2A3FE4;}.reel-cover.c8{background-color:#14141c;color:#D9FF4B;}
+.reel-soon{font-family:var(--fk);font-size:.8rem;letter-spacing:.08em;font-weight:700;}
+.reel-thumb{opacity:0;transition:opacity .4s ease;background:none !important;}
 </style>
 
 </head>
@@ -1065,56 +1074,56 @@ footer{background:var(--cream2);color:#14141c;padding:1.8rem 2rem;display:flex;j
     <a href="work-posts.html" class="reel-tile">
       <div class="reel-photo">
         <div class="reel-tape"></div>
-        <div class="canvas-wrapper"><canvas class="reel-canvas" id="r1"></canvas></div>
+        <div class="canvas-wrapper"><div class="reel-cover c1"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="12" width="44" height="40" rx="4"/><circle cx="24" cy="26" r="5"/><path d="M10 44l14-12 10 8 8-6 12 10"/></svg></div><img class="reel-thumb" src="https://drive.google.com/thumbnail?id=1-hzrp3oqOAiKXY2aN_uFCyRWVR-lWzXu&sz=w600" alt="" loading="lazy" onload="this.style.opacity=1" onerror="this.remove()"></div>
         <div class="reel-info"><span class="reel-cat track-txt" data-tm="0.55">Social Media</span><span class="reel-name track-txt" data-tm="0.85">Posts &amp; Creatives</span></div>
       </div>
     </a>
     <a href="work-logo.html" class="reel-tile">
       <div class="reel-photo">
         <div class="reel-tape"></div>
-        <div class="canvas-wrapper"><canvas class="reel-canvas" id="r2"></canvas></div>
+        <div class="canvas-wrapper"><div class="reel-cover c2"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 8l22 14v20L32 56 10 42V22z"/><circle cx="32" cy="32" r="9"/></svg></div><img class="reel-thumb" src="https://drive.google.com/thumbnail?id=10MDZruq24Cv6sPOUYj1_ST56F6POzDvs&sz=w600" alt="" loading="lazy" onload="this.style.opacity=1" onerror="this.remove()"></div>
         <div class="reel-info"><span class="reel-cat track-txt" data-tm="0.55">Branding</span><span class="reel-name track-txt" data-tm="0.85">Logos</span></div>
       </div>
     </a>
     <a href="work-animation.html" class="reel-tile">
       <div class="reel-photo">
         <div class="reel-tape"></div>
-        <div class="canvas-wrapper"><canvas class="reel-canvas" id="r3"></canvas></div>
+        <div class="canvas-wrapper"><div class="reel-cover c3"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="22"/><path d="M27 22l16 10-16 10z" fill="currentColor"/></svg></div><img class="reel-thumb" src="https://drive.google.com/thumbnail?id=1KoBTfAU2Oom6DOO0Zo0vuzEGrlBOKOEG&sz=w600" alt="" loading="lazy" onload="this.style.opacity=1" onerror="this.remove()"></div>
         <div class="reel-info"><span class="reel-cat track-txt" data-tm="0.55">Animation</span><span class="reel-name track-txt" data-tm="0.85">Animated Videos</span></div>
       </div>
     </a>
     <a href="work-ai-video.html" class="reel-tile">
       <div class="reel-photo">
         <div class="reel-tape"></div>
-        <div class="canvas-wrapper"><canvas class="reel-canvas" id="r4"></canvas></div>
+        <div class="canvas-wrapper"><div class="reel-cover c4"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M28 8c2 14 6 18 20 20-14 2-18 6-20 20-2-14-6-18-20-20 14-2 18-6 20-20z"/><path d="M50 40c1 6 3 8 8 9-5 1-7 3-8 9-1-6-3-8-8-9 5-1 7-3 8-9z"/></svg></div><img class="reel-thumb" src="https://drive.google.com/thumbnail?id=15w88I6bGgl0pq3ypYIm0iSgBaKycl0s8&sz=w600" alt="" loading="lazy" onload="this.style.opacity=1" onerror="this.remove()"></div>
         <div class="reel-info"><span class="reel-cat track-txt" data-tm="0.55">AI Generated</span><span class="reel-name track-txt" data-tm="0.85">AI Generated Video</span></div>
       </div>
     </a>
     <a href="work-video.html" class="reel-tile">
       <div class="reel-photo">
         <div class="reel-tape"></div>
-        <div class="canvas-wrapper"><canvas class="reel-canvas" id="r5"></canvas></div>
+        <div class="canvas-wrapper"><div class="reel-cover c5"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="16" width="48" height="34" rx="4"/><path d="M8 24h48"/><path d="M27 29l14 7-14 7z" fill="currentColor"/></svg></div><img class="reel-thumb" src="https://drive.google.com/thumbnail?id=1EwgmbfyfKDYe_soF2MCTL-paiTlnmR2I&sz=w600" alt="" loading="lazy" onload="this.style.opacity=1" onerror="this.remove()"></div>
         <div class="reel-info"><span class="reel-cat track-txt" data-tm="0.55">Video Edit</span><span class="reel-name track-txt" data-tm="0.85">Video Production</span></div>
       </div>
     </a>
     <a href="work-packaging.html" class="reel-tile">
       <div class="reel-photo">
         <div class="reel-tape"></div>
-        <div class="canvas-wrapper"><canvas class="reel-canvas" id="r6"></canvas></div>
+        <div class="canvas-wrapper"><div class="reel-cover c6"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 8l22 11v26L32 56 10 45V19z"/><path d="M10 19l22 11 22-11M32 30v26"/></svg></div><img class="reel-thumb" src="https://drive.google.com/thumbnail?id=14JrfpPaDmNsAvQP6L6qPJF5T8OChB-6D&sz=w600" alt="" loading="lazy" onload="this.style.opacity=1" onerror="this.remove()"></div>
         <div class="reel-info"><span class="reel-cat track-txt" data-tm="0.55">Packaging</span><span class="reel-name track-txt" data-tm="0.85">Packaging Design</span></div>
       </div>
     </a>
     <a href="work-print.html" class="reel-tile">
       <div class="reel-photo">
         <div class="reel-tape"></div>
-        <div class="canvas-wrapper"><canvas class="reel-canvas" id="r7"></canvas></div>
+        <div class="canvas-wrapper"><div class="reel-cover c7"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14h20a4 4 0 014 4v34a4 4 0 00-4-4H8z"/><path d="M56 14H36a4 4 0 00-4 4v34a4 4 0 014-4h20z"/></svg></div><img class="reel-thumb" src="https://drive.google.com/thumbnail?id=1-SmjPc51Xi9IiYdy4ubUZlTEpVw7U_1Y&sz=w600" alt="" loading="lazy" onload="this.style.opacity=1" onerror="this.remove()"></div>
         <div class="reel-info"><span class="reel-cat track-txt" data-tm="0.55">Print &amp; Editorial</span><span class="reel-name track-txt" data-tm="0.85">Magazine, Brochure &amp; Poster</span></div>
       </div>
     </a>
     <a href="work-award.html" class="reel-tile">
       <div class="reel-photo">
         <div class="reel-tape"></div>
-        <div class="canvas-wrapper"><canvas class="reel-canvas" id="r8"></canvas></div>
+        <div class="canvas-wrapper"><div class="reel-cover c8"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10h24v14a12 12 0 01-24 0z"/><path d="M20 14h-8c0 10 4 14 10 14M44 14h8c0 10-4 14-10 14M32 36v10M22 54h20"/></svg><span class="reel-soon">Coming soon</span></div></div>
         <div class="reel-info"><span class="reel-cat track-txt" data-tm="0.55">Recognition</span><span class="reel-name track-txt" data-tm="0.85">Award Design</span></div>
       </div>
     </a>
