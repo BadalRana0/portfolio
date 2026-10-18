@@ -149,6 +149,14 @@ footer a{color:var(--lime);text-decoration:underline;text-underline-offset:4px;}
   .g-item-responsive:nth-child(odd),.g-item-responsive:nth-child(even){--base-rot: 0deg;}
   .asset-box{height:clamp(240px, 60vw, 360px);}
 }
+
+.print-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.6rem 2.2rem;max-width:1240px;margin:0 auto;align-items:start;}
+.seg-h{font-family:var(--fh);font-size:2.3rem;font-weight:700;color:#14141c;margin-top:1.2rem;display:flex;align-items:center;gap:.9rem;}
+.seg-h::after{content:"";flex:1;height:2px;background:#14141c;opacity:.15;}
+.print-grid .asset-box{height:clamp(300px,31vw,440px) !important;background:#ebe7da !important;flex-grow:0;}
+.print-grid .asset-box img{object-fit:contain !important;object-position:center !important;}
+@media(max-width:900px){.print-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.print-grid>*{grid-row:auto !important;grid-column:auto !important;}.print-grid>.seg-h{grid-column:1/-1 !important;}}
+@media(max-width:600px){.print-grid{grid-template-columns:1fr;}}
 </style>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='26' fill='%230A0A10'/%3E%3Ctext x='64' y='78' text-anchor='middle' font-family='cursive' font-size='42' font-weight='700' fill='%23F4F0E4'%3EBadal.%3C/text%3E%3C/svg%3E">
 </head>
@@ -176,29 +184,29 @@ footer a{color:var(--lime);text-decoration:underline;text-underline-offset:4px;}
 </header>
 
 <div class="g-wrap">
-  <div class="gallery-grid-responsive">
-    <h2 style="grid-column:1/-1;font-family:var(--fh);font-size:2.2rem;color:#14141c;margin-top:1rem;">Posters</h2>
-    <div class="g-item-responsive follow-mouse" data-mult="0.75" data-lb="pdf" data-src="https://drive.google.com/file/d/1-SmjPc51Xi9IiYdy4ubUZlTEpVw7U_1Y/preview">
+  <div class="print-grid">
+    <h2 class="seg-h" style="grid-column:1/-1;grid-row:1">Posters</h2>
+    <div class="g-item-responsive follow-mouse" style="grid-column:1;grid-row:2" data-mult="0.75" data-lb="pdf" data-src="https://drive.google.com/file/d/1-SmjPc51Xi9IiYdy4ubUZlTEpVw7U_1Y/preview">
       <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1-SmjPc51Xi9IiYdy4ubUZlTEpVw7U_1Y&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">POSTER</div></div>
     </div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.8" data-lb="pdf" data-src="https://drive.google.com/file/d/1ExBJKm5Btbvpb6eeeizZdKmxaX3UpgnZ/preview">
+    <div class="g-item-responsive follow-mouse" style="grid-column:2;grid-row:2" data-mult="0.8" data-lb="pdf" data-src="https://drive.google.com/file/d/1ExBJKm5Btbvpb6eeeizZdKmxaX3UpgnZ/preview">
       <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1ExBJKm5Btbvpb6eeeizZdKmxaX3UpgnZ&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">POSTER</div></div>
     </div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.7" data-lb="pdf" data-src="https://drive.google.com/file/d/1GYFp9eSl-52f1oWcj-lhnd6vftJP1RFu/preview">
+    <div class="g-item-responsive follow-mouse" style="grid-column:3;grid-row:2" data-mult="0.7" data-lb="pdf" data-src="https://drive.google.com/file/d/1GYFp9eSl-52f1oWcj-lhnd6vftJP1RFu/preview">
       <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1GYFp9eSl-52f1oWcj-lhnd6vftJP1RFu&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">POSTER</div></div>
     </div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.85" data-lb="pdf" data-src="https://drive.google.com/file/d/1XEaxP39beTMURtt9Qe-LIrRSqEw1LhUh/preview">
+    <div class="g-item-responsive follow-mouse" style="grid-column:4;grid-row:2" data-mult="0.85" data-lb="pdf" data-src="https://drive.google.com/file/d/1XEaxP39beTMURtt9Qe-LIrRSqEw1LhUh/preview">
       <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1XEaxP39beTMURtt9Qe-LIrRSqEw1LhUh&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">POSTER</div></div>
     </div>
-    <h2 style="grid-column:1/-1;font-family:var(--fh);font-size:2.2rem;color:#14141c;margin-top:1rem;">Brochure</h2>
-    <div class="g-item-responsive follow-mouse" data-mult="0.75" data-lb="pdf" data-src="https://drive.google.com/file/d/169gU41n3l0LP4EEUq40uNbYVXP0sr77w/preview">
+    <h2 class="seg-h" style="grid-column:1;grid-row:3">Brochure</h2>
+    <h2 class="seg-h" style="grid-column:2/span 2;grid-row:3">Magazine</h2>
+    <div class="g-item-responsive follow-mouse" style="grid-column:1;grid-row:4" data-mult="0.75" data-lb="pdf" data-src="https://drive.google.com/file/d/169gU41n3l0LP4EEUq40uNbYVXP0sr77w/preview">
       <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=169gU41n3l0LP4EEUq40uNbYVXP0sr77w&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">BROCHURE</div></div>
     </div>
-    <h2 style="grid-column:1/-1;font-family:var(--fh);font-size:2.2rem;color:#14141c;margin-top:1rem;">Magazine</h2>
-    <div class="g-item-responsive follow-mouse" data-mult="0.7" data-lb="pdf" data-src="https://drive.google.com/file/d/1_JWz_rm6LnCrmbrIBtmYnoPbRdNQ9X1r/preview">
+    <div class="g-item-responsive follow-mouse" style="grid-column:2;grid-row:4" data-mult="0.8" data-lb="pdf" data-src="https://drive.google.com/file/d/1_JWz_rm6LnCrmbrIBtmYnoPbRdNQ9X1r/preview">
       <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1_JWz_rm6LnCrmbrIBtmYnoPbRdNQ9X1r&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">MAGAZINE</div></div>
     </div>
-    <div class="g-item-responsive follow-mouse" data-mult="0.85" data-lb="pdf" data-src="https://drive.google.com/file/d/1w2nBvtr0YDoKObGRjo1T5px1P7vJN4Ei/preview">
+    <div class="g-item-responsive follow-mouse" style="grid-column:3;grid-row:4" data-mult="0.7" data-lb="pdf" data-src="https://drive.google.com/file/d/1w2nBvtr0YDoKObGRjo1T5px1P7vJN4Ei/preview">
       <div class="asset-box"><img src="https://drive.google.com/thumbnail?id=1w2nBvtr0YDoKObGRjo1T5px1P7vJN4Ei&sz=w1200" alt="" loading="lazy"><div class="zoom-hint"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="pdf-badge">MAGAZINE</div></div>
     </div>
   </div>
