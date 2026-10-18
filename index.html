@@ -902,6 +902,14 @@ nav,footer{padding-left:var(--gutter) !important;padding-right:var(--gutter) !im
 .ms-hero p{font-size:1.08rem !important;line-height:1.6 !important;margin-bottom:1.3rem !important;}
 .ms-hero-chips{gap:.65rem !important;}
 .ms-hero-chips span{font-size:1.02rem !important;padding:.42rem 1.15rem !important;}
+
+.reel-tile[href="work-animation.html"] .reel-thumb{animation:kb 9s ease-in-out infinite alternate;}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.16) translate(-2%,-2%)}}
+.reel-tile[href="work-animation.html"] .canvas-wrapper{overflow:hidden;}
+.reel-tile[href="work-animation.html"] .canvas-wrapper::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);transform:translateX(-120%);animation:sheen 3.4s ease-in-out infinite;}
+@keyframes sheen{to{transform:translateX(120%)}}
+.reel-play{position:absolute;z-index:3;left:50%;top:50%;width:60px;height:60px;margin:-30px 0 0 -30px;border-radius:50%;background:rgba(10,10,16,.6);border:2px solid #D9FF4B;display:grid;place-items:center;animation:rplay 1.8s ease-in-out infinite;}
+@keyframes rplay{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
 </style>
 
 </head>
@@ -1102,7 +1110,7 @@ nav,footer{padding-left:var(--gutter) !important;padding-right:var(--gutter) !im
     <a href="work-animation.html" class="reel-tile">
       <div class="reel-photo">
         <div class="reel-tape"></div>
-        <div class="canvas-wrapper"><div class="reel-cover c3"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="22"/><path d="M27 22l16 10-16 10z" fill="currentColor"/></svg></div><img class="reel-thumb" referrerpolicy="no-referrer" src="https://drive.google.com/thumbnail?id=1KoBTfAU2Oom6DOO0Zo0vuzEGrlBOKOEG&sz=w600" alt="" onload="this.style.opacity=1"></div>
+        <div class="canvas-wrapper"><div class="reel-cover c3"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="22"/><path d="M27 22l16 10-16 10z" fill="currentColor"/></svg></div><img class="reel-thumb" referrerpolicy="no-referrer" src="https://drive.google.com/thumbnail?id=1KoBTfAU2Oom6DOO0Zo0vuzEGrlBOKOEG&sz=w600" alt="" onload="this.style.opacity=1"><div class="reel-play"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5l12 7-12 7z" fill="#D9FF4B"/></svg></div></div>
         <div class="reel-info"><span class="reel-cat track-txt" data-tm="0.55">Animation</span><span class="reel-name track-txt" data-tm="0.85">Animated Videos</span></div>
       </div>
     </a>
