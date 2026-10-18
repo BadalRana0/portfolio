@@ -96,17 +96,9 @@ footer a{color:var(--lime);text-decoration:underline;text-underline-offset:4px;}
   .video-inner{height:220px;}
 }
 
-.vgroup{max-width:1420px;margin:0 auto 3rem;}
-.vgroup[hidden]{display:none;}
-.vgroup-h{display:flex;align-items:center;gap:.9rem;font-family:var(--fh);font-size:2.4rem;font-weight:700;color:#14141c;margin:0 0 1.6rem;}
-.vgroup-h b{font-family:var(--fk);font-size:.72rem;letter-spacing:.06em;background:#14141c;color:var(--lime);padding:.2rem .7rem;border-radius:2rem;}
-.vgroup-h::after{content:"";flex:1;height:2px;background:#14141c;opacity:.15;}
-.vgroup .gallery-grid-video{max-width:none;margin:0;}
-.vgroup .video-inner{height:auto;aspect-ratio:16/9;}
-#g-reels,#g-square{grid-template-columns:repeat(auto-fill,minmax(250px,300px));justify-content:center;}
-#g-reels .video-inner{aspect-ratio:9/16;}
-#g-square .video-inner{aspect-ratio:1/1;}
-@media(max-width:768px){#g-reels,#g-square{grid-template-columns:repeat(2,1fr);gap:1.2rem;}#g-videos{grid-template-columns:1fr;}.vgroup-h{font-size:1.9rem;}}
+.video-inner{display:flex !important;align-items:center;justify-content:center;background:#0d0d14;}
+.video-inner iframe{position:static !important;inset:auto !important;width:100%;height:100%;flex:none;}
+.gallery-grid-video{max-width:1240px !important;}
 </style>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='26' fill='%230A0A10'/%3E%3Ctext x='64' y='78' text-anchor='middle' font-family='cursive' font-size='42' font-weight='700' fill='%23F4F0E4'%3EBadal.%3C/text%3E%3C/svg%3E">
 </head>
@@ -134,11 +126,7 @@ footer a{color:var(--lime);text-decoration:underline;text-underline-offset:4px;}
 </header>
 
 <div class="g-wrap">
-  <section class="vgroup"><h2 class="vgroup-h">Reels <b>9:16</b></h2>
-  <div class="gallery-grid-video" id="g-reels">
-  </div></section>
-  <section class="vgroup"><h2 class="vgroup-h">Videos <b>16:9</b></h2>
-  <div class="gallery-grid-video" id="g-videos">
+  <div class="gallery-grid-video">
     <div class="g-item-video follow-mouse" data-mult="0.75"><div class="video-inner"><iframe src="https://drive.google.com/file/d/1KoBTfAU2Oom6DOO0Zo0vuzEGrlBOKOEG/preview" allowfullscreen loading="lazy"></iframe></div></div>
     <div class="g-item-video follow-mouse" data-mult="0.8"><div class="video-inner"><iframe src="https://drive.google.com/file/d/1MCyJXF_f1gPa3oAL7YUwrvI4LvA8adaU/preview" allowfullscreen loading="lazy"></iframe></div></div>
     <div class="g-item-video follow-mouse" data-mult="0.7"><div class="video-inner"><iframe src="https://drive.google.com/file/d/1OinwAp8yBO8k9u6rqq2MNJNacTR2XBLD/preview" allowfullscreen loading="lazy"></iframe></div></div>
@@ -151,10 +139,7 @@ footer a{color:var(--lime);text-decoration:underline;text-underline-offset:4px;}
     <div class="g-item-video follow-mouse" data-mult="0.8"><div class="video-inner"><iframe src="https://drive.google.com/file/d/1nApD1obR-b0neA0SeuvSeELPfwvKJVRy/preview" allowfullscreen loading="lazy"></iframe></div></div>
     <div class="g-item-video follow-mouse" data-mult="0.7"><div class="video-inner"><iframe src="https://drive.google.com/file/d/1nP-ahhpl3ay5n83UNWW2I-9jFSuEgCbw/preview" allowfullscreen loading="lazy"></iframe></div></div>
     <div class="g-item-video follow-mouse" data-mult="0.85"><div class="video-inner"><iframe src="https://drive.google.com/file/d/1tYAes8gf8X0elwkRQZuyCOChcpI6-wbI/preview" allowfullscreen loading="lazy"></iframe></div></div>
-  </div></section>
-  <section class="vgroup"><h2 class="vgroup-h">Square <b>1:1</b></h2>
-  <div class="gallery-grid-video" id="g-square">
-  </div></section>
+  </div>
 </div>
 
 <footer class="follow-mouse" data-mult="0.4">
@@ -207,23 +192,16 @@ document.querySelectorAll('iframe').forEach(el=>{
 </script>
 <script>
 (function(){
-  var vids=document.getElementById('g-videos'),reels=document.getElementById('g-reels'),sq=document.getElementById('g-square');
-  var items=Array.prototype.slice.call(vids.children),pending=items.length;
-  function sync(){[reels,vids,sq].forEach(function(g){g.parentNode.hidden=!g.children.length;});}
-  sync();
-  items.forEach(function(it,idx){
-    it._i=idx;var f=it.querySelector('iframe'),m=f&&f.src.match(/\/d\/([\w-]+)/);
-    if(!m){return;}
-    var im=new Image();
-    im.onload=function(){var r=im.naturalWidth/im.naturalHeight;it._b=r<0.8?'p':(r>1.25?'l':'s');done();};
-    im.onerror=done;
+  var items=Array.prototype.slice.call(document.querySelectorAll('.g-item-video'));
+  function fit(it){var b=it.querySelector('.video-inner'),f=b.querySelector('iframe'),W=b.clientWidth,H=b.clientHeight,r=it._r;
+    if(!r){f.style.width='100%';f.style.height='100%';return;}
+    var w=W,h=W/r;if(h>H){h=H;w=H*r;}f.style.width=Math.round(w)+'px';f.style.height=Math.round(h)+'px';}
+  items.forEach(function(it){
+    var f=it.querySelector('iframe'),m=f&&f.src.match(/\/d\/([\w-]+)/);if(!m)return;
+    var im=new Image();im.onload=function(){var r=im.naturalWidth/im.naturalHeight;if(r&&isFinite(r)){it._r=r;fit(it);}};
     im.src='https://drive.google.com/thumbnail?id='+m[1]+'&sz=w400';
   });
-  function done(){if(--pending>0)return;
-    var by={p:[],l:[],s:[]};items.forEach(function(it){by[it._b||'l'].push(it);});
-    by.p.forEach(function(e){reels.appendChild(e);});by.s.forEach(function(e){sq.appendChild(e);});
-    by.l.forEach(function(e){vids.appendChild(e);});sync();}
-  setTimeout(function(){if(pending>0){pending=1;done();}},6000);
+  window.addEventListener('resize',function(){items.forEach(fit);});
 })();
 </script>
 </body>
